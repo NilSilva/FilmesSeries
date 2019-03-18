@@ -2,9 +2,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="Nil.filmesseries.MainActivity">
+
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/action_mostraTudo"
+        android:title="Mostrar Tudo" />
+    <item
+        android:id="@+id/action_aMinhaLista"
+        android:title="A minha lista" />
+    <item
+        android:id="@+id/action_opcoes"
+        android:title="Opções" />
+    <item
+        android:id="@+id/action_sobre"
+        android:title="Sobre" />
 </menu>
