@@ -1,5 +1,6 @@
 package Nil.filmesseries;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -39,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_mostraTudo) {
-            Toast.makeText(this, "Mostrar tudo", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, Tudo.class);
+            startActivity(intent);
         }else if(id == R.id.action_aMinhaLista){
             Toast.makeText(this, "A minha lista", Toast.LENGTH_LONG).show();
         }else if(id == R.id.action_opcoes){

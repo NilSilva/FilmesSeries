@@ -5,4 +5,5 @@
     <string name="menuMinhaLista">A minha lista</string>
     <string name="menuOpcoes">Opções</string>
     <string name="menuSobre">Sobre</string>
+    <string name="title_activity_tudo">Tudo</string>
 </resources>
