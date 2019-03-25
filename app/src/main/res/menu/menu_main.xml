@@ -5,14 +5,14 @@
 
     <item
         android:id="@+id/action_mostraTudo"
-        android:title="Mostrar Tudo" />
+        android:title="@string/menuMostrarTudo" />
     <item
         android:id="@+id/action_aMinhaLista"
-        android:title="A minha lista" />
+        android:title="@string/menuMinhaLista" />
     <item
         android:id="@+id/action_opcoes"
-        android:title="Opções" />
+        android:title="@string/menuOpcoes" />
     <item
         android:id="@+id/action_sobre"
-        android:title="Sobre" />
+        android:title="@string/menuSobre" />
 </menu>
