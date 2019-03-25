@@ -6,4 +6,12 @@
     <string name="menuOpcoes">Opções</string>
     <string name="menuSobre">Sobre</string>
     <string name="title_activity_tudo">Tudo</string>
+    <string name="butãoAdicionarFS">Adicionar</string>
+    <string-array name="OpcoesFS">
+        <item>Filmes e series</item>
+        <item>Filmes</item>
+        <item>Series</item>
+    </string-array>
+    <string name="title_activity_adicionar_fs">AdicionarFSActivity</string>
+
 </resources>

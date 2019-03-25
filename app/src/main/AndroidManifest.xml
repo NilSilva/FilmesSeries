@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".AdicionarFSActivity"
+            android:label="@string/title_activity_adicionar_fs"
+            android:parentActivityName=".Tudo"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="Nil.filmesseries.Tudo" />
+        </activity>
+        <activity
             android:name=".Tudo"
             android:label="@string/title_activity_tudo"
             android:parentActivityName=".MainActivity"

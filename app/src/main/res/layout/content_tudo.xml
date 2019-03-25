@@ -8,4 +8,31 @@
     tools:context=".Tudo"
     tools:showIn="@layout/activity_tudo">
 
+    <Button
+        android:id="@+id/buttonAdicionarFS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/butãoAdicionarFS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerEscolhaFS"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:entries="@array/OpcoesFS"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAdicionarFS"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:entries="ola" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
