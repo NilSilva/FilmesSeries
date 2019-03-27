@@ -1,5 +1,6 @@
 package Nil.filmesseries;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,4 +23,8 @@ public class Tudo extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    public void AdicionarFS(View view) {
+        Intent intent = new Intent(this, AdicionarFSActivity.class);
+        startActivity(intent);
+    }
 }

@@ -22,4 +22,7 @@ public class AdicionarFSActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    public void AddCancelar(View view) {
+        finish();
+    }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Filmes &amp; Series</string>
+    <string name="app_name">Filmes &amp; Séries</string>
     <string name="action_settings">Settings</string>
     <string name="menuMostrarTudo">Mostrar Tudo</string>
     <string name="menuMinhaLista">A minha lista</string>
@@ -12,6 +12,10 @@
         <item>Filmes</item>
         <item>Series</item>
     </string-array>
-    <string name="title_activity_adicionar_fs">AdicionarFSActivity</string>
+    <string-array name="OpcoesEstado">
+        <item>Por ver</item>
+        <item>A ver</item>
+    </string-array>
+    <string name="title_activity_adicionar_fs">Adicionar Filme/Série</string>
 
 </resources>
