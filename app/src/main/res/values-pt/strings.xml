@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Filmes &amp; Séries</string>
+    <string name="action_settings">Opções</string>
+    <string name="menuMostrarTudo">Mostrar Tudo</string>
+    <string name="menuMinhaLista">A minha lista</string>
+    <string name="menuOpcoes">Opções</string>
+    <string name="menuSobre">Sobre</string>
+    <string name="title_activity_tudo">Tudo</string>
+    <string name="butãoAdicionarFS">Adicionar</string>
+    <string name="title_activity_adicionar_fs">Adicionar Filme/Série</string>
+    <string name="menErr">Este campo é obrigatorio</string>
+    <string name="SelEstado">Selecionar estado</string>
+    <string name="Sucesso">Dados guardados com sucesso</string>
+    <string name="AddFormF">Filme</string>
+    <string name="AddFormS">Série</string>
+    <string name="AddNomeF">Nome</string>
+    <string name="AddDataF">Data de estreia</string>
+    <string name="AddNumF">Nº de episodios</string>
+    <string name="AddEstadoF">Estado</string>
+    <string name="AddCancelarF">Cancelar</string>
+    <string name="AddGuardarF">Guardar</string>
+    <string name="AddEpiVistosF">Episodios vistos</string>
+    <string-array name="OpcoesEstado">
+        <item>Selecionar estado</item>
+        <item>Por ver</item>
+        <item>A ver</item>
+    </string-array>
+    <string-array name="OpcoesFS">
+        <item>Filmes e series</item>
+        <item>Filmes</item>
+        <item>Series</item>
+    </string-array>
+</resources>

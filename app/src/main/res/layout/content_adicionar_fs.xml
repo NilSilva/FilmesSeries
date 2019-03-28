@@ -23,13 +23,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:id="@+id/radioGroupAddF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="horizontal">
 
@@ -38,16 +39,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Filme" />
+                    android:text="@string/AddFormF" />
 
                 <RadioButton
                     android:id="@+id/radioButtonSelectS"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Série" />
+                    android:text="@string/AddFormS" />
 
             </RadioGroup>
+
+            <TextView
+                android:id="@+id/textViewAddFormErr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColor="@android:color/holo_red_dark"
+                tools:text="Selecionar formato" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -61,10 +71,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Nome" />
+                android:text="@string/AddNomeF" />
 
             <EditText
-                android:id="@+id/EditTextAddNome"
+                android:id="@+id/editTextAddNome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -83,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Data de estreia" />
+                android:text="@string/AddDataF" />
 
             <EditText
                 android:id="@+id/editTextAddData"
@@ -91,7 +101,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textShortMessage|textAutoCorrect" />
+                android:inputType="textShortMessage|textAutoCorrect"
+                android:autofillHints="" />
         </LinearLayout>
 
         <LinearLayout
@@ -105,7 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Nº de episodios" />
+                android:text="@string/AddNumF" />
 
             <EditText
                 android:id="@+id/editTextAddNum"
@@ -127,10 +138,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Estado" />
+                android:text="@string/AddEstadoF" />
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/spinnerAddF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -149,7 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Episodios vistos" />
+                android:text="@string/AddEpiVistosF" />
 
             <EditText
                 android:id="@+id/editTextAddEpiVistos"
@@ -169,10 +180,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Cancelar"
+        android:text="@string/AddCancelarF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        android:onClick="AddCancelar"/>
+        android:onClick="AddCancelarF"/>
 
     <Button
         android:id="@+id/buttonAddGuardar"
@@ -181,7 +192,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Guardar"
+        android:text="@string/AddGuardarF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:onClick="AddGuardarF"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
