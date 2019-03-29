@@ -23,12 +23,11 @@
     <string name="Sucesso">Data successfully saved</string>
     <string name="AddFormF">Movie</string>
     <string name="AddFormS">TV show</string>
-    <string name="AddNomeF">Name</string>
-    <string name="AddDataF">Release date</string>
-    <string name="AddNumF">Nº of episodes</string>
-    <string name="AddEstadoF">Status</string>
-    <string name="AddCancelarF">Cancel</string>
+    <string name="AddHintNomeF">Name</string>
+    <string name="AddHintDataF">Release date</string>
+    <string name="AddHintNumF">Number of episodes</string>
+    <string name="AddHintEpiVistosF">Episodes seen</string>
     <string name="AddGuardarF">Save</string>
-    <string name="AddEpiVistosF">Episodes seen</string>
+    <string name="AddCancelarF">Cancel</string>
 
 </resources>
