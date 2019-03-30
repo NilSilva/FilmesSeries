@@ -9,23 +9,23 @@
     tools:showIn="@layout/activity_adicionar_fs">
 
     <LinearLayout
+        android:id="@+id/layoutRadioButton"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioGroup
-            android:id="@+id/radioGroupAddF"
-            android:layout_width="match_parent"
+            android:id="@+id/radioGroupAddFS"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:orientation="horizontal"
@@ -49,7 +49,7 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/textViewAddFormErr"
+            android:id="@+id/textViewAddFormErrFS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
@@ -59,79 +59,197 @@
             tools:layout_editor_absoluteY="8dp"
             tools:text="Selecionar formato" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutAddNomeFS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutRadioButton">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/AddNameFS" />
+
         <EditText
-            android:id="@+id/editTextAddNome"
-            android:layout_width="match_parent"
+            android:id="@+id/editTextAddNomeFS"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/AddHintNomeF"
+            android:importantForAutofill="no"
             android:inputType="textShortMessage|textAutoCorrect"
             tools:layout_editor_absoluteX="118dp"
             tools:layout_editor_absoluteY="8dp"
-            android:importantForAutofill="no" tools:targetApi="o" />
+            tools:targetApi="o" />
+    </LinearLayout>
 
-        <EditText
-            android:id="@+id/editTextAddEpiVistos"
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/layoutAddNumFS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutAddNomeFS">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
             android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/AddHintEpiVistosF"
-            android:inputType="textShortMessage|textAutoCorrect"
-            tools:layout_editor_absoluteX="145dp"
-            tools:layout_editor_absoluteY="167dp"
-            android:importantForAutofill="no" tools:targetApi="o" />
+            android:text="@string/AddNumFS" />
 
         <EditText
-            android:id="@+id/editTextAddNum"
-            android:layout_width="match_parent"
+            android:id="@+id/editTextAddNumFS"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/AddHintNumF"
-            android:inputType="textShortMessage|textAutoCorrect"
+            android:importantForAutofill="no"
+            android:inputType="number"
             tools:layout_editor_absoluteX="146dp"
-            tools:layout_editor_absoluteY="98dp"
-            android:importantForAutofill="no" tools:targetApi="o" />
+            tools:layout_editor_absoluteY="106dp"
+            tools:targetApi="o" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutAddEpiVistos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutAddNumFS">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/AddEpiVistosFS" />
 
         <EditText
-            android:id="@+id/editTextAddData"
-            android:layout_width="match_parent"
+            android:id="@+id/editTextAddEpiVistosFS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/AddHintEpiVistosF"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            tools:layout_editor_absoluteX="145dp"
+            tools:layout_editor_absoluteY="175dp"
+            tools:targetApi="o" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutAddData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutAddEpiVistos">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/AddDataFS" />
+
+        <EditText
+            android:id="@+id/editTextAddDataFS"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:layout_weight="1"
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/AddHintDataF"
-            android:inputType="textShortMessage|textAutoCorrect"
+            android:inputType="date"
             tools:layout_editor_absoluteX="140dp"
-            tools:layout_editor_absoluteY="53dp" tools:targetApi="o" />
+            tools:layout_editor_absoluteY="61dp"
+            tools:targetApi="o" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutAddStatusFS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutAddData">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/AddStatusFS" />
 
         <Spinner
-            android:id="@+id/spinnerAddF"
-            android:layout_width="match_parent"
+            android:id="@+id/spinnerAddStatusF"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:layout_weight="1"
             android:entries="@array/OpcoesEstado"
             tools:layout_editor_absoluteX="146dp"
-            tools:layout_editor_absoluteY="143dp" />
+            tools:layout_editor_absoluteY="151dp" />
+    </LinearLayout>
 
-        <Button
-            android:id="@+id/buttonAddCancelar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:layout_marginStart="8dp"
-            android:onClick="AddCancelarF"
-            android:text="@string/AddCancelarF"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="16dp"
-            android:layout_marginLeft="8dp" />
+    <LinearLayout
+        android:id="@+id/layoutAddButtonsFS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutAddStatusFS">
 
         <Button
             android:id="@+id/buttonAddGuardar"
@@ -139,10 +257,25 @@
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:onClick="AddGuardarF"
             android:text="@string/AddGuardarF"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteY="16dp"
-            android:layout_marginRight="8dp" />
+            tools:layout_editor_absoluteY="23dp"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/buttonAddCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:onClick="AddCancelarF"
+            android:text="@string/AddCancelarF"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="22dp"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

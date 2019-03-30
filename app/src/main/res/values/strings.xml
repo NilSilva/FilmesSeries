@@ -16,6 +16,7 @@
         <item>Select status</item>
         <item>Not seen</item>
         <item>Watching</item>
+        <item>Watched</item>
     </string-array>
     <string name="title_activity_adicionar_fs">Add movie/tv Show</string>
     <string name="menErr">This field is mandatory</string>
@@ -24,10 +25,15 @@
     <string name="AddFormF">Movie</string>
     <string name="AddFormS">TV show</string>
     <string name="AddHintNomeF">Name</string>
-    <string name="AddHintDataF">Release date</string>
-    <string name="AddHintNumF">Number of episodes</string>
+    <string name="AddHintDataF">dd/mm/yyyy</string>
+    <string name="AddHintNumF">Nº of episodes</string>
     <string name="AddHintEpiVistosF">Episodes seen</string>
     <string name="AddGuardarF">Save</string>
     <string name="AddCancelarF">Cancel</string>
+    <string name="AddNameFS">Name:</string>
+    <string name="AddNumFS">Number of episodes:</string>
+    <string name="AddEpiVistosFS">Episodes seen:</string>
+    <string name="AddDataFS">Release date:</string>
+    <string name="AddStatusFS">Status:</string>
 
 </resources>

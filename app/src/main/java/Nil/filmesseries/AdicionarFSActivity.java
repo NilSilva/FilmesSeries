@@ -29,15 +29,15 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
     public void AddGuardarF(View view) {
         int flag = 0;
-        RadioGroup RG = findViewById(R.id.radioGroupAddF);
+        RadioGroup RG = findViewById(R.id.radioGroupAddFS);
         int checked = RG.getCheckedRadioButtonId();
-        TextView menErro = findViewById(R.id.textViewAddFormErr);
+        TextView menErro = findViewById(R.id.textViewAddFormErrFS);
 
         if(checked == -1){
             menErro.setText(getString(R.string.menErr));
             flag = 1;
         }
-        EditText editTextCampo = findViewById(R.id.editTextAddNome);
+        EditText editTextCampo = findViewById(R.id.editTextAddNomeFS);
         String textoCampo = editTextCampo.getText().toString();
 
         if(textoCampo.trim().length() == 0){
@@ -47,7 +47,7 @@ public class AdicionarFSActivity extends AppCompatActivity {
             flag = 1;
         }
 
-        editTextCampo = findViewById(R.id.editTextAddData);
+        editTextCampo = findViewById(R.id.editTextAddDataFS);
         textoCampo = editTextCampo.getText().toString();
 
         if(textoCampo.trim().length() == 0){
@@ -58,7 +58,7 @@ public class AdicionarFSActivity extends AppCompatActivity {
             flag = 1;
         }
 
-        editTextCampo = findViewById(R.id.editTextAddNum);
+        editTextCampo = findViewById(R.id.editTextAddNumFS);
         textoCampo = editTextCampo.getText().toString();
 
         if(textoCampo.trim().length() == 0){
@@ -69,7 +69,7 @@ public class AdicionarFSActivity extends AppCompatActivity {
             flag = 1;
         }
 
-        editTextCampo = findViewById(R.id.editTextAddEpiVistos);
+        editTextCampo = findViewById(R.id.editTextAddEpiVistosFS);
         textoCampo = editTextCampo.getText().toString();
 
         if(textoCampo.trim().length() == 0){
@@ -80,7 +80,7 @@ public class AdicionarFSActivity extends AppCompatActivity {
             flag = 1;
         }
 
-        Spinner spin = findViewById(R.id.spinnerAddF);
+        Spinner spin = findViewById(R.id.spinnerAddStatusF);
         String spinSel = spin.getSelectedItem().toString();
 
         if(spinSel.equals(getString(R.string.SelEstado))){

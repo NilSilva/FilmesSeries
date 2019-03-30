@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Filmes  &amp; Séries</string>
+    <string name="app_name">Filmes &amp; Séries</string>
     <string name="action_settings">Opções</string>
     <string name="menuMostrarTudo">Mostrar Tudo</string>
     <string name="menuMinhaLista">A minha lista</string>
@@ -20,6 +20,7 @@
         <item>Selecionar estado</item>
         <item>Por ver</item>
         <item>A ver</item>
+        <item>Visto</item>
     </string-array>
     <string-array name="OpcoesFS">
         <item>Filmes e series</item>
@@ -27,7 +28,12 @@
         <item>Series</item>
     </string-array>
     <string name="AddHintNomeF">Nome</string>
-    <string name="AddHintDataF">Data</string>
-    <string name="AddHintNumF">Número de episodios</string>
-    <string name="AddHintEpiVistosF">Número de episodios vistos</string>
+    <string name="AddHintDataF">dd/mm/yyyy</string>
+    <string name="AddHintNumF">Nº de episodios</string>
+    <string name="AddHintEpiVistosF">Nº de episodios vistos</string>
+    <string name="AddNameFS">Nome:</string>
+    <string name="AddNumFS">Número de episodios:</string>
+    <string name="AddEpiVistosFS">Episodios vistos:</string>
+    <string name="AddDataFS">Data de lançamento:</string>
+    <string name="AddStatusFS">Estado:</string>
 </resources>
