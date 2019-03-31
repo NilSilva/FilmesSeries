@@ -34,7 +34,8 @@ public class AdicionarFSActivity extends AppCompatActivity {
         TextView menErro = findViewById(R.id.textViewAddFormErrFS);
 
         if(checked == -1){
-            menErro.setText(getString(R.string.menErr));
+            menErro.setText(getString(R.string.AddFormatFSErr));
+            menErro.setError("");
             flag = 1;
         }
         EditText editTextCampo = findViewById(R.id.editTextAddNomeFS);
@@ -42,7 +43,7 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
         if(textoCampo.trim().length() == 0){
 
-            editTextCampo.setError(getString(R.string.menErr));
+            editTextCampo.setError(getString(R.string.AddNameFSErr));
             editTextCampo.requestFocus();
             flag = 1;
         }
@@ -52,7 +53,7 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
         if(textoCampo.trim().length() == 0){
 
-            editTextCampo.setError(getString(R.string.menErr));
+            editTextCampo.setError(getString(R.string.AddDataFSErr));
             editTextCampo.requestFocus();
 
             flag = 1;
@@ -63,7 +64,7 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
         if(textoCampo.trim().length() == 0){
 
-            editTextCampo.setError(getString(R.string.menErr));
+            editTextCampo.setError(getString(R.string.AddNemFSErr));
             editTextCampo.requestFocus();
 
             flag = 1;
@@ -74,17 +75,18 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
         if(textoCampo.trim().length() == 0){
 
-            editTextCampo.setError(getString(R.string.menErr));
+            editTextCampo.setError(getString(R.string.AddEpiVistosFSErr));
             editTextCampo.requestFocus();
 
             flag = 1;
         }
 
         Spinner spin = findViewById(R.id.spinnerAddStatusF);
-        String spinSel = spin.getSelectedItem().toString();
+        TextView errorText = (TextView)spin.getSelectedView();
 
-        if(spinSel.equals(getString(R.string.SelEstado))){
-            Toast.makeText(this, getString(R.string.SelEstado), Toast.LENGTH_SHORT).show();
+        if(spin.getSelectedItemPosition() == 0){
+            errorText.setError("");
+            errorText.setText(getString(R.string.AddErrStatusFS));
             flag = 1;
         }
 
@@ -92,5 +94,11 @@ public class AdicionarFSActivity extends AppCompatActivity {
             finish();
             Toast.makeText(this, getString(R.string.Sucesso), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void ClearError(View view) {
+        TextView menErr = findViewById(R.id.textViewAddFormErrFS);
+        menErr.setText("");
+        menErr.setError(null);
     }
 }

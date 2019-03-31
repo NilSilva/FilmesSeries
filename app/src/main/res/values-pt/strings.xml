@@ -9,8 +9,6 @@
     <string name="title_activity_tudo">Tudo</string>
     <string name="butãoAdicionarFS">Adicionar</string>
     <string name="title_activity_adicionar_fs">Adicionar Filme/Série</string>
-    <string name="menErr">Este campo é obrigatório</string>
-    <string name="SelEstado">Selecionar estado</string>
     <string name="Sucesso">Dados guardados com sucesso</string>
     <string name="AddFormF">Filme</string>
     <string name="AddFormS">Série</string>
@@ -36,4 +34,10 @@
     <string name="AddEpiVistosFS">Episodios vistos:</string>
     <string name="AddDataFS">Data de lançamento:</string>
     <string name="AddStatusFS">Estado:</string>
+    <string name="AddErrStatusFS">Escolha um estado</string>
+    <string name="AddFormatFSErr">Escolha um formato</string>
+    <string name="AddNameFSErr">Adicione um nome</string>
+    <string name="AddDataFSErr">Adicione uma data de estreia</string>
+    <string name="AddNemFSErr">Adicionar o numero de episodios</string>
+    <string name="AddEpiVistosFSErr">Adicionar o numero de episodios vistos</string>
 </resources>

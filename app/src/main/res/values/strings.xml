@@ -19,8 +19,6 @@
         <item>Watched</item>
     </string-array>
     <string name="title_activity_adicionar_fs">Add movie/tv Show</string>
-    <string name="menErr">This field is mandatory</string>
-    <string name="SelEstado">Select status</string>
     <string name="Sucesso">Data successfully saved</string>
     <string name="AddFormF">Movie</string>
     <string name="AddFormS">TV show</string>
@@ -35,5 +33,11 @@
     <string name="AddEpiVistosFS">Episodes seen:</string>
     <string name="AddDataFS">Release date:</string>
     <string name="AddStatusFS">Status:</string>
+    <string name="AddErrStatusFS">Choose a status</string>
+    <string name="AddFormatFSErr">Choose format</string>
+    <string name="AddNameFSErr">Add a name</string>
+    <string name="AddDataFSErr">Add a release date</string>
+    <string name="AddNemFSErr">Add number of episodes</string>
+    <string name="AddEpiVistosFSErr">Add number of episodes seen</string>
 
 </resources>
