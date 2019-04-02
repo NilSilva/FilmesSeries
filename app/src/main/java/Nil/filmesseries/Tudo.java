@@ -21,7 +21,14 @@ public class Tudo extends AppCompatActivity {
     }
 
     public void AdicionarFS(View view) {
+
         Intent intent = new Intent(this, AdicionarFSActivity.class);
+        startActivity(intent);
+    }
+
+    public void EditarFS(View view) {
+
+        Intent intent = new Intent(this, EditarFSActivity.class);
         startActivity(intent);
     }
 }

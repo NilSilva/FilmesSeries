@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".EditarFSActivity"
+            android:label="@string/title_activity_editar_fs"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".AdicionarFSActivity"
             android:label="@string/title_activity_adicionar_fs"
             android:parentActivityName=".Tudo"

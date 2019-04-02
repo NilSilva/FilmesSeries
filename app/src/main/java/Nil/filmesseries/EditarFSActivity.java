@@ -13,7 +13,7 @@ import java.util.Date;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class AdicionarFSActivity extends AppCompatActivity {
+public class EditarFSActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
