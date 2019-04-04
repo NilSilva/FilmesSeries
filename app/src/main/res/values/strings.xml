@@ -39,8 +39,8 @@
     <string name="AddDataFSErr">Add a release date</string>
     <string name="AddNemFSErr">Add number of episodes</string>
     <string name="AddEpiVistosFSErr">Add number of episodes seen</string>
-    <string name="parse_AddNumFS"><![CDATA[Adicione um numero valido(> 0).]]></string>
+    <string name="parse_AddNumFS">Adicione um numero valido</string>
     <string name="butãoEditarFS">Editar</string>
-    <string name="title_activity_editar_fs">EditarFSActivity</string>
+    <string name="title_activity_editar_fs">Edit movie/tv Show</string>
 
 </resources>
