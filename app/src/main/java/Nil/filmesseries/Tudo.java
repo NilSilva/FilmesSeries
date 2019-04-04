@@ -31,4 +31,10 @@ public class Tudo extends AppCompatActivity {
         Intent intent = new Intent(this, EditarFSActivity.class);
         startActivity(intent);
     }
+
+    public void DeleteFS(View view) {
+
+        Intent intent = new Intent(this, DeleteFSActivity.class);
+        startActivity(intent);
+    }
 }

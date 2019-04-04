@@ -20,7 +20,6 @@ public class EditarFSActivity extends AppCompatActivity {
         setContentView(R.layout.activity_editar_fs);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void AddCancelarF(View view) {

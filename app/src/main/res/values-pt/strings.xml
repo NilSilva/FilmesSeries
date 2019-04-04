@@ -40,4 +40,13 @@
     <string name="AddDataFSErr">Adicione uma data de estreia</string>
     <string name="AddNemFSErr">Adicionar o numero de episodios</string>
     <string name="AddEpiVistosFSErr">Adicionar o numero de episodios vistos</string>
+    <string name="parse_AddNumFS">Adicione um numero valido</string>
+    <string name="butãoEditarFS">Editar</string>
+    <string name="title_activity_editar_fs">Editar um filme/serie</string>
+    <string name="title_activity_delete_fs">Apagar</string>
+    <string name="DeleteFSFormat">Formato:</string>
+    <string name="Are_you_sure">Tem a certeza?</string>
+    <string name="deleteMovie">Isto vai apagar o filme/serie</string>
+    <string name="Yes">Sim</string>
+    <string name="No">Não</string>
 </resources>

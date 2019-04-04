@@ -40,7 +40,13 @@
     <string name="AddNemFSErr">Add number of episodes</string>
     <string name="AddEpiVistosFSErr">Add number of episodes seen</string>
     <string name="parse_AddNumFS">Adicione um numero valido</string>
-    <string name="butãoEditarFS">Editar</string>
+    <string name="butãoEditarFS">Edit</string>
     <string name="title_activity_editar_fs">Edit movie/tv Show</string>
+    <string name="title_activity_delete_fs">Delete</string>
+    <string name="DeleteFSFormat">Format:</string>
+    <string name="Are_you_sure">Are you sure?</string>
+    <string name="deleteMovie">This will delete this movie/TV show.</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
 
 </resources>
