@@ -4,14 +4,18 @@
 
     <item
         android:id="@+id/action_mostraTudo"
-        android:title="@string/menuMostrarTudo" />
+        android:title="@string/menuMostrarTudo"
+        android:icon="@drawable/ic_tudo"/>
     <item
         android:id="@+id/action_aMinhaLista"
-        android:title="@string/menuMinhaLista" />
+        android:title="@string/menuMinhaLista"
+        android:icon="@drawable/ic_lista"/>
     <item
         android:id="@+id/action_opcoes"
-        android:title="@string/menuOpcoes" />
+        android:title="@string/menuOpcoes"
+        android:icon="@drawable/ic_settings"/>
     <item
         android:id="@+id/action_sobre"
-        android:title="@string/menuSobre" />
+        android:title="@string/menuSobre"
+        android:icon="@drawable/ic_sobre"/>
 </menu>
