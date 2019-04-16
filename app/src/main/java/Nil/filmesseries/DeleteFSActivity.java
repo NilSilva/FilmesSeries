@@ -21,6 +21,14 @@ public class DeleteFSActivity extends AppCompatActivity {
         setContentView(R.layout.activity_delete_fs);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     public void Cancel(View view) {
