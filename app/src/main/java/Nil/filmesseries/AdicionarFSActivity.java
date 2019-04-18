@@ -30,53 +30,61 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
     public void AddGuardarF(View view) {
 
-        int flag = 0;
-        RadioGroup RG = findViewById(R.id.radioGroupAddFS);
-        int checked = RG.getCheckedRadioButtonId();
-        TextView menErro = findViewById(R.id.textViewAddFormErrFS);
+        /**
+         * Declaração de variaveis
+         */
+        EditText editTextCampo;
+        String textoCampo;
+        TextView menErro;
 
-        //Verificar se esta um formato selecionado
+        int DetecaoDeErros = 0;
+        int checked;
+
+        RadioGroup RG;
+
+        /**
+         * Detetar se um dos radiobuttons esta selecionado
+         */
+        RG = findViewById(R.id.radioGroupAddFS);
+        checked = RG.getCheckedRadioButtonId();
+        menErro = findViewById(R.id.textViewAddFormErrFS);
+
         if(checked == -1){
 
             menErro.setText(getString(R.string.AddFormatFSErr));
             menErro.setError("");
-            flag = 1;
+            DetecaoDeErros = 1;
         }
 
-        EditText editTextCampo = findViewById(R.id.editTextAddNomeFS);
-        String textoCampo = editTextCampo.getText().toString();
+        /**
+         * Detetar se o item selecionado no spinner é o primeiro
+         */
+        Spinner spin = findViewById(R.id.spinnerAddStatusF);
+        TextView errorText = (TextView)spin.getSelectedView();
 
-        //Verificar se o campo nome não esta vazio
-        if(textoCampo.isEmpty()){
-
-            editTextCampo.setError(getString(R.string.AddNameFSErr));
-            editTextCampo.requestFocus();
-            flag = 1;
+        if(spin.getSelectedItemPosition() == 0){
+            errorText.setError("");
+            errorText.setText(getString(R.string.AddErrStatusFS));
+            DetecaoDeErros = 1;
         }
 
+        /**
+         * Verificação da data
+         */
         editTextCampo = findViewById(R.id.editTextAddDataFS);
         textoCampo = editTextCampo.getText().toString();
 
-        //Verificar se o campo data não esta vazio
         if(textoCampo.isEmpty()){
 
             editTextCampo.setError(getString(R.string.AddDataFSErr));
             editTextCampo.requestFocus();
 
-            flag = 1;
+            DetecaoDeErros = 1;
         }
 
-        editTextCampo = findViewById(R.id.editTextAddNumFS);
-        textoCampo = editTextCampo.getText().toString();
-
-        //Verificar se o campo nome não esta vazio
-        if(textoCampo.isEmpty()){
-
-            editTextCampo.setError(getString(R.string.AddNemFSErr));
-            editTextCampo.requestFocus();
-            flag = 1;
-        }
-
+        /**
+         * Verificação de episodios vistos
+         */
         editTextCampo = findViewById(R.id.editTextAddEpiVistosFS);
         textoCampo = editTextCampo.getText().toString();
 
@@ -84,19 +92,39 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
             editTextCampo.setError(getString(R.string.AddEpiVistosFSErr));
             editTextCampo.requestFocus();
-            flag = 1;
+            DetecaoDeErros = 1;
         }
 
-        Spinner spin = findViewById(R.id.spinnerAddStatusF);
-        TextView errorText = (TextView)spin.getSelectedView();
+        /**
+         * Verificação do numero de episodios
+         */
+        editTextCampo = findViewById(R.id.editTextAddNumFS);
+        textoCampo = editTextCampo.getText().toString();
 
-        if(spin.getSelectedItemPosition() == 0){
-            errorText.setError("");
-            errorText.setText(getString(R.string.AddErrStatusFS));
-            flag = 1;
+        if(textoCampo.isEmpty()){
+
+            editTextCampo.setError(getString(R.string.AddNemFSErr));
+            editTextCampo.requestFocus();
+            DetecaoDeErros = 1;
         }
 
-        if(flag == 0){
+        /**
+         * Verificação do nome
+         */
+        editTextCampo = findViewById(R.id.editTextAddNomeFS);
+        textoCampo = editTextCampo.getText().toString();
+
+        if(textoCampo.isEmpty()){
+
+            editTextCampo.setError(getString(R.string.AddNameFSErr));
+            editTextCampo.requestFocus();
+            DetecaoDeErros = 1;
+        }
+
+        /**
+         * Se não existitem erros fechar a activity
+         */
+        if(DetecaoDeErros == 0){
             finish();
             Toast.makeText(this, getString(R.string.Sucesso), Toast.LENGTH_SHORT).show();
         }
