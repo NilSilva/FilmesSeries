@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Movies &amp; TV shows</string>
-    <string name="action_settings">Settings</string>
-    <string name="menuMostrarTudo">Show all</string>
+    <string name="menuMostrarTudo">All</string>
     <string name="menuMinhaLista">My list</string>
     <string name="menuOpcoes">Settings</string>
     <string name="menuSobre">About</string>
@@ -48,5 +47,6 @@
     <string name="deleteMovie">This will delete this movie/TV show.</string>
     <string name="Yes">Yes</string>
     <string name="No">No</string>
+    <string name="people">People</string>
 
 </resources>

@@ -1,15 +1,21 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="Nil.filmesseries.MainActivity">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/action_mostraTudo"
         android:title="@string/menuMostrarTudo"
-        android:icon="@drawable/ic_tudo"/>
+        android:icon="@drawable/ic_movies_tvshows"/>
     <item
         android:id="@+id/action_aMinhaLista"
         android:title="@string/menuMinhaLista"
         android:icon="@drawable/ic_lista"/>
+    <item
+        android:id="@+id/action_people"
+        android:title="@string/people"
+        android:icon="@drawable/ic_people"/>
+    <item
+        android:id="@+id/action_genero"
+        android:title="Generos"
+        android:icon="@drawable/ic_people"/>
     <item
         android:id="@+id/action_opcoes"
         android:title="@string/menuOpcoes"

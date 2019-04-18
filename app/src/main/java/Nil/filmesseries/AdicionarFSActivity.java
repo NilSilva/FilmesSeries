@@ -15,7 +15,6 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adicionar_fs);
         Toolbar toolbar = findViewById(R.id.toolbar);
