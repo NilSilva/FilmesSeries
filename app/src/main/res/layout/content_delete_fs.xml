@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".DeleteFSActivity"
+    android:parentActivityName=".Tudo"
     tools:showIn="@layout/activity_delete_fs">
 
     <ScrollView
@@ -131,6 +132,7 @@
                     android:layout_weight="1"
                     android:onClick="Delete"
                     android:text="@string/title_activity_delete_fs" />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
