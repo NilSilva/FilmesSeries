@@ -29,11 +29,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:itemHorizontalTranslationEnabled="true"
-        app:itemIconTint="@android:color/black"
-        app:itemTextColor="@android:color/black"
+        app:itemIconTint="@color/colorPrimary"
+        app:itemTextColor="@color/colorPrimaryDark"
+        app:labelVisibilityMode="labeled"
         app:layout_anchor="@+id/include2"
         app:layout_anchorGravity="bottom|center"
-        app:menu="@menu/menu_main"
-        app:labelVisibilityMode="labeled" />
+        app:menu="@menu/menu_main" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
