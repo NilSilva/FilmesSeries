@@ -50,5 +50,6 @@
     <string name="people">People</string>
     <string name="menuPeople">People</string>
     <string name="menuGenre">Genre</string>
+    <string name="title_activity_pessoas">People</string>
 
 </resources>

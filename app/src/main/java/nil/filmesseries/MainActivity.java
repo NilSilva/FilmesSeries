@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, Tudo.class);
             startActivity(intent);
         }else if(id == R.id.action_mostraPessoas){
-            Toast.makeText(this, "pessoas", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, PessoasActivity.class);
+            startActivity(intent);
         }else if(id == R.id.action_genero){
             Toast.makeText(this, "genero", Toast.LENGTH_LONG).show();
         }else if(id == R.id.action_aMinhaLista){
