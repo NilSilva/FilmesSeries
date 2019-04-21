@@ -16,7 +16,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:onClick="AdicionarFS"
-        android:text="@string/butãoAdicionarFS"
+        android:text="@string/butãoAdd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +41,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:onClick="EditarFS"
-        android:text="@string/butãoEditarFS"
+        android:text="@string/butãoEditar"
         app:layout_constraintStart_toEndOf="@+id/buttonAdicionarFS"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,7 +53,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:onClick="DeleteFS"
-        android:text="@string/title_activity_delete_fs"
+        android:text="@string/butãoDelete"
         app:layout_constraintStart_toEndOf="@+id/buttonEditarFS"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -5,7 +5,7 @@
     <string name="menuOpcoes">Settings</string>
     <string name="menuSobre">About</string>
     <string name="title_activity_tudo">All</string>
-    <string name="butãoAdicionarFS">Add</string>
+    <string name="butãoAdd">Add</string>
     <string-array name="OpcoesFS">
         <item>Movies &amp; TV shows</item>
         <item>Movies</item>
@@ -39,7 +39,8 @@
     <string name="AddNemFSErr">Add number of episodes</string>
     <string name="AddEpiVistosFSErr">Add number of episodes seen</string>
     <string name="parse_AddNumFS">Adicione um numero valido</string>
-    <string name="butãoEditarFS">Edit</string>
+    <string name="butãoEditar">Edit</string>
+    <string name="butãoDelete">Delete</string>
     <string name="title_activity_editar_fs">Edit movie/tv Show</string>
     <string name="title_activity_delete_fs">Delete</string>
     <string name="DeleteFSFormat">Format:</string>
@@ -51,5 +52,6 @@
     <string name="menuPeople">People</string>
     <string name="menuGenre">Genre</string>
     <string name="title_activity_pessoas">People</string>
+    <string name="search">Search</string>
 
 </resources>
