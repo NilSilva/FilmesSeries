@@ -21,10 +21,12 @@
         <activity
             android:name=".DeleteFSActivity"
             android:label="@string/title_activity_delete_fs"
+            android:parentActivityName=".Tudo"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EditarFSActivity"
             android:label="@string/title_activity_editar_fs"
+            android:parentActivityName=".Tudo"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AdicionarFSActivity"
