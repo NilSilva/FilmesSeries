@@ -1,18 +1,14 @@
 package Nil.filmesseries;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,34 +18,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNanigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.action_mostraTudo:
-                        changeActivity(Tudo.class);
-
-                        break;
-                    case R.id.action_aMinhaLista:
-                        Toast.makeText(MainActivity.this, "Favorites", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.action_opcoes:
-                        Toast.makeText(MainActivity.this, "Nearby", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.action_sobre:
-                        Toast.makeText(MainActivity.this, "Nearby", Toast.LENGTH_SHORT).show();
-                        break;
-                }
-                return true;
-            }
-        });
-
     }
 
-    private void changeActivity(final Class<? extends Activity> ActivityToOpen) {
-        Intent intent = new Intent(this, ActivityToOpen);
-        startActivity(intent);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_mostraTudo) {
+            Intent intent = new Intent(this, Tudo.class);
+            startActivity(intent);
+        }else if(id == R.id.action_aMinhaLista){
+            Toast.makeText(this, "A minha lista", Toast.LENGTH_LONG).show();
+        }else if(id == R.id.action_opcoes){
+            Toast.makeText(this, "Opções", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this, "Sobre", Toast.LENGTH_LONG).show();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
