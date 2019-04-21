@@ -1,4 +1,4 @@
-package Nil.filmesseries;
+package nil.filmesseries;
 
 import android.os.Bundle;
 import android.view.View;

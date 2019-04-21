@@ -118,20 +118,20 @@
                 tools:layout_editor_absoluteY="244dp">
 
                 <Button
-                    android:id="@+id/button3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="Cancel"
-                    android:text="@string/AddCancelarF" />
-
-                <Button
                     android:id="@+id/button4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="Delete"
                     android:text="@string/title_activity_delete_fs" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="Cancel"
+                    android:text="@string/AddCancelarF" />
 
             </LinearLayout>
         </LinearLayout>

@@ -1,17 +1,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="Nil.filmesseries.MainActivity">
+    tools:context="nil.filmesseries.MainActivity">
 
     <item
         android:id="@+id/action_mostraTudo"
-        android:title="@string/menuMostrarTudo" />
+        android:title="@string/menuMostrarTudo"
+        android:icon="@drawable/ic_movies_tvshows"/>
+    <item
+        android:id="@+id/action_mostraPessoas"
+        android:title="@string/menuPeople"
+        android:icon="@drawable/ic_people"/>
+    <item
+        android:id="@+id/action_genero"
+        android:title="@string/menuGenre"
+        android:icon="@drawable/ic_genero"/>
     <item
         android:id="@+id/action_aMinhaLista"
-        android:title="@string/menuMinhaLista" />
+        android:title="@string/menuMinhaLista"
+        android:icon="@drawable/ic_lista"/>
     <item
         android:id="@+id/action_opcoes"
-        android:title="@string/menuOpcoes" />
+        android:title="@string/menuOpcoes"
+        android:icon="@drawable/ic_settings"/>
     <item
         android:id="@+id/action_sobre"
-        android:title="@string/menuSobre" />
+        android:title="@string/menuSobre"
+        android:icon="@drawable/ic_sobre"/>
 </menu>

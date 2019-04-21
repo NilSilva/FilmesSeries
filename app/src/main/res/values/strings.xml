@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Movies &amp; TV shows</string>
-    <string name="menuMostrarTudo">All</string>
+    <string name="menuMostrarTudo">Movies/TV shows</string>
     <string name="menuMinhaLista">My list</string>
     <string name="menuOpcoes">Settings</string>
     <string name="menuSobre">About</string>
@@ -48,5 +48,7 @@
     <string name="Yes">Yes</string>
     <string name="No">No</string>
     <string name="people">People</string>
+    <string name="menuPeople">People</string>
+    <string name="menuGenre">Genre</string>
 
 </resources>

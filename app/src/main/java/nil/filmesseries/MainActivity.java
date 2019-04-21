@@ -1,4 +1,4 @@
-package Nil.filmesseries;
+package nil.filmesseries;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,12 +38,16 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_mostraTudo) {
             Intent intent = new Intent(this, Tudo.class);
             startActivity(intent);
+        }else if(id == R.id.action_mostraPessoas){
+            Toast.makeText(this, "pessoas", Toast.LENGTH_LONG).show();
+        }else if(id == R.id.action_genero){
+            Toast.makeText(this, "genero", Toast.LENGTH_LONG).show();
         }else if(id == R.id.action_aMinhaLista){
             Toast.makeText(this, "A minha lista", Toast.LENGTH_LONG).show();
         }else if(id == R.id.action_opcoes){
-            Toast.makeText(this, "Opções", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Opções", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(this, "Sobre", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Sobre", Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);

@@ -1,4 +1,4 @@
-package Nil.filmesseries;
+package nil.filmesseries;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("Nil.filmesseries", appContext.getPackageName());
+        assertEquals("nil.filmesseries", appContext.getPackageName());
     }
 }
