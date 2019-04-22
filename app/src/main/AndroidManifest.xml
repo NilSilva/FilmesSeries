@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".AddPeopleActivity"
+            android:label="@string/title_activity_add_people"
+            android:parentActivityName=".PessoasActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nil.filmesseries.PessoasActivity" />
+        </activity>
+        <activity
             android:name=".PessoasActivity"
             android:label="@string/title_activity_pessoas"
             android:parentActivityName=".MainActivity"

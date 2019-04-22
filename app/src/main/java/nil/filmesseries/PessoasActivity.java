@@ -1,5 +1,6 @@
 package nil.filmesseries;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,5 +24,7 @@ public class PessoasActivity extends AppCompatActivity {
 
     public void Add(View view) {
 
+        Intent intent = new Intent(this, AddPeopleActivity.class);
+        startActivity(intent);
     }
 }

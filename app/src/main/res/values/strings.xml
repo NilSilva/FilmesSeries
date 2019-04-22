@@ -21,7 +21,7 @@
     <string name="Sucesso">Data successfully saved</string>
     <string name="AddFormF">Movie</string>
     <string name="AddFormS">TV show</string>
-    <string name="AddHintNomeF">Name</string>
+    <string name="HintNome">Name</string>
     <string name="AddHintDataF">dd/mm/yyyy</string>
     <string name="AddHintNumF">Nº of episodes</string>
     <string name="AddHintEpiVistosF">Episodes seen</string>
@@ -53,5 +53,10 @@
     <string name="menuGenre">Genre</string>
     <string name="title_activity_pessoas">People</string>
     <string name="search">Search</string>
+    <string name="title_activity_add_people">Add a person</string>
+    <string name="job">Job</string>
+    <string name="date_of_birth">Date of birth</string>
+    <string name="birth_date_error">Add a birth date.</string>
+    <string name="add_job">Add a job.</string>
 
 </resources>
