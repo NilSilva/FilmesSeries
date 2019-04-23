@@ -58,5 +58,6 @@
     <string name="date_of_birth">Date of birth</string>
     <string name="birth_date_error">Add a birth date.</string>
     <string name="add_job">Add a job.</string>
+    <string name="title_activity_edit_people">Edit</string>
 
 </resources>

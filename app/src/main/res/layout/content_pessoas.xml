@@ -28,7 +28,8 @@
         android:layout_marginTop="8dp"
         android:text="@string/butãoEditar"
         app:layout_constraintStart_toEndOf="@+id/buttonAddPessoas"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="Edit"/>
 
     <Button
         android:id="@+id/button5"

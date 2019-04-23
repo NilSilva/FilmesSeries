@@ -27,4 +27,10 @@ public class PessoasActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddPeopleActivity.class);
         startActivity(intent);
     }
+
+    public void Edit(View view) {
+
+        Intent intent = new Intent(this, EditPeopleActivity.class);
+        startActivity(intent);
+    }
 }
