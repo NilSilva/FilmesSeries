@@ -33,4 +33,10 @@ public class PessoasActivity extends AppCompatActivity {
         Intent intent = new Intent(this, EditPeopleActivity.class);
         startActivity(intent);
     }
+
+    public void Delete(View view) {
+
+        Intent intent = new Intent(this, DeletePeopleActivity.class);
+        startActivity(intent);
+    }
 }

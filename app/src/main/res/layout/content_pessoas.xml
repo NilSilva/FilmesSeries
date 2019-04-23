@@ -41,7 +41,8 @@
         android:text="@string/butãoDelete"
         app:layout_constraintBaseline_toBaselineOf="@+id/button2"
         app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="Delete"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout5"
