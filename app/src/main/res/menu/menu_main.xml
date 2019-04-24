@@ -1,29 +1,36 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="nil.filmesseries.MainActivity">
 
     <item
         android:id="@+id/action_mostraTudo"
+        android:icon="@drawable/ic_movies_tvshows"
         android:title="@string/menuMostrarTudo"
-        android:icon="@drawable/ic_movies_tvshows"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_mostraPessoas"
+        android:icon="@drawable/ic_people"
         android:title="@string/menuPeople"
-        android:icon="@drawable/ic_people"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_genero"
+        android:icon="@drawable/ic_genero"
         android:title="@string/menuGenre"
-        android:icon="@drawable/ic_genero"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_aMinhaLista"
+        android:icon="@drawable/ic_lista"
         android:title="@string/menuMinhaLista"
-        android:icon="@drawable/ic_lista"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_opcoes"
+        android:icon="@drawable/ic_settings"
         android:title="@string/menuOpcoes"
-        android:icon="@drawable/ic_settings"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_sobre"
+        android:icon="@drawable/ic_sobre"
         android:title="@string/menuSobre"
-        android:icon="@drawable/ic_sobre"/>
+        app:showAsAction="ifRoom" />
 </menu>

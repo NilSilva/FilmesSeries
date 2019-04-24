@@ -81,4 +81,8 @@ public class EditPeopleActivity extends AppCompatActivity {
         }
 
     }
+
+    public void Cancel(View view) {
+        finish();
+    }
 }

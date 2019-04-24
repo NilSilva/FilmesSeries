@@ -48,4 +48,8 @@ public class DeletePeopleActivity extends AppCompatActivity {
 
         builder.show();
     }
+
+    public void Cancel(View view) {
+        finish();
+    }
 }
