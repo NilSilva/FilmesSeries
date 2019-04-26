@@ -78,14 +78,14 @@
             android:id="@+id/button8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/butãoDelete"
-            android:onClick="Delete"/>
+            android:onClick="Delete"
+            android:text="@string/butãoDelete" />
 
         <Button
             android:id="@+id/button9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/AddCancelarF"
-            android:onClick="Cancel"/>
+            android:onClick="Cancel"
+            android:text="@string/AddCancelarF" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
