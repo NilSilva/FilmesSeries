@@ -11,6 +11,12 @@
         <item>Movies</item>
         <item>TV shows</item>
     </string-array>
+    <string-array name="Select_genero">
+        <item>Select genero</item>
+        <item>ex.1</item>
+        <item>ex.2</item>
+        <item>ex.3</item>
+    </string-array>
     <string-array name="OpcoesEstado">
         <item>Select status</item>
         <item>Not seen</item>
@@ -62,5 +68,9 @@
     <string name="title_activity_delete_people">Delete</string>
     <string name="date_of_birth_">Date of birth:</string>
     <string name="job_">Job:</string>
+    <string name="title_activity_genero">Genero</string>
+    <string name="add_">Add:</string>
+    <string name="delete_">Delete:</string>
+    <string name="edit_">Edit:</string>
 
 </resources>

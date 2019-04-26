@@ -111,7 +111,7 @@ public class EditarFSActivity extends AppCompatActivity {
         /**
          * Verificação do nome
          */
-        editTextCampo = findViewById(R.id.editTextAddNomeFS);
+        editTextCampo = findViewById(R.id.editTextAddNomeGen);
         textoCampo = editTextCampo.getText().toString();
 
         if(textoCampo.isEmpty()){

@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".GeneroActivity"
+            android:label="@string/title_activity_genero"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nil.filmesseries.MainActivity" />
+        </activity>
+        <activity
             android:name=".DeletePeopleActivity"
             android:label="@string/title_activity_delete_people"
             android:parentActivityName=".PessoasActivity"
