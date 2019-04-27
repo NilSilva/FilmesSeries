@@ -4,9 +4,18 @@ import java.util.Date;
 
 public class Pessoas {
 
+    private int ID;
     private String nome;
     private String trabalho;
     private Date dataNascimento;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
     public String getNome() {
         return nome;

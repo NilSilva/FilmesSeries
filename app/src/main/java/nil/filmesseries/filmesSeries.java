@@ -4,12 +4,21 @@ import java.util.Date;
 
 public class filmesSeries {
 
+    private int ID;
     private String formato;
     private String nome;
     private int nEpisodios;
     private int nEpiVistos;
     private Date data;
     private String status;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
     public String getFormato() {
         return formato;
