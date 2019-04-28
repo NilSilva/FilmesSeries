@@ -10,8 +10,7 @@
     android:focusableInTouchMode="true">
 
     <ScrollView
-        android:id="@+id/scrollView3"
-        android:layout_width="395dp"
+        android:layout_width="0dp"
         android:layout_height="659dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -32,7 +31,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/add_" />
@@ -44,13 +42,14 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayout"
-                    android:layout_width="200dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp">
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editTextAddNomeGen"
@@ -61,16 +60,14 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/button11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/butãoAdd"
-                    android:onClick="Add"/>
+                    android:onClick="Add"
+                    android:text="@string/butãoAdd" />
 
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/delete_" />
@@ -82,28 +79,27 @@
 
                 <Spinner
                     android:id="@+id/spinnerDelGen"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:entries="@array/Select_genero" />
 
                 <Button
-                    android:id="@+id/button12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/butãoDelete"
-                    android:onClick="Delete"/>
+                    android:onClick="Delete"
+                    android:text="@string/butãoDelete" />
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView22"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/edit_" />
 
             <Spinner
-                android:id="@+id/spinner4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:entries="@array/Select_genero" />
 
             <LinearLayout
@@ -112,23 +108,23 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content">
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editTextChange"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Change to"
+                        android:hint="@string/change_to"
                         android:inputType="textShortMessage|textAutoCorrect" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/button13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/AddGuardarF"
-                    android:onClick="Save"/>
+                    android:onClick="Save"
+                    android:text="@string/AddGuardarF" />
             </LinearLayout>
 
         </LinearLayout>

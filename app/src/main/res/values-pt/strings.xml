@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Filmes &amp; Séries</string>
-    <string name="action_settings">Opções</string>
     <string name="menuMostrarTudo">Mostrar Tudo</string>
     <string name="menuMinhaLista">A minha lista</string>
     <string name="menuOpcoes">Opções</string>
     <string name="menuSobre">Sobre</string>
     <string name="title_activity_tudo">Tudo</string>
-    <string name="butãoAdicionarFS">Adicionar</string>
     <string name="title_activity_adicionar_fs">Adicionar Filme/Série</string>
     <string name="Sucesso">Dados guardados com sucesso</string>
     <string name="AddFormF">Filme</string>
@@ -25,7 +23,6 @@
         <item>Filmes</item>
         <item>Series</item>
     </string-array>
-    <string name="AddHintNomeF">Nome</string>
     <string name="AddHintDataF">dd/mm/yyyy</string>
     <string name="AddHintNumF">Nº de episodios</string>
     <string name="AddHintEpiVistosF">Nº de episodios vistos</string>
@@ -37,11 +34,8 @@
     <string name="AddErrStatusFS">Escolha um estado</string>
     <string name="AddFormatFSErr">Escolha um formato</string>
     <string name="AddNameFSErr">Adicione um nome</string>
-    <string name="AddDataFSErr">Adicione uma data de estreia</string>
     <string name="AddNemFSErr">Adicionar o numero de episodios</string>
     <string name="AddEpiVistosFSErr">Adicionar o numero de episodios vistos</string>
-    <string name="parse_AddNumFS">Adicione um numero valido</string>
-    <string name="butãoEditarFS">Editar</string>
     <string name="title_activity_editar_fs">Editar um filme/serie</string>
     <string name="title_activity_delete_fs">Apagar</string>
     <string name="DeleteFSFormat">Formato:</string>
@@ -49,5 +43,4 @@
     <string name="deleteMovie">Isto vai apagar o filme/serie</string>
     <string name="Yes">Sim</string>
     <string name="No">Não</string>
-    <string name="people">Pessoas</string>
 </resources>

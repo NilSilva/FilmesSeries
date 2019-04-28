@@ -27,27 +27,28 @@ public class DeleteFSActivity extends AppCompatActivity {
     }
 
     public void Delete(View view) {
+
+        //-------------------------------------------Declaração de variaveis-------------------------------------------
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //-------------------------------------------Construção do AlertDialog-------------------------------------------
         builder.setCancelable(true);
         builder.setTitle(getString(R.string.Are_you_sure));
         builder.setMessage(getString(R.string.deleteMovie));
-        builder.setPositiveButton(getString(R.string.Yes),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+        builder.setPositiveButton(getString(R.string.Yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-                        finish();
-                        Toast.makeText(DeleteFSActivity.this, "Entry deleted", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                finish();
+                Toast.makeText(DeleteFSActivity.this, "Entry deleted", Toast.LENGTH_SHORT).show();
+            }
+        });
         builder.setNegativeButton(getString(R.string.No), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
             }
         });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        builder.show();
     }
 }

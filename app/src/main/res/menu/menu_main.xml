@@ -29,7 +29,6 @@
         android:title="@string/menuOpcoes"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_sobre"
         android:icon="@drawable/ic_sobre"
         android:title="@string/menuSobre"
         app:showAsAction="ifRoom" />
