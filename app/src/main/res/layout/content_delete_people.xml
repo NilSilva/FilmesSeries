@@ -78,6 +78,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="Cancel"
-            android:text="@string/AddCancelarF" />
+            android:text="@string/buttonCancel" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

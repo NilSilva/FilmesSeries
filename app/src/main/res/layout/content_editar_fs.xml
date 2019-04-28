@@ -18,7 +18,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/layoutRadioButton"
+                android:id="@+id/layoutRadioButtonAddFS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -46,19 +46,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:onClick="ClearError"
-                        android:text="@string/AddFormF" />
+                        android:text="@string/radioButtonF" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:onClick="ClearError"
-                        android:text="@string/AddFormS" />
+                        android:text="@string/radioButtonS" />
 
                 </RadioGroup>
 
                 <TextView
-                    android:id="@+id/textViewAddFormErrFS"
+                    android:id="@+id/textViewErrorFS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
@@ -71,7 +71,7 @@
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
+                android:id="@+id/textInputLayoutNomeP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -81,7 +81,7 @@
                 android:layout_marginRight="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layoutRadioButton">
+                app:layout_constraintTop_toBottomOf="@+id/layoutRadioButtonAddFS">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextAddNomeGen"
@@ -102,13 +102,13 @@
                 android:layout_marginRight="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNomeP">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextAddNumFS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/AddHintNumF"
+                    android:hint="@string/HintNum"
                     android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,7 +129,7 @@
                     android:id="@+id/editTextAddEpiVistosFS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/AddHintEpiVistosF"
+                    android:hint="@string/HintEpiVistos"
                     android:inputType="number" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -150,12 +150,12 @@
                     android:id="@+id/editTextAddDataFS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/AddHintDataF"
+                    android:hint="@string/HintData"
                     android:inputType="date" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Spinner
-                android:id="@+id/spinnerAddStatusF"
+                android:id="@+id/spinnerStatusAddFS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -163,7 +163,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:entries="@array/OpcoesEstado"
+                android:entries="@array/SpinnerEstados"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
@@ -180,7 +180,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerAddStatusF">
+                app:layout_constraintTop_toBottomOf="@+id/spinnerStatusAddFS">
 
                 <Button
                     android:layout_width="wrap_content"
@@ -189,7 +189,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:onClick="AddGuardarF"
-                    android:text="@string/AddGuardarF"
+                    android:text="@string/buttonSave"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:ignore="ButtonStyle"
                     tools:layout_editor_absoluteY="23dp" />
@@ -201,7 +201,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
                     android:onClick="AddCancelarF"
-                    android:text="@string/AddCancelarF"
+                    android:text="@string/buttonCancel"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:ignore="ButtonStyle"
                     tools:layout_editor_absoluteY="22dp" />

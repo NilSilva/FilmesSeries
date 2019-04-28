@@ -45,7 +45,7 @@ public class EditarFSActivity extends AppCompatActivity {
         //-------------------------------------------Detetar se um dos radiobuttons esta selecionado-------------------------------------------
         RG = findViewById(R.id.radioGroupAddFS);
         checked = RG.getCheckedRadioButtonId();
-        menErro = findViewById(R.id.textViewAddFormErrFS);
+        menErro = findViewById(R.id.textViewErrorFS);
 
         if (checked == -1) {
 
@@ -55,7 +55,7 @@ public class EditarFSActivity extends AppCompatActivity {
         }
 
         //-------------------------------------------Detetar se o item selecionado no spinner é o primeiro-------------------------------------------
-        Spinner spin = findViewById(R.id.spinnerAddStatusF);
+        Spinner spin = findViewById(R.id.spinnerStatusAddFS);
         TextView errorText = (TextView) spin.getSelectedView();
 
         if (spin.getSelectedItemPosition() == 0) {
@@ -206,7 +206,7 @@ public class EditarFSActivity extends AppCompatActivity {
 
     public void ClearError(View view) {
 
-        TextView menErr = findViewById(R.id.textViewAddFormErrFS);
+        TextView menErr = findViewById(R.id.textViewErrorFS);
         menErr.setText("");
         menErr.setError(null);
     }

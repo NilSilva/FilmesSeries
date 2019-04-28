@@ -17,7 +17,7 @@
         <item>ex.2</item>
         <item>ex.3</item>
     </string-array>
-    <string-array name="OpcoesEstado">
+    <string-array name="SpinnerEstados">
         <item>Select status</item>
         <item>Not seen</item>
         <item>Watching</item>
@@ -25,14 +25,14 @@
     </string-array>
     <string name="title_activity_adicionar_fs">Add movie/tv Show</string>
     <string name="Sucesso">Data successfully saved</string>
-    <string name="AddFormF">Movie</string>
-    <string name="AddFormS">TV show</string>
+    <string name="radioButtonF">Movie</string>
+    <string name="radioButtonS">TV show</string>
     <string name="HintNome">Name</string>
-    <string name="AddHintDataF">dd/mm/yyyy</string>
-    <string name="AddHintNumF">Nº of episodes</string>
-    <string name="AddHintEpiVistosF">Episodes seen</string>
-    <string name="AddGuardarF">Save</string>
-    <string name="AddCancelarF">Cancel</string>
+    <string name="HintData" translatable="false">dd/mm/yyyy</string>
+    <string name="HintNum">Nº of episodes</string>
+    <string name="HintEpiVistos">Episodes seen</string>
+    <string name="buttonSave">Save</string>
+    <string name="buttonCancel">Cancel</string>
     <string name="AddNameFS">Name:</string>
     <string name="AddNumFS">Number of episodes:</string>
     <string name="AddEpiVistosFS">Episodes seen:</string>
@@ -57,22 +57,22 @@
     <string name="title_activity_pessoas">People</string>
     <string name="search">Search</string>
     <string name="title_activity_add_people">Add a person</string>
-    <string name="job">Job</string>
-    <string name="date_of_birth">Date of birth</string>
+    <string name="HintJob">Job</string>
+    <string name="HintBirth">Date of birth</string>
     <string name="birth_date_error">Add a birth date.</string>
     <string name="add_job">Add a job.</string>
     <string name="title_activity_edit_people">Edit</string>
     <string name="title_activity_delete_people">Delete</string>
     <string name="date_of_birth_">Date of birth:</string>
     <string name="job_">Job:</string>
-    <string name="title_activity_genero">Genero</string>
+    <string name="title_activity_genero">Genre</string>
     <string name="add_">Add:</string>
     <string name="delete_">Delete:</string>
     <string name="edit_">Edit:</string>
     <string name="date_format_error">Use the DD/MM/YYYY format.</string>
-    <string name="data_invalida">Introduzir uma data valida</string>
-    <string name="num_epi_epiVistos"><![CDATA[Number of episodes seen > number of episodes.]]></string>
-    <string name="Spin_erro_genero">Selecione um genero</string>
+    <string name="data_invalida">Input a valid date</string>
+    <string name="num_epi_epiVistos">Number of episodes seen > number of episodes.</string>
+    <string name="Spin_erro_genero">Select a genre</string>
     <string name="change_to">Change to</string>
 
 </resources>

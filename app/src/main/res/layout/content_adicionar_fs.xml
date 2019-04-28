@@ -9,15 +9,15 @@
     tools:showIn="@layout/activity_adicionar_fs">
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollViewAddFS"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="@dimen/margem_padrao"
+        android:layout_marginLeft="@dimen/margem_padrao"
+        android:layout_marginTop="@dimen/margem_padrao"
+        android:layout_marginEnd="@dimen/margem_padrao"
+        android:layout_marginRight="@dimen/margem_padrao"
+        android:layout_marginBottom="@dimen/margem_padrao"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/layoutRadioButton"
+                android:id="@+id/layoutRadioButtonAddFS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -40,15 +40,13 @@
                 android:layout_marginRight="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintHorizontal_bias="0.0">
 
                 <RadioGroup
                     android:id="@+id/radioGroupAddFS"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:layout_margin="@dimen/margem_padrao"
                     android:orientation="horizontal"
                     tools:layout_editor_absoluteX="16dp"
                     tools:layout_editor_absoluteY="16dp">
@@ -58,19 +56,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:onClick="ClearError"
-                        android:text="@string/AddFormF" />
+                        android:text="@string/radioButtonF" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:onClick="ClearError"
-                        android:text="@string/AddFormS" />
+                        android:text="@string/radioButtonS" />
 
                 </RadioGroup>
 
                 <TextView
-                    android:id="@+id/textViewAddFormErrFS"
+                    android:id="@+id/textViewErrorAddFS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
@@ -83,20 +81,17 @@
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
+                android:id="@+id/textInputLayoutNomeAddFS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layoutRadioButton">
+                android:layout_marginStart="@dimen/margem_padrao"
+                android:layout_marginLeft="@dimen/margem_padrao"
+                android:layout_marginTop="@dimen/margem_padrao"
+                android:layout_marginEnd="@dimen/margem_padrao"
+                android:layout_marginRight="@dimen/margem_padrao">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextAddNomeGen"
+                    android:id="@+id/editTextNomeAddFS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/HintNome"
@@ -104,117 +99,98 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout2"
+                android:id="@+id/textInputLayoutNumAddFS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+                android:layout_marginStart="@dimen/margem_padrao"
+                android:layout_marginLeft="@dimen/margem_padrao"
+                android:layout_marginTop="@dimen/margem_padrao"
+                android:layout_marginEnd="@dimen/margem_padrao"
+                android:layout_marginRight="@dimen/margem_padrao">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextAddNumFS"
+                    android:id="@+id/editTextNumAddFS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/AddHintNumF"
+                    android:hint="@string/HintNum"
                     android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout3"
+                android:id="@+id/textInputLayoutEpiVistosAddFS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+                android:layout_marginStart="@dimen/margem_padrao"
+                android:layout_marginLeft="@dimen/margem_padrao"
+                android:layout_marginTop="@dimen/margem_padrao"
+                android:layout_marginEnd="@dimen/margem_padrao"
+                android:layout_marginRight="@dimen/margem_padrao">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextAddEpiVistosFS"
+                    android:id="@+id/editTextEpiVistosAddFS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/AddHintEpiVistosF"
+                    android:hint="@string/HintEpiVistos"
                     android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout4"
+                android:id="@+id/textInputLayoutDataAddFS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+                android:layout_marginStart="@dimen/margem_padrao"
+                android:layout_marginLeft="@dimen/margem_padrao"
+                android:layout_marginEnd="@dimen/margem_padrao"
+                android:layout_marginRight="@dimen/margem_padrao">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextAddDataFS"
+                    android:id="@+id/editTextDataAddFS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/AddHintDataF"
+                    android:hint="@string/HintData"
                     android:inputType="date" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Spinner
-                android:id="@+id/spinnerAddStatusF"
-                android:layout_width="344dp"
+                android:id="@+id/spinnerStatusAddFS"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:entries="@array/OpcoesEstado"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+                android:layout_marginStart="@dimen/margem_padrao"
+                android:layout_marginLeft="@dimen/margem_padrao"
+                android:layout_marginTop="@dimen/margem_padrao"
+                android:layout_marginEnd="@dimen/margem_padrao"
+                android:layout_marginRight="@dimen/margem_padrao"
+                android:entries="@array/SpinnerEstados" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginStart="@dimen/margem_padrao"
+                android:layout_marginLeft="@dimen/margem_padrao"
+                android:layout_marginTop="@dimen/margem_padrao"
+                android:layout_marginEnd="@dimen/margem_padrao"
+                android:layout_marginRight="@dimen/margem_padrao"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/scrollView2">
+                app:layout_constraintHorizontal_bias="1.0">
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:onClick="AddGuardarF"
-                    android:text="@string/AddGuardarF"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    tools:ignore="ButtonStyle"
+                    android:layout_margin="@dimen/margem_padrao"
+                    android:layout_marginEnd="@dimen/margem_padrao"
+                    android:layout_marginRight="@dimen/margem_padrao"
+                    android:onClick="Save"
+                    android:text="@string/buttonSave"
                     tools:layout_editor_absoluteY="23dp" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:onClick="AddCancelarF"
-                    android:text="@string/AddCancelarF"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="ButtonStyle"
+                    android:layout_margin="@dimen/margem_padrao"
+                    android:layout_marginStart="@dimen/margem_padrao"
+                    android:layout_marginLeft="@dimen/margem_padrao"
+                    android:onClick="Cancel"
+                    android:text="@string/buttonCancel"
                     tools:layout_editor_absoluteY="22dp" />
             </LinearLayout>
         </LinearLayout>

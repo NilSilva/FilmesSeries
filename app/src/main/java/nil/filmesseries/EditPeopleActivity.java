@@ -108,7 +108,7 @@ public class EditPeopleActivity extends AppCompatActivity {
         }
 
         //-------------------------------------------Verificação da função-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextJob);
+        editTextCampo = findViewById(R.id.editTextJobP);
         textoCampo = editTextCampo.getText().toString();
 
         if (textoCampo.isEmpty()) {
@@ -119,7 +119,7 @@ public class EditPeopleActivity extends AppCompatActivity {
         }
 
         //-------------------------------------------Verificação do nome-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextNome);
+        editTextCampo = findViewById(R.id.editTextNomeP);
         textoCampo = editTextCampo.getText().toString();
 
         if (textoCampo.isEmpty()) {
