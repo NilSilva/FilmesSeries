@@ -30,7 +30,7 @@ public class AddPeopleActivity extends AppCompatActivity {
         int DetecaoDeErros = 0;
 
         //-------------------------------------------Verificação da data-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextDateAddP);
+        editTextCampo = findViewById(R.id.editTextAdicionarDataP);
         textoCampo = editTextCampo.getText().toString();
 
         int dia = 0;
@@ -109,7 +109,7 @@ public class AddPeopleActivity extends AppCompatActivity {
         }
 
         //-------------------------------------------Verificação da função-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextJobAddP);
+        editTextCampo = findViewById(R.id.editTextAdicionarFunçãoP);
         textoCampo = editTextCampo.getText().toString();
 
         if (textoCampo.isEmpty()) {
@@ -120,7 +120,7 @@ public class AddPeopleActivity extends AppCompatActivity {
         }
 
         //-------------------------------------------Verificação do nome-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextNomeAddP);
+        editTextCampo = findViewById(R.id.editTextAdicionarNomeP);
         textoCampo = editTextCampo.getText().toString();
 
         if (textoCampo.isEmpty()) {

@@ -23,12 +23,12 @@ public class EditarFSActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    public void AddCancelarF(View view) {
+    public void Cancel(View view) {
 
         finish();
     }
 
-    public void AddGuardarF(View view) {
+    public void Save(View view) {
 
         //-------------------------------------------Declaração de variaveis-------------------------------------------
         EditText editTextCampo;
@@ -43,9 +43,9 @@ public class EditarFSActivity extends AppCompatActivity {
         RadioGroup RG;
 
         //-------------------------------------------Detetar se um dos radiobuttons esta selecionado-------------------------------------------
-        RG = findViewById(R.id.radioGroupAddFS);
+        RG = findViewById(R.id.radioGroupEditarFS);
         checked = RG.getCheckedRadioButtonId();
-        menErro = findViewById(R.id.textViewErrorFS);
+        menErro = findViewById(R.id.textViewEditarErroFormato);
 
         if (checked == -1) {
 
@@ -55,7 +55,7 @@ public class EditarFSActivity extends AppCompatActivity {
         }
 
         //-------------------------------------------Detetar se o item selecionado no spinner é o primeiro-------------------------------------------
-        Spinner spin = findViewById(R.id.spinnerStatusAddFS);
+        Spinner spin = findViewById(R.id.spinnerEditarEstadoFS);
         TextView errorText = (TextView) spin.getSelectedView();
 
         if (spin.getSelectedItemPosition() == 0) {
@@ -66,7 +66,7 @@ public class EditarFSActivity extends AppCompatActivity {
         }
 
         //-------------------------------------------Verificação da data-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextAddDataFS);
+        editTextCampo = findViewById(R.id.editTextEditarDataFS);
         textoCampo = editTextCampo.getText().toString();
 
         int dia = 0;
@@ -145,7 +145,7 @@ public class EditarFSActivity extends AppCompatActivity {
         }
 
         //-------------------------------------------Verificação de episodios vistos-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextAddEpiVistosFS);
+        editTextCampo = findViewById(R.id.editTextEditarEpiVistosFS);
         textoCampo = editTextCampo.getText().toString();
 
         int epi = -1;
@@ -161,7 +161,7 @@ public class EditarFSActivity extends AppCompatActivity {
         }
 
         //-------------------------------------------Verificação do numero de episodios-------------------------------------------
-        EditText editTextNum = findViewById(R.id.editTextAddNumFS);
+        EditText editTextNum = findViewById(R.id.editTextEditarNumFS);
         textoCampo = editTextNum.getText().toString();
 
         try {
@@ -186,7 +186,7 @@ public class EditarFSActivity extends AppCompatActivity {
         }
 
         //-------------------------------------------Verificação do nome-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextAddNomeGen);
+        editTextCampo = findViewById(R.id.editTextEditarNomeFS);
         textoCampo = editTextCampo.getText().toString();
 
         if (textoCampo.isEmpty()) {
@@ -206,7 +206,7 @@ public class EditarFSActivity extends AppCompatActivity {
 
     public void ClearError(View view) {
 
-        TextView menErr = findViewById(R.id.textViewErrorFS);
+        TextView menErr = findViewById(R.id.textViewEditarErroFormato);
         menErr.setText("");
         menErr.setError(null);
     }

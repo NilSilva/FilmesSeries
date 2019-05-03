@@ -9,20 +9,20 @@
     tools:showIn="@layout/activity_edit_people">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutNomeP"
+        android:id="@+id/textInputLayoutEditarNomeP"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="@dimen/margem_padrao"
+        android:layout_marginLeft="@dimen/margem_padrao"
+        android:layout_marginTop="@dimen/margem_padrao"
+        android:layout_marginEnd="@dimen/margem_padrao"
+        android:layout_marginRight="@dimen/margem_padrao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextNomeP"
+            android:id="@+id/editTextEditarNomeP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/HintNome"
@@ -30,20 +30,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutJobP"
+        android:id="@+id/textInputLayoutEditarFunçãoP"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="@dimen/margem_padrao"
+        android:layout_marginLeft="@dimen/margem_padrao"
+        android:layout_marginTop="@dimen/margem_padrao"
+        android:layout_marginEnd="@dimen/margem_padrao"
+        android:layout_marginRight="@dimen/margem_padrao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNomeP">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEditarNomeP">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextJobP"
+            android:id="@+id/editTextEditarFunçãoP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/HintJob"
@@ -51,19 +51,19 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutDateP"
+        android:id="@+id/textInputLayoutEditarDataP"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="@dimen/margem_padrao"
+        android:layout_marginLeft="@dimen/margem_padrao"
+        android:layout_marginEnd="@dimen/margem_padrao"
+        android:layout_marginRight="@dimen/margem_padrao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutJobP">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEditarFunçãoP">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextDate"
+            android:id="@+id/editTextEditarDataP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/HintBirth"
@@ -73,26 +73,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="@dimen/margem_padrao"
+        android:layout_marginLeft="@dimen/margem_padrao"
+        android:layout_marginEnd="@dimen/margem_padrao"
+        android:layout_marginRight="@dimen/margem_padrao"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDateP">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEditarDataP">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="Save"
-            android:text="@string/buttonSave" />
+            android:text="@string/butãoSave" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="Cancel"
-            android:text="@string/buttonCancel" />
+            android:text="@string/butãoCancel" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

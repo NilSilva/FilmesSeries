@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_add_people">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutNomeAddP"
+        android:id="@+id/textInputLayoutAdicionarNomeP"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margem_padrao"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextNomeAddP"
+            android:id="@+id/editTextAdicionarNomeP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/HintNome"
@@ -30,7 +30,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutJobAddP"
+        android:id="@+id/textInputLayoutAdicionarFunçãoP"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margem_padrao"
@@ -40,10 +40,10 @@
         android:layout_marginRight="@dimen/margem_padrao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNomeAddP">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAdicionarNomeP">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextJobAddP"
+            android:id="@+id/editTextAdicionarFunçãoP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/HintJob"
@@ -51,7 +51,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutDateAddP"
+        android:id="@+id/textInputLayoutAdicionarDataP"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margem_padrao"
@@ -60,10 +60,10 @@
         android:layout_marginRight="@dimen/margem_padrao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutJobAddP">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAdicionarFunçãoP">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextDateAddP"
+            android:id="@+id/editTextAdicionarDataP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/HintBirth"
@@ -80,20 +80,20 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDateAddP">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAdicionarDataP">
 
         <Button
             android:id="@+id/buttonSaveAddP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="Save"
-            android:text="@string/buttonSave" />
+            android:text="@string/butãoSave" />
 
         <Button
             android:id="@+id/buttonCancelAddP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="Cancel"
-            android:text="@string/buttonCancel" />
+            android:text="@string/butãoCancel" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

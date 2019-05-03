@@ -9,66 +9,67 @@
     tools:showIn="@layout/activity_pessoas">
 
     <Button
-        android:id="@+id/buttonAddPessoas"
+        android:id="@+id/butãoAdicionarP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="@dimen/margem_padrao"
+        android:layout_marginLeft="@dimen/margem_padrao"
         android:text="@string/butãoAdd"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button2"
+        app:layout_constraintBaseline_toBaselineOf="@+id/butãoEditarP"
         app:layout_constraintStart_toStartOf="parent"
         android:onClick="Add"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/butãoEditarP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="@dimen/margem_padrao"
+        android:layout_marginLeft="@dimen/margem_padrao"
+        android:layout_marginTop="@dimen/margem_padrao"
         android:text="@string/butãoEditar"
-        app:layout_constraintStart_toEndOf="@+id/buttonAddPessoas"
+        app:layout_constraintStart_toEndOf="@+id/butãoAdicionarP"
         app:layout_constraintTop_toTopOf="parent"
         android:onClick="Edit"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="@dimen/margem_padrao"
+        android:layout_marginLeft="@dimen/margem_padrao"
+        android:layout_marginTop="@dimen/margem_padrao"
         android:text="@string/butãoDelete"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button2"
-        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintBaseline_toBaselineOf="@+id/butãoEditarP"
+        app:layout_constraintStart_toEndOf="@+id/butãoEditarP"
         app:layout_constraintTop_toTopOf="parent"
         android:onClick="Delete"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout5"
+        android:id="@+id/textInputLayoutGerirNomeP"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/button6"
+        android:layout_marginStart="@dimen/margem_padrao"
+        android:layout_marginLeft="@dimen/margem_padrao"
+        android:layout_marginTop="@dimen/margem_padrao"
+        android:layout_marginEnd="@dimen/margem_padrao"
+        android:layout_marginRight="@dimen/margem_padrao"
+        app:layout_constraintEnd_toStartOf="@+id/butãoProcurarP"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2">
+        app:layout_constraintTop_toBottomOf="@+id/butãoEditarP">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextGerirNomeP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/HintNome" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/butãoProcurarP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="@string/search"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textInputLayout5"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textInputLayoutGerirNomeP"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

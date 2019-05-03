@@ -29,7 +29,7 @@ public class EditPeopleActivity extends AppCompatActivity {
         int DetecaoDeErros = 0;
 
         //-------------------------------------------Verificação da data-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextDate);
+        editTextCampo = findViewById(R.id.editTextEditarDataP);
         textoCampo = editTextCampo.getText().toString();
 
         int dia = 0;
@@ -108,7 +108,7 @@ public class EditPeopleActivity extends AppCompatActivity {
         }
 
         //-------------------------------------------Verificação da função-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextJobP);
+        editTextCampo = findViewById(R.id.editTextEditarFunçãoP);
         textoCampo = editTextCampo.getText().toString();
 
         if (textoCampo.isEmpty()) {
@@ -119,7 +119,7 @@ public class EditPeopleActivity extends AppCompatActivity {
         }
 
         //-------------------------------------------Verificação do nome-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextNomeP);
+        editTextCampo = findViewById(R.id.editTextEditarNomeP);
         textoCampo = editTextCampo.getText().toString();
 
         if (textoCampo.isEmpty()) {

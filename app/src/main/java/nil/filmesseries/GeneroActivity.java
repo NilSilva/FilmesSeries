@@ -29,7 +29,7 @@ public class GeneroActivity extends AppCompatActivity {
     public void Add(View view) {
 
         //-------------------------------------------Declaração de variaveis-------------------------------------------
-        EditText editTextCampo = findViewById(R.id.editTextAddNomeGen);
+        EditText editTextCampo = findViewById(R.id.editTextAdicionarG);
         String textoCampo = editTextCampo.getText().toString();
 
         //ve se foi introduzido um nome
@@ -53,7 +53,7 @@ public class GeneroActivity extends AppCompatActivity {
         //-------------------------------------------Declaração de variaveis-------------------------------------------
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        final Spinner spin = findViewById(R.id.spinnerDelGen);
+        final Spinner spin = findViewById(R.id.spinnerApagarG);
         TextView errorText = (TextView) spin.getSelectedView();
 
         //-------------------------------------------Construção do AlertDialog-------------------------------------------
@@ -86,7 +86,7 @@ public class GeneroActivity extends AppCompatActivity {
     public void Save(View view) {
 
         //-------------------------------------------Declaração de variaveis-------------------------------------------
-        EditText editTextCampo = findViewById(R.id.editTextChange);
+        EditText editTextCampo = findViewById(R.id.editTextEditarG);
         String textoCampo = editTextCampo.getText().toString();
 
         //ve se foi introduzido um nome
