@@ -1,23 +1,23 @@
 # FilmesSeries
 Base de dados de filmes e series
 
-Esta aplicação vai ter na base de dados 5 tabelas:
-  -Uma para as informações sobre os filmes e/ou series;
-  -uma para as informações sobre as pessoas;
-  -uma para os generos;
-  -e duas que fazem a relação entre a tabela dos filmes e cada uma das outras duas.
+Esta aplicação vai ter na base de dados 5 tabelas:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-Uma para as informações sobre os filmes e/ou series;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-uma para as informações sobre as pessoas;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-uma para os generos;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-e duas que fazem a relação entre a tabela dos filmes e cada uma das outras duas.
   
  Com o seguinte modelo relacional:
  ![](Imagens/ModeloRelacional.png?raw=true "Modelo Relacional")
  
 Esta aplicação serve para ajudar o utilizador a adquirir e gerir uma variedade de informação sobre filmes e series.
 
-Funcionalidades:
-  -Adição de novos filmes/series;
-  -Adição de novas pessoas(atores/atrizes/etc);
-  -Adição de novos generos;
-  -Lista de filmes;
-  -Lista de series vistas e em que episodio vai o utilizador;
+Funcionalidades:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-Adição de novos filmes/series;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-Adição de novas pessoas(atores/atrizes/etc);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-Adição de novos generos;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-Lista de filmes;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-Lista de series vistas e em que episodio vai o utilizador;
 
 Atividade principal:
 
@@ -32,7 +32,7 @@ Atividades para adicionar/editar(iguais) e apagar filmes/series:
 <img src="Imagens/ActivityAddFS.png" width="200" />
 <img src="Imagens/ActivityDeleteFS.png" width="200" />
 
-Atividade de gestão de filmes e series:
+Atividade de gestão de pessoas:
 
 <img src="Imagens/ActivityGestaoP.png" width="200" />
 
