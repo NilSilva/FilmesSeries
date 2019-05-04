@@ -1,71 +1,95 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Nome da app e das atividades-->
     <string name="app_name">Filmes &amp; Séries</string>
-    <string name="menuMostrarTudo">Mostrar Tudo</string>
+    <string name="title_activity_genero">Género</string>
+    <string name="title_activity_delete_people">Eliminar</string>
+    <string name="title_activity_edit_people">Editar</string>
+    <string name="title_activity_add_people">Adicionar uma pessoa</string>
+    <string name="title_activity_pessoas">Pessoas</string>
+    <string name="title_activity_delete_fs">Eliminar</string>
+    <string name="title_activity_editar_fs">Editar Filme/Série</string>
+    <string name="title_activity_adicionar_fs">Adicionar Filme/Série</string>
+    <string name="title_activity_tudo">Tudo</string>
+
+    <!--Yes or no-->
+    <string name="Yes">Sim</string>
+    <string name="No">Não</string>
+
+    <!--Menu-->
+    <string name="menuMostrarTudo">Filmes/Series</string>
     <string name="menuMinhaLista">A minha lista</string>
     <string name="menuOpcoes">Opções</string>
     <string name="menuSobre">Sobre</string>
-    <string name="title_activity_tudo">Tudo</string>
-    <string name="title_activity_adicionar_fs">Adicionar Filme/Série</string>
-    <string name="Sucesso">Dados guardados com sucesso</string>
-    <string name="Filme">Filme</string>
-    <string name="Serie">Série</string>
-    <string name="butãoCancel">Cancelar</string>
-    <string name="butãoSave">Guardar</string>
-    <string-array name="SpinnerEstados">
-        <item>Selecionar estado</item>
-        <item>Por ver</item>
-        <item>A ver</item>
-        <item>Visto</item>
-    </string-array>
-    <string-array name="OpcoesFS">
-        <item>Filmes e series</item>
-        <item>Filmes</item>
-        <item>Series</item>
-    </string-array>
+    <string name="menuPeople">Pessoas</string>
+    <string name="menuGenre">Género</string>
+
+    <!--erros na validação-->
+    <string name="date_format_error">Use o formato DD/MM/YYYY.</string>
+    <string name="birth_date_error">Adicionar uma data de nascimento.</string>
+    <string name="data_invalida">Inserir uma data valida.</string>
+    <string name="add_job">Adicionar a função.</string>
+    <string name="AddFormatFSErr">Escolha um formato</string>
+    <string name="AddErrStatusFS">Escolha o estado</string>
+    <string name="AddEpiVistosFSErr">Adicionar o número de episodios vistos.</string>
+    <string name="AddNemFSErr">Adicionar o número de episodios.</string>
+    <string name="num_epi_epiVistos">Número de episodios vistos > número de episodios.</string>
+    <string name="AddNameFSErr">Adicionar um nome</string>
+    <string name="Spin_erro_genero">Selecionar um género</string>
+
+    <!--Hints-->
+    <string name="HintNome">Nome</string>
     <string name="HintNum">Nº de episodios</string>
     <string name="HintEpiVistos">Episodios vistos</string>
+    <string name="HintJob">Função</string>
+    <string name="HintBirth">Data de nascimento</string>
+    <string name="HintChageTo">Mudar para</string>
+
+    <!--Butões-->
+    <string name="butãoSave">Guardar</string>
+    <string name="butãoCancel">Cancelar</string>
+    <string name="butãoEditar">Editar</string>
+    <string name="butãoDelete">Eliminar</string>
+    <string name="butãoAdd">Adicionar</string>
+    <string name="butãoSearch">Procurar</string>
+
+    <!--Mensagens de confirmação-->
+    <string name="Are_you_sure">Tem a certeza?</string>
+    <string name="deleteMovie">Isto vai Eliminar este Filme/Série.</string>
+
+    <!--Nome de campos-->
     <string name="Name_">Nome:</string>
     <string name="num_">Número de episodios:</string>
     <string name="epiVistos_">Episodios vistos:</string>
     <string name="dataLanc_">Data de lançamento:</string>
     <string name="estado_">Estado:</string>
-    <string name="AddErrStatusFS">Escolha um estado</string>
-    <string name="AddFormatFSErr">Escolha um formato</string>
-    <string name="AddNameFSErr">Adicione um nome</string>
-    <string name="AddNemFSErr">Adicionar o número de episodios</string>
-    <string name="AddEpiVistosFSErr">Adicionar o número de episodios vistos</string>
-    <string name="title_activity_editar_fs">Editar um filme/série</string>
-    <string name="title_activity_delete_fs">Apagar</string>
     <string name="format_">Formato:</string>
-    <string name="Are_you_sure">Tem a certeza?</string>
-    <string name="deleteMovie">Isto vai apagar o filme/série</string>
-    <string name="Yes">Sim</string>
-    <string name="No">Não</string>
-    <string name="HintBirth">Data de nascimento</string>
-    <string name="HintJob">Função</string>
-    <string name="HintNome">Nome</string>
-    <string name="Spin_erro_genero">Selecione um género</string>
     <string name="add_">Adicionar:</string>
-    <string name="add_job">Adicione uma função</string>
-    <string name="birth_date_error">Adicione uma data de nascimento</string>
-    <string name="butãoAdd">Adicionar</string>
-    <string name="butãoDelete">Apagar</string>
-    <string name="butãoEditar">Editar</string>
-    <string name="HintChageTo">Mudar para</string>
-    <string name="data_invalida">Introduzir uma data valida</string>
-    <string name="date_format_error">Use o formato DD/MM/YYYY</string>
-    <string name="dataNasc_">Data de nascimento:</string>
-    <string name="delete_">Apagar:</string>
+    <string name="delete_">Eliminar:</string>
     <string name="edit_">Editar:</string>
-    <string name="job_">Função:</string>
-    <string name="menuGenre">Género</string>
-    <string name="menuPeople">Pessoas</string>
-    <string name="num_epi_epiVistos">O número de episodios vistos é maior do que o número de episodios</string>
-    <string name="search">Pesquisar</string>
-    <string name="title_activity_add_people">Adicionar uma pessoa</string>
-    <string name="title_activity_delete_people">Apagar</string>
-    <string name="title_activity_edit_people">Editar</string>
-    <string name="title_activity_genero">Género</string>
-    <string name="title_activity_pessoas">Pessoas</string>
+    <string name="dataNasc_">Data de nascimento:</string>
+    <string name="job_">função:</string>
+
+    <!--String arrays-->
+    <string-array name="OpcoesFS">
+        <item>Filmes &amp; Series</item>
+        <item>Filmes</item>
+        <item>Series</item>
+    </string-array>
+    <string-array name="Select_genero">
+        <item>Selecionar género</item>
+        <item>ex.1</item>
+        <item>ex.2</item>
+        <item>ex.3</item>
+    </string-array>
+    <string-array name="SpinnerEstados">
+        <item>Selecionar estado</item>
+        <item>Não visto</item>
+        <item>A ver</item>
+        <item>Visto</item>
+    </string-array>
+
+    <!--Outras coisas-->
+    <string name="Filme">Filme</string>
+    <string name="Serie">Série</string>
+
 </resources>

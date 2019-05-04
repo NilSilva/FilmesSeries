@@ -200,7 +200,7 @@ public class EditarFSActivity extends AppCompatActivity {
         if (DetecaoDeErros == 0) {
 
             finish();
-            Toast.makeText(this, getString(R.string.Sucesso), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Data successfully saved", Toast.LENGTH_SHORT).show();
         }
     }
 

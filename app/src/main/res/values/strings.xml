@@ -1,18 +1,83 @@
 <resources>
+    <!--Nome da app e das atividades-->
     <string name="app_name">Movies &amp; TV shows</string>
+    <string name="title_activity_genero">Genre</string>
+    <string name="title_activity_delete_people">Delete</string>
+    <string name="title_activity_edit_people">Edit</string>
+    <string name="title_activity_add_people">Add a person</string>
+    <string name="title_activity_pessoas">People</string>
+    <string name="title_activity_delete_fs">Delete</string>
+    <string name="title_activity_editar_fs">Edit movie/tv Show</string>
+    <string name="title_activity_adicionar_fs">Add movie/tv Show</string>
+    <string name="title_activity_tudo">All</string>
+
+    <!--Yes or no-->
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+
+    <!--Menu-->
     <string name="menuMostrarTudo">Movies/TV shows</string>
     <string name="menuMinhaLista">My list</string>
     <string name="menuOpcoes">Settings</string>
     <string name="menuSobre">About</string>
-    <string name="title_activity_tudo">All</string>
+    <string name="menuPeople">People</string>
+    <string name="menuGenre">Genre</string>
+
+    <!--erros na validação-->
+    <string name="date_format_error">Use the DD/MM/YYYY format.</string>
+    <string name="birth_date_error">Add a birth date.</string>
+    <string name="data_invalida">Input a valid date</string>
+    <string name="add_job">Add a job.</string>
+    <string name="AddFormatFSErr">Choose format</string>
+    <string name="AddErrStatusFS">Choose a status</string>
+    <string name="AddEpiVistosFSErr">Add number of episodes seen</string>
+    <string name="AddNemFSErr">Add number of episodes</string>
+    <string name="num_epi_epiVistos">Number of episodes seen > number of episodes.</string>
+    <string name="AddNameFSErr">Add a name</string>
+    <string name="Spin_erro_genero">Select a genre</string>
+
+    <!--Hints-->
+    <string name="HintNome">Name</string>
+    <string name="HintData" translatable="false">dd/mm/yyyy</string>
+    <string name="HintNum">Nº of episodes</string>
+    <string name="HintEpiVistos">Episodes seen</string>
+    <string name="HintJob">Job</string>
+    <string name="HintBirth">Date of birth</string>
+    <string name="HintChageTo">Change to</string>
+
+    <!--Butões-->
+    <string name="butãoSave">Save</string>
+    <string name="butãoCancel">Cancel</string>
+    <string name="butãoEditar">Edit</string>
+    <string name="butãoDelete">Delete</string>
     <string name="butãoAdd">Add</string>
+    <string name="butãoSearch">Search</string>
+
+    <!--Mensagens de confirmação-->
+    <string name="Are_you_sure">Are you sure?</string>
+    <string name="deleteMovie">This will delete this movie/TV show.</string>
+
+    <!--Nome de campos-->
+    <string name="Name_">Name:</string>
+    <string name="num_">Number of episodes:</string>
+    <string name="epiVistos_">Episodes seen:</string>
+    <string name="dataLanc_">Release date:</string>
+    <string name="estado_">Status:</string>
+    <string name="format_">Format:</string>
+    <string name="add_">Add:</string>
+    <string name="delete_">Delete:</string>
+    <string name="edit_">Edit:</string>
+    <string name="dataNasc_">Date of birth:</string>
+    <string name="job_">Job:</string>
+
+    <!--String arrays-->
     <string-array name="OpcoesFS">
         <item>Movies &amp; TV shows</item>
         <item>Movies</item>
         <item>TV shows</item>
     </string-array>
     <string-array name="Select_genero">
-        <item>Select genero</item>
+        <item>Select genre</item>
         <item>ex.1</item>
         <item>ex.2</item>
         <item>ex.3</item>
@@ -23,56 +88,9 @@
         <item>Watching</item>
         <item>Watched</item>
     </string-array>
-    <string name="title_activity_adicionar_fs">Add movie/tv Show</string>
-    <string name="Sucesso">Data successfully saved</string>
+
+    <!--Outras coisas-->
     <string name="Filme">Movie</string>
     <string name="Serie">TV show</string>
-    <string name="HintNome">Name</string>
-    <string name="HintData" translatable="false">dd/mm/yyyy</string>
-    <string name="HintNum">Nº of episodes</string>
-    <string name="HintEpiVistos">Episodes seen</string>
-    <string name="butãoSave">Save</string>
-    <string name="butãoCancel">Cancel</string>
-    <string name="Name_">Name:</string>
-    <string name="num_">Number of episodes:</string>
-    <string name="epiVistos_">Episodes seen:</string>
-    <string name="dataLanc_">Release date:</string>
-    <string name="estado_">Status:</string>
-    <string name="AddErrStatusFS">Choose a status</string>
-    <string name="AddFormatFSErr">Choose format</string>
-    <string name="AddNameFSErr">Add a name</string>
-    <string name="AddNemFSErr">Add number of episodes</string>
-    <string name="AddEpiVistosFSErr">Add number of episodes seen</string>
-    <string name="butãoEditar">Edit</string>
-    <string name="butãoDelete">Delete</string>
-    <string name="title_activity_editar_fs">Edit movie/tv Show</string>
-    <string name="title_activity_delete_fs">Delete</string>
-    <string name="format_">Format:</string>
-    <string name="Are_you_sure">Are you sure?</string>
-    <string name="deleteMovie">This will delete this movie/TV show.</string>
-    <string name="Yes">Yes</string>
-    <string name="No">No</string>
-    <string name="menuPeople">People</string>
-    <string name="menuGenre">Genre</string>
-    <string name="title_activity_pessoas">People</string>
-    <string name="search">Search</string>
-    <string name="title_activity_add_people">Add a person</string>
-    <string name="HintJob">Job</string>
-    <string name="HintBirth">Date of birth</string>
-    <string name="birth_date_error">Add a birth date.</string>
-    <string name="add_job">Add a job.</string>
-    <string name="title_activity_edit_people">Edit</string>
-    <string name="title_activity_delete_people">Delete</string>
-    <string name="dataNasc_">Date of birth:</string>
-    <string name="job_">Job:</string>
-    <string name="title_activity_genero">Genre</string>
-    <string name="add_">Add:</string>
-    <string name="delete_">Delete:</string>
-    <string name="edit_">Edit:</string>
-    <string name="date_format_error">Use the DD/MM/YYYY format.</string>
-    <string name="data_invalida">Input a valid date</string>
-    <string name="num_epi_epiVistos">Number of episodes seen > number of episodes.</string>
-    <string name="Spin_erro_genero">Select a genre</string>
-    <string name="HintChageTo">Change to</string>
 
 </resources>
