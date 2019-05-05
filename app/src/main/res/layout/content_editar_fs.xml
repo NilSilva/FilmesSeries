@@ -125,12 +125,13 @@
                 android:layout_marginEnd="@dimen/margem_padrao"
                 android:layout_marginRight="@dimen/margem_padrao">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.santalu.maskedittext.MaskEditText
                     android:id="@+id/editTextEditarDataFS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/HintData"
-                    android:inputType="date" />
+                    android:inputType="date"
+                    app:met_mask="##/##/####" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Spinner

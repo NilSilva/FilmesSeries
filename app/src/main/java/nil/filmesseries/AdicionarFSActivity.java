@@ -34,19 +34,11 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
         //-------------------------------------------Declaração de variaveis-------------------------------------------
         EditText editTextCampo;
-
         String textoCampo;
-
         TextView menErro;
-
         boolean Erros = false;
         int checked;
-
         RadioGroup RG;
-
-        int dia = 0;
-        int mes = 0;
-        int ano = 0;
         Calendar cal = Calendar.getInstance();
 
         //-------------------------------------------Detetar se um dos radiobuttons esta selecionado-------------------------------------------
@@ -78,16 +70,20 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
         try {
 
-            dia = Integer.parseInt(textoCampo.substring(0, 2));
-            mes = Integer.parseInt(textoCampo.substring(3, 5));
-            ano = Integer.parseInt(textoCampo.substring(6));
-
             cal.setLenient(false);
 
-            cal.set(ano, mes - 1, dia);
+            //da exceção se o ano, o mes e/ou o dia não forem numeros
+            cal.set(Integer.parseInt(textoCampo.substring(6)), (Integer.parseInt(textoCampo.substring(3, 5))) - 1, Integer.parseInt(textoCampo.substring(0, 2)));
 
-            cal.get(Calendar.YEAR);
-        } catch (Exception e){
+            //ve se ano é valido(1º filme é de 1895, logo 1890 parece um bom valor)
+            //da exceção se a data for invalida
+            if (cal.get(Calendar.YEAR) < 1890) {
+
+                editTextCampo.setError(getString(R.string.data_invalida));
+                editTextCampo.requestFocus();
+                Erros = true;
+            }
+        } catch (Exception e) {
 
             editTextCampo.setError(getString(R.string.data_invalida));
             editTextCampo.requestFocus();
