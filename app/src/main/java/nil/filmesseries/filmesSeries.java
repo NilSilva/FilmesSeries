@@ -70,6 +70,7 @@ public class filmesSeries {
     }
 
     public ContentValues getContentValues() {
+
         ContentValues valores = new ContentValues();
 
         valores.put(BdTable_Filmes_series.CAMPO_FORMATO, formato);

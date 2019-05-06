@@ -27,7 +27,7 @@ public class BdTable_Filmes_series implements BaseColumns {
                         CAMPO_FORMATO + " INTEGER NOT NULL," +
                         CAMPO_NOME + " TEXT NOT NULL," +
                         CAMPO_NUM + " INTEGER NOT NULL," +
-                        CAMPO_EPI_VISTOS + "INTEGER NOT NULL," +
+                        CAMPO_EPI_VISTOS + " INTEGER NOT NULL," +
                         CAMPO_DATA_LANC + " TEXT NOT NULL," +
                         CAMPO_ESTADO + " TEXT NOT NULL" +
                         ")"
