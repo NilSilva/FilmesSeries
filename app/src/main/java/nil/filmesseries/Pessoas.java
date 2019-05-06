@@ -1,19 +1,20 @@
 package nil.filmesseries;
 
-import java.util.Date;
+import android.content.ContentValues;
+import android.database.Cursor;
 
 public class Pessoas {
 
-    private int ID;
+    private long ID;
     private String nome;
-    private String trabalho;
-    private Date dataNascimento;
+    private String funcao;
+    private String dataNascimento;
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(long ID) {
         this.ID = ID;
     }
 
@@ -25,19 +26,57 @@ public class Pessoas {
         this.nome = nome;
     }
 
-    public String getTrabalho() {
-        return trabalho;
+    public String getFuncao() {
+        return funcao;
     }
 
-    public void setTrabalho(String trabalho) {
-        this.trabalho = trabalho;
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public ContentValues getContentValues() {
+        ContentValues valores = new ContentValues();
+
+        valores.put(BdTable_Pessoas.CAMPO_NOME, nome);
+        valores.put(BdTable_Pessoas.CAMPO_FUNCAO, funcao);
+        valores.put(BdTable_Pessoas.CAMPO_DATA_NASC, dataNascimento);
+
+        return valores;
+    }
+
+    public static Pessoas fromCursor(Cursor cursor) {
+
+        long id = cursor.getLong(
+                cursor.getColumnIndex(BdTable_Pessoas._ID)
+        );
+
+        String nome = cursor.getString(
+                cursor.getColumnIndex(BdTable_Pessoas.CAMPO_NOME)
+        );
+
+        String funcao = cursor.getString(
+                cursor.getColumnIndex(BdTable_Pessoas.CAMPO_FUNCAO)
+        );
+
+        String data = cursor.getString(
+                cursor.getColumnIndex(BdTable_Pessoas.CAMPO_DATA_NASC)
+        );
+
+        Pessoas p = new Pessoas();
+
+        p.setID(id);
+        p.setNome(nome);
+        p.setFuncao(funcao);
+        p.setDataNascimento(data);
+
+        return p;
     }
 }

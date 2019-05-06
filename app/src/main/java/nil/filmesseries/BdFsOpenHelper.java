@@ -32,6 +32,11 @@ public class BdFsOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        new BdTable_Pessoas(db).cria();
+        new BdTable_FS_Pessoas(db).cria();
+        new BdTable_Filmes_series(db).cria();
+        new BdTable_Genero(db).cria();
+        new BdTable_FS_Genero(db).cria();
     }
 
     /**

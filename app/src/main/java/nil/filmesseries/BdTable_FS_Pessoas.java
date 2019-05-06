@@ -7,9 +7,9 @@ import android.provider.BaseColumns;
 
 public class BdTable_FS_Pessoas implements BaseColumns {
 
-    public static final String NOME_TABELA = "FS_Genero";
+    public static final String NOME_TABELA = "FS_Pessoas";
     public static final String CAMPO_ID_FS = "ID_FS";
-    public static final String CAMPO_ID_PESSOAS = "ID_G";
+    public static final String CAMPO_ID_PESSOAS = "ID_P";
     private final SQLiteDatabase db;
 
     public BdTable_FS_Pessoas(SQLiteDatabase db) {
