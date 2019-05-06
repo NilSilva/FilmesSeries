@@ -5,31 +5,24 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-public class BdTable_Filmes_series implements BaseColumns {
+public class BdTable_FS_Genero implements BaseColumns {
 
-    public static final String NOME_TABELA = "Filmes_series";
-    public static final String CAMPO_FORMATO = "Formato";
-    public static final String CAMPO_NOME = "Nome";
-    public static final String CAMPO_NUM = "NumeroEpi";
-    public static final String CAMPO_EPI_VISTOS = "EpiVistos";
-    public static final String CAMPO_DATA_LANC = "Data";
-    public static final String CAMPO_ESTADO = "Estado";
+    public static final String NOME_TABELA = "FS_Genero";
+    public static final String CAMPO_ID_FS = "ID_FS";
+    public static final String CAMPO_ID_GENERO = "ID_G";
     private final SQLiteDatabase db;
 
-    public BdTable_Filmes_series(SQLiteDatabase db) {
+    public BdTable_FS_Genero(SQLiteDatabase db) {
         this.db = db;
     }
 
     public void cria() {
         db.execSQL(
                 "CREATE TABLE " + NOME_TABELA + "(" +
-                        _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        CAMPO_FORMATO + " INTEGER NOT NULL," +
-                        CAMPO_NOME + " TEXT NOT NULL," +
-                        CAMPO_NUM + " INTEGER NOT NULL," +
-                        CAMPO_EPI_VISTOS + "INTEGER NOT NULL," +
-                        CAMPO_DATA_LANC + " TEXT NOT NULL," +
-                        CAMPO_ESTADO + " TEXT NOT NULL" +
+                        CAMPO_ID_FS + " INTEGER NOT NULL," +
+                        CAMPO_ID_GENERO + " INTEGER NOT NULL," +
+                        "FOREIGN KEY (" + CAMPO_ID_FS + ") REFERENCES " + BdTable_Filmes_series.NOME_TABELA + "(" + BdTable_Filmes_series._ID + ")," +
+                        "FOREIGN KEY (" + CAMPO_ID_GENERO + ") REFERENCES " + BdTable_Genero.NOME_TABELA + "(" + BdTable_Genero._ID + ")" +
                         ")"
         );
     }

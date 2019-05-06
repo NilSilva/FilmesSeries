@@ -5,18 +5,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-public class BdTable_Filmes_series implements BaseColumns {
+public class BdTable_Genero implements BaseColumns {
 
-    public static final String NOME_TABELA = "Filmes_series";
-    public static final String CAMPO_FORMATO = "Formato";
+    public static final String NOME_TABELA = "Genero";
     public static final String CAMPO_NOME = "Nome";
-    public static final String CAMPO_NUM = "NumeroEpi";
-    public static final String CAMPO_EPI_VISTOS = "EpiVistos";
-    public static final String CAMPO_DATA_LANC = "Data";
-    public static final String CAMPO_ESTADO = "Estado";
     private final SQLiteDatabase db;
 
-    public BdTable_Filmes_series(SQLiteDatabase db) {
+    public BdTable_Genero(SQLiteDatabase db) {
         this.db = db;
     }
 
@@ -24,13 +19,8 @@ public class BdTable_Filmes_series implements BaseColumns {
         db.execSQL(
                 "CREATE TABLE " + NOME_TABELA + "(" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        CAMPO_FORMATO + " INTEGER NOT NULL," +
-                        CAMPO_NOME + " TEXT NOT NULL," +
-                        CAMPO_NUM + " INTEGER NOT NULL," +
-                        CAMPO_EPI_VISTOS + "INTEGER NOT NULL," +
-                        CAMPO_DATA_LANC + " TEXT NOT NULL," +
-                        CAMPO_ESTADO + " TEXT NOT NULL" +
-                        ")"
+                        CAMPO_NOME + " TEXT NOT NULL " +
+                ")"
         );
     }
 
