@@ -156,6 +156,12 @@
                 android:layout_marginRight="@dimen/margem_padrao"
                 android:entries="@array/SpinnerEstados" />
 
+            <TextView
+                android:layout_marginTop="@dimen/margem_padrao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fields_mandatory"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -168,6 +174,7 @@
                 app:layout_constraintHorizontal_bias="1.0">
 
                 <Button
+                    android:id="@+id/butãoAdicionarSaveFS"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margem_padrao"
@@ -175,7 +182,8 @@
                     android:layout_marginRight="@dimen/margem_padrao"
                     android:onClick="Save"
                     android:text="@string/butãoSave"
-                    tools:layout_editor_absoluteY="23dp" />
+                    tools:layout_editor_absoluteY="23dp"
+                    android:enabled="false"/>
 
                 <Button
                     android:layout_width="wrap_content"

@@ -1,9 +1,14 @@
 package nil.filmesseries;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +20,14 @@ import java.util.Calendar;
 
 public class AdicionarFSActivity extends AppCompatActivity {
 
+    EditText nome;
+    EditText num;
+    EditText epiVistos;
+    EditText data;
+    Button button;
+    RadioGroup RadioG;
+    Spinner spins;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -23,6 +36,70 @@ public class AdicionarFSActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        nome = findViewById(R.id.editTextAdicionarNomeFS);
+        num = findViewById(R.id.editTextAdicionarNumFS);
+        epiVistos = findViewById(R.id.editTextAdicionarEpiVistosFS);
+        data = findViewById(R.id.editTextAdicionarDataFS);
+        button = findViewById(R.id.butãoAdicionarSaveFS);
+        RadioG = findViewById(R.id.radioGroupAdicionarFS);
+        spins = findViewById(R.id.spinnerAdicionarEstadoFS);
+
+        nome.addTextChangedListener(Campos);
+        num.addTextChangedListener(Campos);
+        epiVistos.addTextChangedListener(Campos);
+        data.addTextChangedListener(Campos);
+        RadioG.setOnCheckedChangeListener(CampoRadioG);
+        spins.setOnItemSelectedListener(CampoSpinner);
+    }
+
+    private AdapterView.OnItemSelectedListener CampoSpinner = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+
+            CamposPreenchidos();
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parentView) {
+            // your code here
+        }
+
+    };
+
+    private TextWatcher Campos = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            CamposPreenchidos();
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
+
+    private OnCheckedChangeListener CampoRadioG = new OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {CamposPreenchidos();}
+    };
+
+    private void CamposPreenchidos() {
+        String nomeInput = nome.getText().toString().trim();
+        String numInput = num.getText().toString().trim();
+        String epiVistosInput = epiVistos.getText().toString().trim();
+        String dataInput = data.getText().toString().trim();
+        int radioG = RadioG.getCheckedRadioButtonId();
+
+        if(radioG != -1 && spins.getSelectedItemPosition() != 0){
+            button.setEnabled(!nomeInput.isEmpty() && !numInput.isEmpty() && !epiVistosInput.isEmpty() && !dataInput.isEmpty());
+        }
     }
 
     public void Cancel(View view) {
@@ -33,40 +110,12 @@ public class AdicionarFSActivity extends AppCompatActivity {
     public void Save(View view) {
 
         //-------------------------------------------Declaração de variaveis-------------------------------------------
-        EditText editTextCampo;
         String textoCampo;
-        TextView menErro;
         boolean Erros = false;
-        int checked;
-        RadioGroup RG;
         Calendar cal = Calendar.getInstance();
 
-        //-------------------------------------------Detetar se um dos radiobuttons esta selecionado-------------------------------------------
-        RG = findViewById(R.id.radioGroupAdicionarFS);
-        checked = RG.getCheckedRadioButtonId();
-        menErro = findViewById(R.id.textViewAdicionarErroFormato);
-
-        if (checked == -1) {
-
-            menErro.setText(getString(R.string.AddFormatFSErr));
-            menErro.setError("");
-            Erros = true;
-        }
-
-        //-------------------------------------------Detetar se o item selecionado no spinner é o primeiro-------------------------------------------
-        Spinner spin = findViewById(R.id.spinnerAdicionarEstadoFS);
-        TextView errorText = (TextView) spin.getSelectedView();
-
-        if (spin.getSelectedItemPosition() == 0) {
-
-            errorText.setError("");
-            errorText.setText(getString(R.string.AddErrStatusFS));
-            Erros = true;
-        }
-
         //-------------------------------------------Verificação da data-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextAdicionarDataFS);
-        textoCampo = editTextCampo.getText().toString();
+        textoCampo = data.getText().toString();
 
         try {
 
@@ -79,67 +128,54 @@ public class AdicionarFSActivity extends AppCompatActivity {
             //da exceção se a data for invalida
             if (cal.get(Calendar.YEAR) < 1890) {
 
-                editTextCampo.setError(getString(R.string.data_invalida));
-                editTextCampo.requestFocus();
+                data.setError(getString(R.string.data_invalida));
+                data.requestFocus();
                 Erros = true;
             }
         } catch (Exception e) {
 
-            editTextCampo.setError(getString(R.string.data_invalida));
-            editTextCampo.requestFocus();
+            data.setError(getString(R.string.data_invalida));
+            data.requestFocus();
             Erros = true;
         }
 
         //-------------------------------------------Verificação de episodios vistos-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextAdicionarEpiVistosFS);
-        textoCampo = editTextCampo.getText().toString();
+        textoCampo = epiVistos.getText().toString();
 
         int epi = -1;
-        int epiVistos = -1;
+        int epiV = -1;
 
         try {
-            epiVistos = Integer.parseInt(textoCampo);
+            epiV = Integer.parseInt(textoCampo);
         } catch (NumberFormatException e) {
 
-            editTextCampo.setError(getString(R.string.AddEpiVistosFSErr));
-            editTextCampo.requestFocus();
+            epiVistos.setError(getString(R.string.AddEpiVistosFSErr));
+            epiVistos.requestFocus();
             Erros = true;
         }
 
         //-------------------------------------------Verificação do numero de episodios-------------------------------------------
-        EditText editTextNum = findViewById(R.id.editTextAdicionarNumFS);
-        textoCampo = editTextNum.getText().toString();
+        textoCampo = num.getText().toString();
 
         try {
             epi = Integer.parseInt(textoCampo);
         } catch (NumberFormatException e) {
 
-            editTextNum.setError(getString(R.string.AddNemFSErr));
-            editTextNum.requestFocus();
+            num.setError(getString(R.string.AddNemFSErr));
+            num.requestFocus();
             Erros = true;
         }
 
         //-------------------------------------------Verificar se o numero de episodios vistos não é maior do que o numero de episodios-------------------------------------------
 
-        if (epiVistos > epi) {
+        if (epiV > epi) {
 
-            editTextCampo.setError(getString(R.string.num_epi_epiVistos));
-            editTextCampo.requestFocus();
+            epiVistos.setError(getString(R.string.num_epi_epiVistos));
+            epiVistos.requestFocus();
             Erros = true;
-        } else if (epi == epiVistos && (epi != 0 && epi != -1)) {
+        } else if (epi == epiV && (epi != 0 && epi != -1)) {
 
-            spin.setSelection(3);
-        }
-
-        //-------------------------------------------Verificação do nome-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextAdicionarNomeFS);
-        textoCampo = editTextCampo.getText().toString();
-
-        if (textoCampo.isEmpty()) {
-
-            editTextCampo.setError(getString(R.string.AddNameFSErr));
-            editTextCampo.requestFocus();
-            Erros = true;
+            spins.setSelection(3);
         }
 
         //-------------------------------------------Se não existitem erros fechar a activity-------------------------------------------

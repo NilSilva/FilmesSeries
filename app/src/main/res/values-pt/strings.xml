@@ -91,5 +91,6 @@
     <!--Outras coisas-->
     <string name="Filme">Filme</string>
     <string name="Serie">Série</string>
+    <string name="fields_mandatory">Todos os campos são obrigatorios.</string>
 
 </resources>
