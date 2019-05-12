@@ -9,6 +9,7 @@ public class BdTable_Genero implements BaseColumns {
 
     public static final String NOME_TABELA = "Genero";
     public static final String CAMPO_NOME = "Nome";
+    public static final String[] TODAS_COLUNAS= new String[]{_ID, CAMPO_NOME};
     private final SQLiteDatabase db;
 
     public BdTable_Genero(SQLiteDatabase db) {

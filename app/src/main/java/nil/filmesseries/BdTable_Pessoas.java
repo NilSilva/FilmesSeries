@@ -11,6 +11,7 @@ public class BdTable_Pessoas implements BaseColumns {
     public static final String CAMPO_NOME = "Nome";
     public static final String CAMPO_DATA_NASC = "Data_nasc";
     public static final String CAMPO_FUNCAO = "Funcao";
+    public static final String[] TODAS_COLUNAS = new String[]{_ID, CAMPO_NOME, CAMPO_FUNCAO, CAMPO_DATA_NASC};
     private final SQLiteDatabase db;
 
     public BdTable_Pessoas(SQLiteDatabase db) {
