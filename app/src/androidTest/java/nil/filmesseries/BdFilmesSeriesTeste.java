@@ -263,6 +263,25 @@ public class BdFilmesSeriesTeste {
         tabelaG.delete(BdTable_Genero._ID + "=?", new String[]{String.valueOf(id)});
         cursorG = getG(tabelaG);
         assertEquals(2, cursorG.getCount());
+
+        //outras tabelas
+
+        BdTable_FS_Pessoas tabela_FS_P = new BdTable_FS_Pessoas(db);
+
+        FS_Pessoas fs_p = new FS_Pessoas();
+        fs_p.setID_FS(FS.getID());
+        fs_p.setID_P(pessoas.getID());
+        long id_FS_P = tabela_FS_P.insert(fs_p.getContentValues());
+        assertNotEquals(-1, id_FS_P);
+
+        BdTable_FS_Genero tabela_FS_G = new BdTable_FS_Genero(db);
+
+        FS_Generos fs_g = new FS_Generos();
+        fs_g.setID_FS(FS.getID());
+        fs_g.setID_G(generos.getID());
+        long id_FS_G = tabela_FS_G.insert(fs_g.getContentValues());
+        assertNotEquals(-1, id_FS_G);
+
     }
 
     private Generos getGcomID(Cursor cursor, long id) {
