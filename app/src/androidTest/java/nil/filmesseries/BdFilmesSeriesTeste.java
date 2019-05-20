@@ -73,7 +73,7 @@ public class BdFilmesSeriesTeste {
         assertEquals(data, FS.getData());
         assertEquals(estado, FS.getStatus());
 
-        nome ="DetectivePikachu";
+        nome ="Detective Pikachu";
         formato = 1;
         num = 1;
         epiVistos = 1;
@@ -210,6 +210,48 @@ public class BdFilmesSeriesTeste {
         cursorP = getP(tabelaP);
         assertEquals(2, cursorP.getCount());
 
+        //Teste read FS_Pessoas----------------------------------------------------------------------------------
+
+        BdTable_FS_Pessoas tabelaFS_P = new BdTable_FS_Pessoas(db);
+
+        Cursor cursorFS_P = getFS_P(tabelaFS_P);
+        assertEquals(0, cursorFS_P.getCount());
+
+        //Teste create/read FS_Pessoas
+
+        criaFS_P(tabelaFS_P, idDW, idDP);
+        cursorFS_P = getFS_P(tabelaFS_P);
+        assertEquals(1, cursorFS_P.getCount());
+
+        FS_Pessoas fs_p = getFS_PcomID(cursorFS_P, idDP);
+
+        assertEquals(idDP, fs_p.getID_FS());
+        assertEquals(idDW, fs_p.getID_P());
+
+        //update FS_Pessoas
+
+        fs_p.setID_FS(idGB);
+        fs_p.setID_P(idNP);
+
+        registosAlterados = tabelaFS_P.update(fs_p.getContentValues(), BdTable_FS_Pessoas.CAMPO_ID_FS + "=?", new String[]{String.valueOf(idDP)});
+
+        assertEquals(1, registosAlterados);
+
+        cursorFS_P = getFS_P(tabelaFS_P);
+        fs_p = getFS_PcomID(cursorFS_P, idGB);
+
+        assertEquals(idGB, fs_p.getID_FS());
+        assertEquals(idNP, fs_p.getID_P());
+
+        //teste create/delete/read FS_Pessoas
+
+        cursorFS_P = getFS_P(tabelaFS_P);
+        assertEquals(1, cursorFS_P.getCount());
+
+        tabelaFS_P.delete(BdTable_FS_Pessoas.CAMPO_ID_FS + "=?", new String[]{String.valueOf(idGB)});
+        cursorFS_P = getFS_P(tabelaFS_P);
+        assertEquals(0, cursorFS_P.getCount());
+
         //Teste read generos-------------------------------------------------------------------------------------
 
         BdTable_Genero tabelaG = new BdTable_Genero(db);
@@ -264,24 +306,109 @@ public class BdFilmesSeriesTeste {
         cursorG = getG(tabelaG);
         assertEquals(2, cursorG.getCount());
 
-        //outras tabelas
+        //Teste read FS_Generos----------------------------------------------------------------------------------
 
-        BdTable_FS_Pessoas tabela_FS_P = new BdTable_FS_Pessoas(db);
+        BdTable_FS_Genero tabelaFS_G = new BdTable_FS_Genero(db);
 
-        FS_Pessoas fs_p = new FS_Pessoas();
-        fs_p.setID_FS(FS.getID());
-        fs_p.setID_P(pessoas.getID());
-        long id_FS_P = tabela_FS_P.insert(fs_p.getContentValues());
-        assertNotEquals(-1, id_FS_P);
+        Cursor cursorFS_G = getFS_G(tabelaFS_G);
+        assertEquals(0, cursorFS_G.getCount());
 
-        BdTable_FS_Genero tabela_FS_G = new BdTable_FS_Genero(db);
+        //Teste create/read FS_Generos
 
-        FS_Generos fs_g = new FS_Generos();
-        fs_g.setID_FS(FS.getID());
-        fs_g.setID_G(generos.getID());
-        long id_FS_G = tabela_FS_G.insert(fs_g.getContentValues());
-        assertNotEquals(-1, id_FS_G);
+        criaFS_G(tabelaFS_G, idDP, idR);
+        cursorFS_G = getFS_G(tabelaFS_G);
+        assertEquals(1, cursorFS_G.getCount());
 
+        FS_Generos fs_g = getFS_GcomID(cursorFS_G, idDP);
+
+        assertEquals(idDP, fs_g.getID_FS());
+        assertEquals(idR, fs_g.getID_G());
+
+        //update FS_Generos
+
+        fs_g.setID_FS(idGB);
+        fs_g.setID_G(idF);
+
+        registosAlterados = tabelaFS_G.update(fs_g.getContentValues(), BdTable_FS_Genero.CAMPO_ID_FS + "=?", new String[]{String.valueOf(idDP)});
+
+        assertEquals(1, registosAlterados);
+
+        cursorFS_G = getFS_G(tabelaFS_G);
+        fs_g = getFS_GcomID(cursorFS_G, idGB);
+
+        assertEquals(idGB, fs_g.getID_FS());
+        assertEquals(idNP, fs_g.getID_G());
+
+        //teste create/delete/read FS_Generos
+
+        cursorFS_G = getFS_G(tabelaFS_G);
+        assertEquals(1, cursorFS_G.getCount());
+
+        tabelaFS_G.delete(BdTable_FS_Genero.CAMPO_ID_FS + "=?", new String[]{String.valueOf(idGB)});
+        cursorFS_G = getFS_G(tabelaFS_G);
+        assertEquals(0, cursorFS_G.getCount());
+
+    }
+
+    private FS_Generos getFS_GcomID(Cursor cursor, long id) {
+
+        FS_Generos fs_g = null;
+
+        while (cursor.moveToNext()){
+            fs_g = FS_Generos.fromCursor(cursor);
+
+            if(fs_g.getID_FS() == id){
+                break;
+            }
+        }
+        assertNotNull(fs_g);
+
+        return fs_g;
+    }
+
+    private void criaFS_G(BdTable_FS_Genero tabelaFS_g, long id_fs, long id_g) {
+        FS_Generos FS_G = new FS_Generos();
+
+        FS_G.setID_G(id_g);
+        FS_G.setID_FS(id_fs);
+
+        long id = tabelaFS_g.insert(FS_G.getContentValues());
+        assertNotEquals(-1, id);
+    }
+
+    private Cursor getFS_G(BdTable_FS_Genero tabelaFS_g) {
+        return tabelaFS_g.query(BdTable_FS_Genero.TODAS_COLUNAS, null, null, null, null, null);
+    }
+
+    private FS_Pessoas getFS_PcomID(Cursor cursor, long id) {
+
+        FS_Pessoas fs_p = null;
+
+        while (cursor.moveToNext()){
+            fs_p = FS_Pessoas.fromCursor(cursor);
+
+            if(fs_p.getID_FS() == id){
+                break;
+            }
+        }
+        assertNotNull(fs_p);
+
+        return fs_p;
+    }
+
+    private void criaFS_P(BdTable_FS_Pessoas tabelaFS_P, long ID_P, long ID_FS) {
+
+        FS_Pessoas FS_P = new FS_Pessoas();
+
+        FS_P.setID_P(ID_P);
+        FS_P.setID_FS(ID_FS);
+
+        long id = tabelaFS_P.insert(FS_P.getContentValues());
+        assertNotEquals(-1, id);
+    }
+
+    private Cursor getFS_P(BdTable_FS_Pessoas tabelaFS_p) {
+        return tabelaFS_p.query(BdTable_FS_Pessoas.TODAS_COLUNAS, null, null, null, null, null);
     }
 
     private Generos getGcomID(Cursor cursor, long id) {
