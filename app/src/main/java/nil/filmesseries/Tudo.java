@@ -18,7 +18,7 @@ import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class Tudo extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor> {
+public class Tudo extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int ID_CURSO_LOADER_FS = 0;
 
