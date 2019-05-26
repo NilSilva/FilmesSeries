@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/item_fs_nome"
+        android:id="@+id/textViewItem_fs_nome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margem_padrao"
@@ -21,7 +21,7 @@
         tools:text="Detective Pikachu" />
 
     <TextView
-        android:id="@+id/item_fs_formato"
+        android:id="@+id/textViewItem_fs_formato"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margem_padrao"
@@ -30,17 +30,18 @@
         android:layout_marginRight="@dimen/margem_padrao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_fs_nome"
+        app:layout_constraintTop_toBottomOf="@+id/textViewItem_fs_nome"
         tools:text="Filme" />
 
     <TextView
+        android:id="@+id/textViewItem_fs_episodios"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margem_padrao"
         android:layout_marginLeft="@dimen/margem_padrao"
         android:layout_marginEnd="@dimen/margem_padrao"
         android:layout_marginRight="@dimen/margem_padrao"
-        app:layout_constraintTop_toBottomOf="@+id/item_fs_formato"
+        app:layout_constraintTop_toBottomOf="@+id/textViewItem_fs_formato"
         tools:text="1/1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>

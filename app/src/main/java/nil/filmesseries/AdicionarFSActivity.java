@@ -1,12 +1,15 @@
 package nil.filmesseries;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
@@ -26,7 +29,10 @@ public class AdicionarFSActivity extends AppCompatActivity {
     EditText data;
     Button button;
     RadioGroup RadioG;
+    RadioButton RadioF;
+    RadioButton RadioS;
     Spinner spins;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,8 @@ public class AdicionarFSActivity extends AppCompatActivity {
         button = findViewById(R.id.butãoAdicionarSaveFS);
         RadioG = findViewById(R.id.radioGroupAdicionarFS);
         spins = findViewById(R.id.spinnerAdicionarEstadoFS);
+        RadioF = findViewById(R.id.radioButtonAdicionarFSFilme);
+        RadioS = findViewById(R.id.radioButtonAdicionarFSSerie);
 
         nome.addTextChangedListener(Campos);
         num.addTextChangedListener(Campos);
@@ -109,6 +117,24 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
     public void Save(View view) {
 
+        int form = 0;
+
+        filmesSeries FS = new filmesSeries();
+
+        Log.d("AFSA - isSelected", "" + RadioF.isChecked());
+
+        if(RadioF.isChecked()){
+            form = 1;
+            Log.d("AFSA", "Entrou no if....");
+        }
+
+        FS.setNome(nome.getText().toString().trim());
+        Log.d("AFSA - nome", nome.getText().toString().trim());
+        FS.setFormato(form);
+        Log.d("AFSA - formato", form + "");
+        FS.setStatus(spins.getSelectedItem().toString());
+        Log.d("AFSA - estado", spins.getSelectedItem().toString());
+
         //-------------------------------------------Declaração de variaveis-------------------------------------------
         String textoCampo;
         boolean Erros = false;
@@ -139,6 +165,10 @@ public class AdicionarFSActivity extends AppCompatActivity {
             Erros = true;
         }
 
+
+        FS.setData(textoCampo);
+        Log.d("AFSA - data", textoCampo);
+
         //-------------------------------------------Verificação de episodios vistos-------------------------------------------
         textoCampo = epiVistos.getText().toString();
 
@@ -154,6 +184,10 @@ public class AdicionarFSActivity extends AppCompatActivity {
             Erros = true;
         }
 
+
+        FS.setnEpiVistos(epiV);
+        Log.d("AFSA - epi vistos", epiV + "");
+
         //-------------------------------------------Verificação do numero de episodios-------------------------------------------
         textoCampo = num.getText().toString();
 
@@ -165,6 +199,10 @@ public class AdicionarFSActivity extends AppCompatActivity {
             num.requestFocus();
             Erros = true;
         }
+
+
+        FS.setnEpisodios(epi);
+        Log.d("AFSA - episodios", epi + "");
 
         //-------------------------------------------Verificar se o numero de episodios vistos não é maior do que o numero de episodios-------------------------------------------
 
@@ -182,8 +220,18 @@ public class AdicionarFSActivity extends AppCompatActivity {
         if (!Erros) {
 
             finish();
+            inserirBD(FS);
             Toast.makeText(this, "Data successfully saved", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void inserirBD(filmesSeries fs) {
+
+        BdFsOpenHelper openHelper = new BdFsOpenHelper(this);
+        SQLiteDatabase db = openHelper.getWritableDatabase();
+
+        BdTable_Filmes_series tabelaFS = new BdTable_Filmes_series(db);
+        tabelaFS.insert(fs.getContentValues());
     }
 
     public void ClearError(View view) {

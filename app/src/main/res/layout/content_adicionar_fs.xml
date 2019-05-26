@@ -47,6 +47,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/radioButtonAdicionarFSFilme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -54,6 +55,7 @@
                         android:text="@string/Filme" />
 
                     <RadioButton
+                        android:id="@+id/radioButtonAdicionarFSSerie"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

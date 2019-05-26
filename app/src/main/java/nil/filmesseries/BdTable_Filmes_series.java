@@ -14,7 +14,7 @@ public class BdTable_Filmes_series implements BaseColumns {
     public static final String CAMPO_EPI_VISTOS = "EpiVistos";
     public static final String CAMPO_DATA_LANC = "Data";
     public static final String CAMPO_ESTADO = "Estado";
-    public static final String[] TODAS_COLUNAS= new String[]{_ID, CAMPO_NOME, CAMPO_FORMATO, CAMPO_NUM, CAMPO_EPI_VISTOS, CAMPO_DATA_LANC, CAMPO_ESTADO};
+    public static final String[] TODAS_COLUNAS= new String[]{NOME_TABELA + "." + _ID, CAMPO_NOME, CAMPO_FORMATO, CAMPO_NUM, CAMPO_EPI_VISTOS, CAMPO_DATA_LANC, CAMPO_ESTADO};
     private final SQLiteDatabase db;
 
     public BdTable_Filmes_series(SQLiteDatabase db) {

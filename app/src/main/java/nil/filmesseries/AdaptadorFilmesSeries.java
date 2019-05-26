@@ -2,13 +2,16 @@ package nil.filmesseries;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AdaptadorFilmesSeries extends RecyclerView.Adapter {
+public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesSeries.ViewHolderFS> {
 
     private Cursor cursor;
     private Context context;
@@ -46,8 +49,11 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter {
      */
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+    public ViewHolderFS onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        View itemFS = LayoutInflater.from(context).inflate(R.layout.item_fs, parent, false);
+
+        return new ViewHolderFS(itemFS);
     }
 
     /**
@@ -71,8 +77,10 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter {
      * @param position The position of the item within the adapter's data set.
      */
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull ViewHolderFS holder, int position) {
+        cursor.moveToPosition(position);
+        filmesSeries fs = filmesSeries.fromCursor(cursor);
+        holder.setFilmeSerie(fs);
     }
 
     /**
@@ -82,6 +90,72 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter {
      */
     @Override
     public int getItemCount() {
-        return 0;
+        if(cursor == null){
+            return 0;
+        }
+
+        return cursor.getCount();
+    }
+
+    private static ViewHolderFS viewHolderFSSelecionado = null;
+
+    public class ViewHolderFS extends RecyclerView.ViewHolder implements View.OnClickListener{
+
+        private TextView textViewNome;
+        private TextView textViewFormato;
+        private TextView textViewEpisodios;
+
+        private filmesSeries fs;
+
+        public ViewHolderFS(@NonNull View itemView) {
+
+            super(itemView);
+
+            textViewNome = itemView.findViewById(R.id.textViewItem_fs_nome);
+            textViewFormato = itemView.findViewById(R.id.textViewItem_fs_formato);
+            textViewEpisodios = itemView.findViewById(R.id.textViewItem_fs_episodios);
+
+            itemView.setOnClickListener(this);
+        }
+
+        public void setFilmeSerie(filmesSeries fs) {
+
+            this.fs = fs;
+
+            String ep = fs.getnEpiVistos() + "/" + fs.getnEpisodios();
+            textViewNome.setText(fs.getNome());
+            if(fs.getFormato() == 0){
+
+                textViewFormato.setText(R.string.Serie);
+            }else{
+
+                textViewFormato.setText(R.string.Filme);
+            }
+            textViewEpisodios.setText(ep);
+        }
+
+        /**
+         * Called when a view has been clicked.
+         *
+         * @param v The view that was clicked.
+         */
+        @Override
+        public void onClick(View v) {
+
+            if(viewHolderFSSelecionado != null){
+                viewHolderFSSelecionado.desseleciona();
+            }
+
+            viewHolderFSSelecionado = this;
+            seleciona();
+        }
+
+        private void seleciona() {
+            itemView.setBackgroundResource(android.R.color.darker_gray);
+        }
+
+        private void desseleciona() {
+            itemView.setBackgroundResource(android.R.color.white);
+        }
     }
 }
