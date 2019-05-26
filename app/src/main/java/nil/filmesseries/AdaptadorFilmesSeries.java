@@ -1,6 +1,7 @@
 package nil.filmesseries;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,7 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesS
     }
 
     /**
-     * Called when RecyclerView needs a new {@link ViewHolder} of the given type to represent
+     * Called when RecyclerView needs a new {@link ViewHolderFS} of the given type to represent
      * an item.
      * <p>
      * This new ViewHolder should be constructed with a new View that can represent the items
@@ -36,7 +37,7 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesS
      * layout file.
      * <p>
      * The new ViewHolder will be used to display items of the adapter using
-     * {@link #onBindViewHolder(ViewHolder, int, List)}. Since it will be re-used to display
+     * {@link #onBindViewHolder(ViewHolderFS, int)}. Since it will be re-used to display
      * different items in the data set, it is a good idea to cache references to sub views of
      * the View to avoid unnecessary {@link View#findViewById(int)} calls.
      *
@@ -45,7 +46,7 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesS
      * @param viewType The view type of the new View.
      * @return A new ViewHolder that holds a View of the given view type.
      * @see #getItemViewType(int)
-     * @see #onBindViewHolder(ViewHolder, int)
+     * @see #onBindViewHolder(ViewHolderFS, int)
      */
     @NonNull
     @Override
@@ -58,7 +59,7 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesS
 
     /**
      * Called by RecyclerView to display the data at the specified position. This method should
-     * update the contents of the {@link ViewHolder#itemView} to reflect the item at the given
+     * update the contents of the {@link ViewHolderFS#itemView} to reflect the item at the given
      * position.
      * <p>
      * Note that unlike {@link ListView}, RecyclerView will not call this method
@@ -66,10 +67,10 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesS
      * invalidated or the new position cannot be determined. For this reason, you should only
      * use the <code>position</code> parameter while acquiring the related data item inside
      * this method and should not keep a copy of it. If you need the position of an item later
-     * on (e.g. in a click listener), use {@link ViewHolder#getAdapterPosition()} which will
+     * on (e.g. in a click listener), use {@link ViewHolderFS#getAdapterPosition()} which will
      * have the updated adapter position.
      * <p>
-     * Override {@link #onBindViewHolder(ViewHolder, int, List)} instead if Adapter can
+     * Override {@link #onBindViewHolder(ViewHolderFS, int)} instead if Adapter can
      * handle efficient partial bind.
      *
      * @param holder   The ViewHolder which should be updated to represent the contents of the
@@ -142,20 +143,11 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesS
         @Override
         public void onClick(View v) {
 
-            if(viewHolderFSSelecionado != null){
-                viewHolderFSSelecionado.desseleciona();
-            }
+            Intent intent = new Intent(context, EditarFSActivity.class);
 
-            viewHolderFSSelecionado = this;
-            seleciona();
-        }
+            intent.putExtra("FS", fs);
 
-        private void seleciona() {
-            itemView.setBackgroundResource(android.R.color.darker_gray);
-        }
-
-        private void desseleciona() {
-            itemView.setBackgroundResource(android.R.color.white);
+            context.startActivity(intent);
         }
     }
 }

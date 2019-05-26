@@ -23,6 +23,7 @@ import java.util.Calendar;
 
 public class AdicionarFSActivity extends AppCompatActivity {
 
+    //Declaração de objetos
     EditText nome;
     EditText num;
     EditText epiVistos;
@@ -42,6 +43,7 @@ public class AdicionarFSActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //inicialização dos objetos
         nome = findViewById(R.id.editTextAdicionarNomeFS);
         num = findViewById(R.id.editTextAdicionarNumFS);
         epiVistos = findViewById(R.id.editTextAdicionarEpiVistosFS);
@@ -52,6 +54,8 @@ public class AdicionarFSActivity extends AppCompatActivity {
         RadioF = findViewById(R.id.radioButtonAdicionarFSFilme);
         RadioS = findViewById(R.id.radioButtonAdicionarFSSerie);
 
+        //controlo do butão para guardar
+        //alguma da verificação tambem é feita aqui, nomeadamente ver se os campos estão preenchidos
         nome.addTextChangedListener(Campos);
         num.addTextChangedListener(Campos);
         epiVistos.addTextChangedListener(Campos);
@@ -60,11 +64,15 @@ public class AdicionarFSActivity extends AppCompatActivity {
         spins.setOnItemSelectedListener(CampoSpinner);
     }
 
+    //é ativado quando o item selecionado no spinner muda
     private AdapterView.OnItemSelectedListener CampoSpinner = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
 
             CamposPreenchidos();
+            if(spins.getSelectedItemPosition() == 0){
+                button.setEnabled(false);
+            }
         }
 
         @Override
@@ -74,6 +82,7 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
     };
 
+    //é ativado quando o campo a que esta atribuido tem uma mudança no texto
     private TextWatcher Campos = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -92,11 +101,15 @@ public class AdicionarFSActivity extends AppCompatActivity {
         }
     };
 
+    //é ativado quando um dos radioButtons é pressionado
     private OnCheckedChangeListener CampoRadioG = new OnCheckedChangeListener() {
         @Override
-        public void onCheckedChanged(RadioGroup group, int checkedId) {CamposPreenchidos();}
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            CamposPreenchidos();
+        }
     };
 
+    //ativa o butão se todos os campos estiverem preenchidos
     private void CamposPreenchidos() {
         String nomeInput = nome.getText().toString().trim();
         String numInput = num.getText().toString().trim();

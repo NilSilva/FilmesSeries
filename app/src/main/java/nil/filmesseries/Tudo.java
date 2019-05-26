@@ -55,7 +55,7 @@ public class Tudo extends AppCompatActivity  implements LoaderManager.LoaderCall
         startActivity(intent);
     }
 
-    public void EditarFS(View view) {
+    /*public void EditarFS(View view) {
 
         Intent intent = new Intent(this, EditarFSActivity.class);
         startActivity(intent);
@@ -65,7 +65,7 @@ public class Tudo extends AppCompatActivity  implements LoaderManager.LoaderCall
 
         Intent intent = new Intent(this, DeleteFSActivity.class);
         startActivity(intent);
-    }
+    }*/
 
     /**
      * Instantiate and return a new Loader for the given ID.

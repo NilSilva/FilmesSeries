@@ -2,8 +2,10 @@ package nil.filmesseries;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class filmesSeries {
+public class filmesSeries implements Parcelable {
 
     private long ID;
     private int formato;
@@ -12,6 +14,54 @@ public class filmesSeries {
     private int nEpiVistos;
     private String data;
     private String status;
+
+    public filmesSeries() {
+        this.ID = -1;
+    }
+
+    //-------------------------------------------------------------------------------------------
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+
+        out.writeLong(ID);
+        out.writeInt(formato);
+        out.writeString(nome);
+        out.writeInt(nEpisodios);
+        out.writeInt(nEpiVistos);
+        out.writeString(data);
+        out.writeString(status);
+    }
+
+    // this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
+    public static final Parcelable.Creator<filmesSeries> CREATOR = new Parcelable.Creator<filmesSeries>() {
+        public filmesSeries createFromParcel(Parcel in) {
+            return new filmesSeries(in);
+        }
+
+        public filmesSeries[] newArray(int size) {
+            return new filmesSeries[size];
+        }
+    };
+
+    // example constructor that takes a Parcel and gives you an object populated with it's values
+    private filmesSeries(Parcel in) {
+
+        ID = in.readLong();
+        formato = in.readInt();
+        nome = in.readString();
+        nEpisodios = in.readInt();
+        nEpiVistos = in.readInt();
+        data = in.readString();
+        status = in.readString();
+    }
+
+    //-------------------------------------------------------------------------------------------
 
     public long getID() {
         return ID;
