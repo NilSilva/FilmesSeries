@@ -33,7 +33,6 @@ public class AdicionarFSActivity extends AppCompatActivity {
     RadioButton RadioS;
     Spinner spins;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

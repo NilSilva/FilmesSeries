@@ -1,8 +1,13 @@
 package nil.filmesseries;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -15,6 +20,16 @@ import java.util.Calendar;
 
 public class EditarFSActivity extends AppCompatActivity {
 
+    EditText nome;
+    EditText num;
+    EditText epiVistos;
+    EditText data;
+    Button button;
+    RadioGroup RadioG;
+    RadioButton RadioF;
+    RadioButton RadioS;
+    Spinner spins;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -23,6 +38,72 @@ public class EditarFSActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        nome = findViewById(R.id.editTextEditarNomeFS);
+        num = findViewById(R.id.editTextEditarNumFS);
+        epiVistos = findViewById(R.id.editTextEditarEpiVistosFS);
+        data = findViewById(R.id.editTextEditarDataFS);
+        button = findViewById(R.id.butãoEditarSaveFS);
+        RadioG = findViewById(R.id.radioGroupEditarFS);
+        spins = findViewById(R.id.spinnerEditarEstadoFS);
+        RadioF = findViewById(R.id.radioButtonEditarFSFilme);
+        RadioS = findViewById(R.id.radioButtonEditarFSSerie);
+
+        nome.addTextChangedListener(Campos);
+        num.addTextChangedListener(Campos);
+        epiVistos.addTextChangedListener(Campos);
+        data.addTextChangedListener(Campos);
+        RadioG.setOnCheckedChangeListener(CampoRadioG);
+        spins.setOnItemSelectedListener(CampoSpinner);
+    }
+
+    private AdapterView.OnItemSelectedListener CampoSpinner = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+
+            CamposPreenchidos();
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parentView) {
+            // your code here
+        }
+
+    };
+
+    private TextWatcher Campos = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            CamposPreenchidos();
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
+
+    private RadioGroup.OnCheckedChangeListener CampoRadioG = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {CamposPreenchidos();}
+    };
+
+    private void CamposPreenchidos() {
+        String nomeInput = nome.getText().toString().trim();
+        String numInput = num.getText().toString().trim();
+        String epiVistosInput = epiVistos.getText().toString().trim();
+        String dataInput = data.getText().toString().trim();
+        int radioG = RadioG.getCheckedRadioButtonId();
+
+        if(radioG != -1 && spins.getSelectedItemPosition() != 0){
+            button.setEnabled(!nomeInput.isEmpty() && !numInput.isEmpty() && !epiVistosInput.isEmpty() && !dataInput.isEmpty());
+        }
     }
 
     public void Cancel(View view) {
