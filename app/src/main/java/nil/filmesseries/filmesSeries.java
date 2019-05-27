@@ -15,11 +15,11 @@ public class filmesSeries implements Parcelable {
     private String data;
     private String status;
 
+    //Para poder passar num intent------------------------------------------------------------------
+
     public filmesSeries() {
         this.ID = -1;
     }
-
-    //-------------------------------------------------------------------------------------------
 
     @Override
     public int describeContents() {
@@ -61,7 +61,7 @@ public class filmesSeries implements Parcelable {
         status = in.readString();
     }
 
-    //-------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
 
     public long getID() {
         return ID;
