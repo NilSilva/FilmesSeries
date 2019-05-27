@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CursorAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,12 +21,16 @@ import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class Tudo extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class GerirFS extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private static final int ID_CURSO_LOADER_FS = 0;
+    //Declaração de objetos e variaveis
+    private static final int ID_CURSOR_LOADER_FS = 0;
 
     private RecyclerView recyclerViewFS;
     private AdaptadorFilmesSeries adaptadorFS;
+
+
+    private Spinner spins;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +41,24 @@ public class Tudo extends AppCompatActivity implements LoaderManager.LoaderCallb
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_FS, null, this);
+        //inicialização dos objetos
+        spins = findViewById(R.id.GerirFSSpinner);
+
+        //Reinicia o loader quando o item selecionado do spinner muda
+        spins.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                restartLoader();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        //inicialização do loader
+        getSupportLoaderManager().initLoader(ID_CURSOR_LOADER_FS, null, this);
 
         recyclerViewFS = (RecyclerView) findViewById(R.id.recyclerViewFS);
         adaptadorFS = new AdaptadorFilmesSeries(this);
@@ -42,9 +66,13 @@ public class Tudo extends AppCompatActivity implements LoaderManager.LoaderCallb
         recyclerViewFS.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    @Override
+    private void restartLoader() {
+        getSupportLoaderManager().restartLoader(ID_CURSOR_LOADER_FS, null, this);
+    }
+
+        @Override
     protected void onResume() {
-        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_FS, null, this);
+        getSupportLoaderManager().restartLoader(ID_CURSOR_LOADER_FS, null, this);
 
         super.onResume();
     }
@@ -54,18 +82,6 @@ public class Tudo extends AppCompatActivity implements LoaderManager.LoaderCallb
         Intent intent = new Intent(this, AdicionarFSActivity.class);
         startActivity(intent);
     }
-
-    /*public void EditarFS(View view) {
-
-        Intent intent = new Intent(this, EditarFSActivity.class);
-        startActivity(intent);
-    }
-
-    public void DeleteFS(View view) {
-
-        Intent intent = new Intent(this, DeleteFSActivity.class);
-        startActivity(intent);
-    }*/
 
     /**
      * Instantiate and return a new Loader for the given ID.
@@ -79,9 +95,27 @@ public class Tudo extends AppCompatActivity implements LoaderManager.LoaderCallb
     @NonNull
     @Override
     public Loader onCreateLoader(int id, @Nullable Bundle args) {
-        CursorLoader cursorLoader = new CursorLoader(
-                this, FilmesContentProvider.ENDERECO_FS, BdTable_Filmes_series.TODAS_COLUNAS, null, null, BdTable_Filmes_series.CAMPO_NOME
-        );
+
+        CursorLoader cursorLoader;
+
+        spins = findViewById(R.id.GerirFSSpinner);
+
+        if(spins.getSelectedItemPosition() == 2) {
+
+            cursorLoader = new CursorLoader(
+                    this, FilmesContentProvider.ENDERECO_FS, BdTable_Filmes_series.TODAS_COLUNAS, BdTable_Filmes_series.CAMPO_FORMATO + "=?", new String[]{"0"}, BdTable_Filmes_series.CAMPO_NOME
+            );
+        }else if(spins.getSelectedItemPosition() == 1) {
+
+            cursorLoader = new CursorLoader(
+                    this, FilmesContentProvider.ENDERECO_FS, BdTable_Filmes_series.TODAS_COLUNAS, BdTable_Filmes_series.CAMPO_FORMATO + "=?", new String[]{"1"}, BdTable_Filmes_series.CAMPO_NOME
+            );
+        }else {
+
+            cursorLoader = new CursorLoader(
+                    this, FilmesContentProvider.ENDERECO_FS, BdTable_Filmes_series.TODAS_COLUNAS, null, null, BdTable_Filmes_series.CAMPO_NOME
+            );
+        }
 
         return cursorLoader;
     }
@@ -130,6 +164,7 @@ public class Tudo extends AppCompatActivity implements LoaderManager.LoaderCallb
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
         adaptadorFS.setCursor(data);
+        Toast.makeText(this, "filmes/series existentes: " + data.getCount(), Toast.LENGTH_LONG).show();
     }
 
     /**

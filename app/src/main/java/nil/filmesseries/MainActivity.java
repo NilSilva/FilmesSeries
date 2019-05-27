@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_mostraTudo) {
-            Intent intent = new Intent(this, Tudo.class);
+            Intent intent = new Intent(this, GerirFS.class);
             startActivity(intent);
         }else if(id == R.id.action_mostraPessoas){
             Intent intent = new Intent(this, PessoasActivity.class);

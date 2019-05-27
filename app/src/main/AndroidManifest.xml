@@ -58,24 +58,24 @@
         <activity
             android:name=".DeleteFSActivity"
             android:label="@string/title_activity_delete_fs"
-            android:parentActivityName=".Tudo"
+            android:parentActivityName=".GerirFS"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EditarFSActivity"
             android:label="@string/title_activity_editar_fs"
-            android:parentActivityName=".Tudo"
+            android:parentActivityName=".GerirFS"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AdicionarFSActivity"
             android:label="@string/title_activity_adicionar_fs"
-            android:parentActivityName=".Tudo"
+            android:parentActivityName=".GerirFS"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="nil.filmesseries.Tudo" />
+                android:value="nil.filmesseries.GerirFS" />
         </activity>
         <activity
-            android:name=".Tudo"
+            android:name=".GerirFS"
             android:label="@string/title_activity_tudo"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
