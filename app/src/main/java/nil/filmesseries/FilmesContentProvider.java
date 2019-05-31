@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.os.Build;
+import android.os.CancellationSignal;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -105,7 +106,7 @@ public class FilmesContentProvider extends ContentProvider {
      * Implement this to handle query requests from clients.
      *
      * <p>Apps targeting {@link Build.VERSION_CODES#O} or higher should override
-     * {@link #query(Uri, String[], Bundle, CancellationSignal)} and provide a stub
+     * {@link #query(Uri, String[], String, String[], String, CancellationSignal)}   and provide a stub
      * implementation of this method.
      *
      * <p>This method can be called from multiple threads, as described in
@@ -253,7 +254,7 @@ public class FilmesContentProvider extends ContentProvider {
 
     /**
      * Implement this to handle requests to insert a new row.
-     * As a courtesy, call {@link ContentResolver#notifyChange(Uri, ContentObserver) notifyChange()}
+     * As a courtesy, call {@link //ContentResolver#notifyChange(Uri, ContentObserver) notifyChange()}
      * after inserting.
      * This method can be called from multiple threads, as described in
      * <a href="{@docRoot}guide/topics/fundamentals/processes-and-threads.html#Threads">Processes
@@ -306,7 +307,7 @@ public class FilmesContentProvider extends ContentProvider {
      * Implement this to handle requests to delete one or more rows.
      * The implementation should apply the selection clause when performing
      * deletion, allowing the operation to affect multiple rows in a directory.
-     * As a courtesy, call {@link ContentResolver#notifyChange(Uri, ContentObserver) notifyChange()}
+     * As a courtesy, call {@link //ContentResolver#notifyChange(Uri, ContentObserver) notifyChange()}
      * after deleting.
      * This method can be called from multiple threads, as described in
      * <a href="{@docRoot}guide/topics/fundamentals/processes-and-threads.html#Threads">Processes
@@ -349,7 +350,7 @@ public class FilmesContentProvider extends ContentProvider {
      * Implement this to handle requests to update one or more rows.
      * The implementation should update all rows matching the selection
      * to set the columns according to the provided values map.
-     * As a courtesy, call {@link ContentResolver#notifyChange(Uri, ContentObserver) notifyChange()}
+     * As a courtesy, call {@link //ContentResolver#notifyChange(Uri, ContentObserver) notifyChange()}
      * after updating.
      * This method can be called from multiple threads, as described in
      * <a href="{@docRoot}guide/topics/fundamentals/processes-and-threads.html#Threads">Processes

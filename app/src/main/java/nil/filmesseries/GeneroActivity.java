@@ -22,6 +22,9 @@ import androidx.loader.content.Loader;
 
 public class GeneroActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    //Declaração de objetos e variaveis
+    private String TAG = "GeneroActivity";
+
     private static final int ID_CURSO_LOADER_GENEROS = 0;
 
     @Override

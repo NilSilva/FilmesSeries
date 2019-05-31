@@ -24,15 +24,18 @@ import java.util.Calendar;
 public class AdicionarFSActivity extends AppCompatActivity {
 
     //Declaração de objetos
-    EditText nome;
-    EditText num;
-    EditText epiVistos;
-    EditText data;
-    Button button;
-    RadioGroup RadioG;
-    RadioButton RadioF;
-    RadioButton RadioS;
-    Spinner spins;
+    private String TAG = "AdicionarFSActivity";
+
+    private EditText nome;
+    private EditText num;
+    private EditText epiVistos;
+    private EditText data;
+    private Button button;
+    private RadioGroup RadioG;
+    private RadioButton RadioF;
+    private RadioButton RadioS;
+    private Spinner spins;
+    TextView menErr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class AdicionarFSActivity extends AppCompatActivity {
         spins = findViewById(R.id.spinnerAdicionarEstadoFS);
         RadioF = findViewById(R.id.radioButtonAdicionarFSFilme);
         RadioS = findViewById(R.id.radioButtonAdicionarFSSerie);
+        menErr = findViewById(R.id.textViewAdicionarErroFormato);
 
         //controlo do butão para guardar
         //alguma da verificação tambem é feita aqui, nomeadamente ver se os campos estão preenchidos
@@ -66,11 +70,12 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
     //é ativado quando o item selecionado no spinner muda
     private AdapterView.OnItemSelectedListener CampoSpinner = new AdapterView.OnItemSelectedListener() {
+
         @Override
         public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
 
             CamposPreenchidos();
-            if(spins.getSelectedItemPosition() == 0){
+            if (spins.getSelectedItemPosition() == 0) {
                 button.setEnabled(false);
             }
         }
@@ -84,9 +89,9 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
     //é ativado quando o campo a que esta atribuido tem uma mudança no texto
     private TextWatcher Campos = new TextWatcher() {
+
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
         }
 
         @Override
@@ -97,27 +102,30 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
-
         }
     };
 
     //é ativado quando um dos radioButtons é pressionado
     private OnCheckedChangeListener CampoRadioG = new OnCheckedChangeListener() {
+
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
+
             CamposPreenchidos();
         }
     };
 
-    //ativa o butão se todos os campos estiverem preenchidos
+    //ativa o butão guardar se todos os campos estiverem preenchidos
     private void CamposPreenchidos() {
+
         String nomeInput = nome.getText().toString().trim();
         String numInput = num.getText().toString().trim();
         String epiVistosInput = epiVistos.getText().toString().trim();
         String dataInput = data.getText().toString().trim();
         int radioG = RadioG.getCheckedRadioButtonId();
 
-        if(radioG != -1 && spins.getSelectedItemPosition() != 0){
+        if (radioG != -1 && spins.getSelectedItemPosition() != 0) {
+
             button.setEnabled(!nomeInput.isEmpty() && !numInput.isEmpty() && !epiVistosInput.isEmpty() && !dataInput.isEmpty());
         }
     }
@@ -129,28 +137,22 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
     public void Save(View view) {
 
-        int form = 0;
-
-        filmesSeries FS = new filmesSeries();
-
-        Log.d("AFSA - isSelected", "" + RadioF.isChecked());
-
-        if(RadioF.isChecked()){
-            form = 1;
-            Log.d("AFSA", "Entrou no if....");
-        }
-
-        FS.setNome(nome.getText().toString().trim());
-        Log.d("AFSA - nome", nome.getText().toString().trim());
-        FS.setFormato(form);
-        Log.d("AFSA - formato", form + "");
-        FS.setStatus(spins.getSelectedItem().toString());
-        Log.d("AFSA - estado", spins.getSelectedItem().toString());
-
         //-------------------------------------------Declaração de variaveis-------------------------------------------
         String textoCampo;
         boolean Erros = false;
         Calendar cal = Calendar.getInstance();
+        int form = 0;
+        filmesSeries FS = new filmesSeries();
+
+        //verifica se é filme
+        if (RadioF.isChecked()) {
+
+            form = 1;
+        }
+
+        FS.setNome(nome.getText().toString().trim());
+        FS.setFormato(form);
+        FS.setStatus(spins.getSelectedItem().toString());
 
         //-------------------------------------------Verificação da data-------------------------------------------
         textoCampo = data.getText().toString();
@@ -179,7 +181,6 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
 
         FS.setData(textoCampo);
-        Log.d("AFSA - data", textoCampo);
 
         //-------------------------------------------Verificação de episodios vistos-------------------------------------------
         textoCampo = epiVistos.getText().toString();
@@ -188,6 +189,7 @@ public class AdicionarFSActivity extends AppCompatActivity {
         int epiV = -1;
 
         try {
+
             epiV = Integer.parseInt(textoCampo);
         } catch (NumberFormatException e) {
 
@@ -196,14 +198,13 @@ public class AdicionarFSActivity extends AppCompatActivity {
             Erros = true;
         }
 
-
         FS.setnEpiVistos(epiV);
-        Log.d("AFSA - epi vistos", epiV + "");
 
         //-------------------------------------------Verificação do numero de episodios-------------------------------------------
         textoCampo = num.getText().toString();
 
         try {
+
             epi = Integer.parseInt(textoCampo);
         } catch (NumberFormatException e) {
 
@@ -212,9 +213,7 @@ public class AdicionarFSActivity extends AppCompatActivity {
             Erros = true;
         }
 
-
         FS.setnEpisodios(epi);
-        Log.d("AFSA - episodios", epi + "");
 
         //-------------------------------------------Verificar se o numero de episodios vistos não é maior do que o numero de episodios-------------------------------------------
 
@@ -231,9 +230,9 @@ public class AdicionarFSActivity extends AppCompatActivity {
         //-------------------------------------------Se não existitem erros fechar a activity-------------------------------------------
         if (!Erros) {
 
-            finish();
             inserirBD(FS);
             Toast.makeText(this, "Data successfully saved", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 
@@ -248,7 +247,7 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
     public void ClearError(View view) {
 
-        TextView menErr = findViewById(R.id.textViewAdicionarErroFormato);
+
         menErr.setText("");
         menErr.setError(null);
     }

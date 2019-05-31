@@ -1,5 +1,6 @@
 package nil.filmesseries;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +13,13 @@ import java.util.Calendar;
 
 public class AddPeopleActivity extends AppCompatActivity {
 
+    //Declaração de objetos e variaveis
+    private String TAG = "AddPeopleActivity";
+
+    private EditText nome;
+    private EditText funcao;
+    private EditText data;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -20,22 +28,25 @@ public class AddPeopleActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //inicialização de objetos
+        nome = findViewById(R.id.editTextAdicionarNomeP);
+        funcao = findViewById(R.id.editTextAdicionarFunçãoP);
+        data = findViewById(R.id.editTextAdicionarDataP);
     }
 
     public void Save(View view) {
 
         //-------------------------------------------Declaração de variaveis-------------------------------------------
+
+        Pessoas p = new Pessoas();
         EditText editTextCampo;
-
         String textoCampo;
-
         boolean Erros = false;
-
         Calendar cal = Calendar.getInstance();
 
-        //-------------------------------------------Verificação da data-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextAdicionarDataP);
-        textoCampo = editTextCampo.getText().toString();
+        //-------------------------------------------Verificação da data
+        textoCampo = data.getText().toString();
 
         try {
 
@@ -48,45 +59,59 @@ public class AddPeopleActivity extends AppCompatActivity {
             //da exceção se a data for invalida
             if (cal.get(Calendar.YEAR) < 1800) {
 
-                editTextCampo.setError(getString(R.string.data_invalida));
-                editTextCampo.requestFocus();
+                data.setError(getString(R.string.data_invalida));
+                data.requestFocus();
                 Erros = true;
             }
         } catch (Exception e) {
 
-            editTextCampo.setError(getString(R.string.data_invalida));
-            editTextCampo.requestFocus();
+            data.setError(getString(R.string.data_invalida));
+            data.requestFocus();
             Erros = true;
         }
+
+        p.setDataNascimento(textoCampo);
 
         //-------------------------------------------Verificação da função-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextAdicionarFunçãoP);
-        textoCampo = editTextCampo.getText().toString();
+        textoCampo = funcao.getText().toString();
 
         if (textoCampo.isEmpty()) {
 
-            editTextCampo.setError(getString(R.string.add_job));
-            editTextCampo.requestFocus();
+            funcao.setError(getString(R.string.add_job));
+            funcao.requestFocus();
             Erros = true;
         }
+
+        p.setFuncao(textoCampo);
 
         //-------------------------------------------Verificação do nome-------------------------------------------
-        editTextCampo = findViewById(R.id.editTextAdicionarNomeP);
-        textoCampo = editTextCampo.getText().toString();
+        textoCampo = nome.getText().toString();
 
         if (textoCampo.isEmpty()) {
 
-            editTextCampo.setError("Add a name");
-            editTextCampo.requestFocus();
+            nome.setError("Add a name");
+            nome.requestFocus();
             Erros = true;
         }
+
+        p.setNome(textoCampo);
 
         //-------------------------------------------Se não existitem erros fechar a activity-------------------------------------------
         if (!Erros) {
 
-            finish();
+            inserirBD(p);
             Toast.makeText(this, "Data successfully saved", Toast.LENGTH_SHORT).show();
+            finish();
         }
+    }
+
+    private void inserirBD(Pessoas p) {
+
+        BdFsOpenHelper openHelper = new BdFsOpenHelper(this);
+        SQLiteDatabase db = openHelper.getWritableDatabase();
+        BdTable_Pessoas tabelaP = new BdTable_Pessoas(db);
+
+        tabelaP.insert(p.getContentValues());
     }
 
     public void Cancel(View view) {

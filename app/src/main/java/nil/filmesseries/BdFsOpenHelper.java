@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 
 public class BdFsOpenHelper extends SQLiteOpenHelper {
 
+    private String TAG = "BdFsOpenHelper";
+
     public static final String NOME_BASE_DADOS = "Fs.db";
     private static final int VERSION = 1;
 
@@ -20,6 +22,7 @@ public class BdFsOpenHelper extends SQLiteOpenHelper {
      * @param context to use for locating paths to the the database
      */
     public BdFsOpenHelper(@Nullable Context context) {
+
         super(context, NOME_BASE_DADOS, null, VERSION);
     }
 
@@ -61,6 +64,5 @@ public class BdFsOpenHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 }

@@ -1,86 +1,53 @@
 package nil.filmesseries;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.CursorAdapter;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentManager;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class GerirFS extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class GerirPActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     //Declaração de objetos e variaveis
-    private static final int ID_CURSOR_LOADER_FS = 0;
+    private String TAG = "GerirPActivity";
 
-    private RecyclerView recyclerViewFS;
-    private AdaptadorFilmesSeries adaptadorFS;
+    private static final int ID_CURSOR_LOADER_PESSOAS = 0;
 
-
-    private Spinner spins;
+    private RecyclerView recyclerViewP;
+    private AdaptadorPessoas adaptadorP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tudo);
+        setContentView(R.layout.activity_gerir_p);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //inicialização dos objetos
-        spins = findViewById(R.id.GerirFSSpinner);
-
-        //Reinicia o loader quando o item selecionado do spinner muda
-        spins.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                restartLoader();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
         //inicialização do loader
-        getSupportLoaderManager().initLoader(ID_CURSOR_LOADER_FS, null, this);
+        getSupportLoaderManager().initLoader(ID_CURSOR_LOADER_PESSOAS, null, this);
 
-        recyclerViewFS = (RecyclerView) findViewById(R.id.recyclerViewFS);
-        adaptadorFS = new AdaptadorFilmesSeries(this);
-        recyclerViewFS.setAdapter(adaptadorFS);
-        recyclerViewFS.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewP = (RecyclerView) findViewById(R.id.recyclerViewP);
+        adaptadorP = new AdaptadorPessoas(this);
+        recyclerViewP.setAdapter(adaptadorP);
+        recyclerViewP.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private void restartLoader() {
-        getSupportLoaderManager().restartLoader(ID_CURSOR_LOADER_FS, null, this);
-    }
-
-        @Override
+    @Override
     protected void onResume() {
-        getSupportLoaderManager().restartLoader(ID_CURSOR_LOADER_FS, null, this);
+        getSupportLoaderManager().restartLoader(ID_CURSOR_LOADER_PESSOAS, null, this);
 
         super.onResume();
-    }
-
-    public void AdicionarFS(View view) {
-
-        Intent intent = new Intent(this, AdicionarFSActivity.class);
-        startActivity(intent);
     }
 
     /**
@@ -95,27 +62,8 @@ public class GerirFS extends AppCompatActivity implements LoaderManager.LoaderCa
     @NonNull
     @Override
     public Loader onCreateLoader(int id, @Nullable Bundle args) {
-
-        CursorLoader cursorLoader;
-
-        spins = findViewById(R.id.GerirFSSpinner);
-
-        if(spins.getSelectedItemPosition() == 2) {
-
-            cursorLoader = new CursorLoader(
-                    this, FilmesContentProvider.ENDERECO_FS, BdTable_Filmes_series.TODAS_COLUNAS, BdTable_Filmes_series.CAMPO_FORMATO + "=?", new String[]{"0"}, BdTable_Filmes_series.CAMPO_NOME
-            );
-        }else if(spins.getSelectedItemPosition() == 1) {
-
-            cursorLoader = new CursorLoader(
-                    this, FilmesContentProvider.ENDERECO_FS, BdTable_Filmes_series.TODAS_COLUNAS, BdTable_Filmes_series.CAMPO_FORMATO + "=?", new String[]{"1"}, BdTable_Filmes_series.CAMPO_NOME
-            );
-        }else {
-
-            cursorLoader = new CursorLoader(
-                    this, FilmesContentProvider.ENDERECO_FS, BdTable_Filmes_series.TODAS_COLUNAS, null, null, BdTable_Filmes_series.CAMPO_NOME
-            );
-        }
+        CursorLoader cursorLoader = new CursorLoader(this, FilmesContentProvider.ENDERECO_PESSOAS, BdTable_Pessoas.TODAS_COLUNAS, null, null, BdTable_Pessoas.CAMPO_NOME
+        );
 
         return cursorLoader;
     }
@@ -124,7 +72,7 @@ public class GerirFS extends AppCompatActivity implements LoaderManager.LoaderCa
      * Called when a previously created loader has finished its load.  Note
      * that normally an application is <em>not</em> allowed to commit fragment
      * transactions while in this call, since it can happen after an
-     * activity's state is saved.  See {@link FragmentManager#beginTransaction()
+     * activity's state is saved.  See {@link //FragmentManager#beginTransaction()
      * FragmentManager.openTransaction()} for further discussion on this.
      *
      * <p>This function is guaranteed to be called prior to the release of
@@ -138,11 +86,11 @@ public class GerirFS extends AppCompatActivity implements LoaderManager.LoaderCa
      * <li> <p>The Loader will monitor for changes to the data, and report
      * them to you through new calls here.  You should not monitor the
      * data yourself.  For example, if the data is a {@link Cursor}
-     * and you place it in a {@link CursorAdapter}, use
-     * the {@link CursorAdapter#CursorAdapter(Context,
+     * and you place it in a {@link //CursorAdapter}, use
+     * the {@link //CursorAdapter#CursorAdapter(Context,
      * Cursor, int)} constructor <em>without</em> passing
-     * in either {@link CursorAdapter#FLAG_AUTO_REQUERY}
-     * or {@link CursorAdapter#FLAG_REGISTER_CONTENT_OBSERVER}
+     * in either {@link// CursorAdapter#FLAG_AUTO_REQUERY}
+     * or {@link //CursorAdapter#FLAG_REGISTER_CONTENT_OBSERVER}
      * (that is, use 0 for the flags argument).  This prevents the CursorAdapter
      * from doing its own observing of the Cursor, which is not needed since
      * when a change happens you will get a new Cursor throw another call
@@ -151,8 +99,8 @@ public class GerirFS extends AppCompatActivity implements LoaderManager.LoaderCa
      * is no longer using it.  For example, if the data is
      * a {@link Cursor} from a {@link CursorLoader},
      * you should not call close() on it yourself.  If the Cursor is being placed in a
-     * {@link CursorAdapter}, you should use the
-     * {@link CursorAdapter#swapCursor(Cursor)}
+     * {@link //CursorAdapter}, you should use the
+     * {@link //CursorAdapter#swapCursor(Cursor)}
      * method so that the old Cursor is not closed.
      * </ul>
      *
@@ -163,8 +111,8 @@ public class GerirFS extends AppCompatActivity implements LoaderManager.LoaderCa
      */
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        adaptadorFS.setCursor(data);
-        Toast.makeText(this, "filmes/series existentes: " + data.getCount(), Toast.LENGTH_LONG).show();
+
+        adaptadorP.setCursor(data);
     }
 
     /**
@@ -178,6 +126,13 @@ public class GerirFS extends AppCompatActivity implements LoaderManager.LoaderCa
      */
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        adaptadorFS.setCursor(null);
+
+        adaptadorP.setCursor(null);
+    }
+
+    public void Add(View view) {
+
+        Intent intent = new Intent(this, AddPeopleActivity.class);
+        startActivity(intent);
     }
 }

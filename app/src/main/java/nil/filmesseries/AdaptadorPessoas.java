@@ -8,21 +8,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.ViewHolderP> {
 
+    private String TAG = "AdaptadorPessoas";
+
     private Cursor cursor;
     private Context context;
 
     public AdaptadorPessoas(Context context) {
+
         this.context = context;
     }
 
     public void setCursor(Cursor cursor) {
-        if(this.cursor != cursor) {
+
+        if (this.cursor != cursor) {
+
             this.cursor = cursor;
             notifyDataSetChanged();
         }
@@ -52,7 +58,7 @@ public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.View
     @Override
     public ViewHolderP onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View itemP = LayoutInflater.from(context).inflate(R.layout.item_fs, parent, false);
+        View itemP = LayoutInflater.from(context).inflate(R.layout.item_pessoa, parent, false);
 
         return new ViewHolderP(itemP);
     }
@@ -79,6 +85,7 @@ public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.View
      */
     @Override
     public void onBindViewHolder(@NonNull ViewHolderP holder, int position) {
+
         cursor.moveToPosition(position);
         Pessoas p = Pessoas.fromCursor(cursor);
         holder.setPessoa(p);
@@ -92,16 +99,18 @@ public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.View
      */
     @Override
     public int getItemCount() {
-        if(cursor == null){
+
+        if (cursor == null) {
+
             return 0;
         }
 
         return cursor.getCount();
     }
 
-    private static AdaptadorPessoas.ViewHolderP viewHolderFSSelecionado = null;
+    //private static ViewHolderP viewHolderFSSelecionado = null;
 
-    public class ViewHolderP extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolderP extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView textViewNome;
         private TextView textViewFuncao;
@@ -135,7 +144,6 @@ public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.View
         public void onClick(View v) {
 
             Intent intent = new Intent(context, EditPeopleActivity.class);
-
             intent.putExtra("P", p);
 
             context.startActivity(intent);

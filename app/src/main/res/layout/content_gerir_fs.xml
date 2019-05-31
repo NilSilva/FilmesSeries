@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".GerirFS"
-    tools:showIn="@layout/activity_tudo">
+    tools:context=".GerirFSActivity"
+    tools:showIn="@layout/activity_gerir_fs">
 
     <Button
         android:id="@+id/butãoAdicionarFS"
@@ -33,30 +33,6 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/butãoAdicionarFS"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/butãoAdicionarFS" />
-
-    <!--
-    <Button
-        android:id="@+id/butãoEditarFS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margem_padrao"
-        android:layout_marginLeft="@dimen/margem_padrao"
-        android:layout_marginTop="@dimen/margem_padrao"
-        android:onClick="EditarFS"
-        android:text="@string/butãoEditar"
-        app:layout_constraintStart_toEndOf="@+id/butãoAdicionarFS"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margem_padrao"
-        android:layout_marginLeft="@dimen/margem_padrao"
-        android:layout_marginTop="@dimen/margem_padrao"
-        android:onClick="DeleteFS"
-        android:text="@string/butãoDelete"
-        app:layout_constraintStart_toEndOf="@+id/butãoEditarFS"
-        app:layout_constraintTop_toTopOf="parent" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewFS"

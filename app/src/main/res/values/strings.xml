@@ -22,6 +22,10 @@
     <string name="menuSobre">About</string>
     <string name="menuPeople">People</string>
     <string name="menuGenre">Genre</string>
+    <string name="menuEditar">Edit</string>
+    <string name="menuGuardarPFS">Save</string>
+    <string name="menuApagar">Delete</string>
+    <string name="menuAdicionarPFS">Add a person</string>
 
     <!--erros na validação-->
     <string name="date_format_error">Use the DD/MM/YYYY format.</string>
@@ -55,7 +59,8 @@
 
     <!--Mensagens de confirmação-->
     <string name="Are_you_sure">Are you sure?</string>
-    <string name="deleteMovie">This will delete this movie/TV show.</string>
+    <string name="deleteMovie">This will delete this movie/TV show from the data base.</string>
+    <string name="deletePessoa">This will delete this person from the data base.</string>
 
     <!--Nome de campos-->
     <string name="Name_">Name:</string>

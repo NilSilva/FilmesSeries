@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Declaração de objetos e variaveis
+    private String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -38,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_mostraTudo) {
-            Intent intent = new Intent(this, GerirFS.class);
+            Intent intent = new Intent(this, GerirFSActivity.class);
             startActivity(intent);
         }else if(id == R.id.action_mostraPessoas){
-            Intent intent = new Intent(this, PessoasActivity.class);
+            Intent intent = new Intent(this, GerirPActivity.class);
             startActivity(intent);
         }else if(id == R.id.action_genero){
             Intent intent = new Intent(this, GeneroActivity.class);

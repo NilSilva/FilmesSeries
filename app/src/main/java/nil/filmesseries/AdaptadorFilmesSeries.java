@@ -14,15 +14,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesSeries.ViewHolderFS> {
 
+    private String TAG = "AdaptadorFilmesSeries";
+
     private Cursor cursor;
     private Context context;
 
     public AdaptadorFilmesSeries(Context context) {
+
         this.context = context;
     }
 
     public void setCursor(Cursor cursor) {
-        if(this.cursor != cursor) {
+
+        if (this.cursor != cursor) {
+
             this.cursor = cursor;
             notifyDataSetChanged();
         }
@@ -79,6 +84,7 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesS
      */
     @Override
     public void onBindViewHolder(@NonNull ViewHolderFS holder, int position) {
+
         cursor.moveToPosition(position);
         filmesSeries fs = filmesSeries.fromCursor(cursor);
         holder.setFilmeSerie(fs);
@@ -91,16 +97,18 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesS
      */
     @Override
     public int getItemCount() {
-        if(cursor == null){
+
+        if (cursor == null) {
+
             return 0;
         }
 
         return cursor.getCount();
     }
 
-    private static ViewHolderFS viewHolderFSSelecionado = null;
+    //private static ViewHolderFS viewHolderFSSelecionado = null;
 
-    public class ViewHolderFS extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolderFS extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView textViewNome;
         private TextView textViewFormato;
@@ -125,13 +133,14 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesS
 
             String ep = fs.getnEpiVistos() + "/" + fs.getnEpisodios();
             textViewNome.setText(fs.getNome());
-            if(fs.getFormato() == 0){
+            if (fs.getFormato() == 0) {
 
                 textViewFormato.setText(R.string.Serie);
-            }else{
+            } else {
 
                 textViewFormato.setText(R.string.Filme);
             }
+
             textViewEpisodios.setText(ep);
         }
 
@@ -144,7 +153,6 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesS
         public void onClick(View v) {
 
             Intent intent = new Intent(context, EditarFSActivity.class);
-
             intent.putExtra("FS", fs);
 
             context.startActivity(intent);

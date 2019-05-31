@@ -22,32 +22,32 @@
         <activity
             android:name=".DeletePeopleActivity"
             android:label="@string/title_activity_delete_people"
-            android:parentActivityName=".PessoasActivity"
+            android:parentActivityName=".GerirPActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="nil.filmesseries.PessoasActivity" />
+                android:value="nil.filmesseries.GerirPActivity" />
         </activity>
         <activity
             android:name=".EditPeopleActivity"
             android:label="@string/title_activity_edit_people"
-            android:parentActivityName=".PessoasActivity"
+            android:parentActivityName=".GerirPActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="nil.filmesseries.PessoasActivity" />
+                android:value="nil.filmesseries.GerirPActivity" />
         </activity>
         <activity
             android:name=".AddPeopleActivity"
             android:label="@string/title_activity_add_people"
-            android:parentActivityName=".PessoasActivity"
+            android:parentActivityName=".GerirPActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="nil.filmesseries.PessoasActivity" />
+                android:value="nil.filmesseries.GerirPActivity" />
         </activity>
         <activity
-            android:name=".PessoasActivity"
+            android:name=".GerirPActivity"
             android:label="@string/title_activity_pessoas"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -58,24 +58,24 @@
         <activity
             android:name=".DeleteFSActivity"
             android:label="@string/title_activity_delete_fs"
-            android:parentActivityName=".GerirFS"
+            android:parentActivityName=".GerirFSActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EditarFSActivity"
             android:label="@string/title_activity_editar_fs"
-            android:parentActivityName=".GerirFS"
+            android:parentActivityName=".GerirFSActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AdicionarFSActivity"
             android:label="@string/title_activity_adicionar_fs"
-            android:parentActivityName=".GerirFS"
+            android:parentActivityName=".GerirFSActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="nil.filmesseries.GerirFS" />
+                android:value="nil.filmesseries.GerirFSActivity" />
         </activity>
         <activity
-            android:name=".GerirFS"
+            android:name=".GerirFSActivity"
             android:label="@string/title_activity_tudo"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
