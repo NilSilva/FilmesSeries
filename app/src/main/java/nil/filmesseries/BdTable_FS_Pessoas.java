@@ -12,7 +12,7 @@ public class BdTable_FS_Pessoas implements BaseColumns {
     public static final String NOME_TABELA = "FS_Pessoas";
     public static final String CAMPO_ID_FS = "ID_FS";
     public static final String CAMPO_ID_PESSOAS = "ID_P";
-    public static final String[] TODAS_COLUNAS = new String[]{CAMPO_ID_FS, CAMPO_ID_PESSOAS};
+    public static final String[] TODAS_COLUNAS = new String[]{NOME_TABELA + "." + _ID, CAMPO_ID_FS, CAMPO_ID_PESSOAS};
     private final SQLiteDatabase db;
 
     public BdTable_FS_Pessoas(SQLiteDatabase db) {
@@ -24,12 +24,11 @@ public class BdTable_FS_Pessoas implements BaseColumns {
 
         db.execSQL(
                 "CREATE TABLE " + NOME_TABELA + "(" +
+                        _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         CAMPO_ID_FS + " INTEGER NOT NULL," +
                         CAMPO_ID_PESSOAS + " INTEGER NOT NULL," +
                         "FOREIGN KEY (" + CAMPO_ID_FS + ") REFERENCES " + BdTable_Filmes_series.NOME_TABELA + "(" + BdTable_Filmes_series._ID + ")," +
-                        "FOREIGN KEY (" + CAMPO_ID_PESSOAS + ") REFERENCES " + BdTable_Pessoas.NOME_TABELA + "(" + BdTable_Pessoas._ID + ")," +
-                        "PRIMARY KEY (" + CAMPO_ID_FS + ", " + CAMPO_ID_PESSOAS + ")" +
-                        ")"
+                        "FOREIGN KEY (" + CAMPO_ID_PESSOAS + ") REFERENCES " + BdTable_Pessoas.NOME_TABELA + "(" + BdTable_Pessoas._ID + "))"
         );
     }
 
