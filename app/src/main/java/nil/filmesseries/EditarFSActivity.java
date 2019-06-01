@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,6 +30,7 @@ import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class EditarFSActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, PopupMenu.OnMenuItemClickListener {
@@ -361,8 +363,73 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
     @Override
     public Loader onCreateLoader(int id, @Nullable Bundle args) {
 
-        androidx.loader.content.CursorLoader cursorLoader = new androidx.loader.content.CursorLoader(this, FilmesContentProvider.ENDERECO_PESSOAS, BdTable_Pessoas.TODAS_COLUNAS, null, null, BdTable_Pessoas.CAMPO_NOME
-        );
+        BdFsOpenHelper openHelper = new BdFsOpenHelper(this);
+        SQLiteDatabase db = openHelper.getWritableDatabase();
+        BdTable_FS_Pessoas tabelaFS_P = new BdTable_FS_Pessoas(db);
+
+        Cursor cursor = tabelaFS_P.query(BdTable_FS_Pessoas.TODAS_COLUNAS, null, null, null, null, null);
+
+        ArrayList<String> ids = new ArrayList<>();
+
+        FS_Pessoas fs_p = new FS_Pessoas();
+
+        while(cursor.moveToNext()){
+
+            fs_p = FS_Pessoas.fromCursor(cursor);
+
+            if(fs_p.getID_FS() == fs.getID()){
+                ids.add(String.valueOf(fs_p.getID_P()));
+            }
+            Log.d(TAG, "ID filme:" + fs_p.getID_FS());
+            Log.d(TAG, "ID actor:" + fs_p.getID_P());
+        }
+
+        String[] idP = new String[ids.size()];
+        idP = ids.toArray(idP);
+
+        Log.d(TAG, "String[] = " + idP);
+
+        String selection = "";
+
+        Log.d(TAG, "idP.lenght = " + idP.length);
+
+        for(int i = 1;i <= idP.length;i++){
+
+            if(i == idP.length){
+
+                selection += (BdTable_Pessoas._ID + "=?");
+            }else{
+
+                selection += (BdTable_Pessoas._ID + "=? OR ");
+
+            }
+        }
+
+        Log.d(TAG, "selection = " + selection + ".");
+
+        androidx.loader.content.CursorLoader cursorLoader;
+
+        if(idP.length != 0){
+
+            cursorLoader = new androidx.loader.content.CursorLoader(
+                    this,
+                    FilmesContentProvider.ENDERECO_PESSOAS,
+                    BdTable_Pessoas.TODAS_COLUNAS,
+                    selection,
+                    idP,
+                    BdTable_Pessoas.CAMPO_NOME
+            );
+        }else {
+
+            cursorLoader = new androidx.loader.content.CursorLoader(
+                    this,
+                    FilmesContentProvider.ENDERECO_PESSOAS,
+                    BdTable_Pessoas.TODAS_COLUNAS,
+                    BdTable_Pessoas._ID + "=?",
+                    new String[]{"0"},
+                    BdTable_Pessoas.CAMPO_NOME
+            );
+        }
 
         return cursorLoader;
     }
@@ -485,7 +552,9 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
                 return true;
             case R.id.action_Adicionar_P_FS:
 
-                Toast.makeText(this, "Add a person", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, LinkPtoFSActivity.class);
+                intent.putExtra("FS", fs);
+                startActivity(intent);
                 return true;
             default:
 

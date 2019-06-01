@@ -11,6 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".LinkPtoFSActivity"
+            android:label="@string/title_activity_link_pto_fs"
+            android:parentActivityName=".EditarFSActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nil.filmesseries.EditarFSActivity" />
+        </activity>
+        <activity
             android:name=".GeneroActivity"
             android:label="@string/title_activity_genero"
             android:parentActivityName=".MainActivity"
@@ -98,7 +107,6 @@
             android:name=".FilmesContentProvider"
             android:authorities="nil.filmesseries"
             android:exported="false" />
-
     </application>
 
 </manifest>

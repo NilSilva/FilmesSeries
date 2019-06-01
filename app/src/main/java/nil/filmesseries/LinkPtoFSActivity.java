@@ -1,13 +1,13 @@
 package nil.filmesseries;
 
 import android.content.Context;
+import android.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.CursorAdapter;
-import android.widget.Spinner;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,73 +15,51 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class GerirFSActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.CursorAdapter;
+import android.widget.Toast;
+
+public class LinkPtoFSActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     //Declaração de objetos e variaveis
-    private String TAG = "GerirFSActivity";
+    private String TAG = "EditarFSActivity";
 
-    private static final int ID_CURSOR_LOADER_FS = 0;
+    private static final int ID_CURSOR_LOADER_PESSOAS = 0;
 
-    private RecyclerView recyclerViewFS;
-    private AdaptadorFilmesSeries adaptadorFS;
+    private RecyclerView recyclerViewP;
+    private AdaptadorPessoas adaptadorP;
 
-
-    private Spinner spins;
+    private filmesSeries fs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gerir_fs);
+        setContentView(R.layout.activity_link_p_to_fs);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //inicialização dos objetos
-        spins = findViewById(R.id.GerirFSSpinner);
+        Intent intent = getIntent();
+        fs = intent.getParcelableExtra("FS");
 
-        //Reinicia o loader quando o item selecionado do spinner muda
-        spins.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                onResume();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        //inicialização do loader
-        getSupportLoaderManager().initLoader(ID_CURSOR_LOADER_FS, null, this);
-
-        recyclerViewFS = (RecyclerView) findViewById(R.id.recyclerViewFS);
-        adaptadorFS = new AdaptadorFilmesSeries(this);
-        recyclerViewFS.setAdapter(adaptadorFS);
-        recyclerViewFS.setLayoutManager(new LinearLayoutManager(this));
-    }
-
-    private void restartLoader() {
-        getSupportLoaderManager().restartLoader(ID_CURSOR_LOADER_FS, null, this);
+        getSupportLoaderManager().initLoader(ID_CURSOR_LOADER_PESSOAS, null, this);
+        recyclerViewP = (RecyclerView) findViewById(R.id.recyclerViewAdicionarPaFS);
+        adaptadorP = new AdaptadorPessoas(this, fs);
+        recyclerViewP.setAdapter(adaptadorP);
+        recyclerViewP.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
     protected void onResume() {
-        getSupportLoaderManager().restartLoader(ID_CURSOR_LOADER_FS, null, this);
+
+        getSupportLoaderManager().restartLoader(ID_CURSOR_LOADER_PESSOAS, null, this);
 
         super.onResume();
-    }
-
-    public void AdicionarFS(View view) {
-
-        Intent intent = new Intent(this, AdicionarFSActivity.class);
-        startActivity(intent);
     }
 
     /**
@@ -97,26 +75,14 @@ public class GerirFSActivity extends AppCompatActivity implements LoaderManager.
     @Override
     public Loader onCreateLoader(int id, @Nullable Bundle args) {
 
-        CursorLoader cursorLoader;
-
-        spins = findViewById(R.id.GerirFSSpinner);
-
-        if (spins.getSelectedItemPosition() == 2) {
-
-            cursorLoader = new CursorLoader(
-                    this, FilmesContentProvider.ENDERECO_FS, BdTable_Filmes_series.TODAS_COLUNAS, BdTable_Filmes_series.CAMPO_FORMATO + "=?", new String[]{"0"}, BdTable_Filmes_series.CAMPO_NOME
-            );
-        } else if (spins.getSelectedItemPosition() == 1) {
-
-            cursorLoader = new CursorLoader(
-                    this, FilmesContentProvider.ENDERECO_FS, BdTable_Filmes_series.TODAS_COLUNAS, BdTable_Filmes_series.CAMPO_FORMATO + "=?", new String[]{"1"}, BdTable_Filmes_series.CAMPO_NOME
-            );
-        } else {
-
-            cursorLoader = new CursorLoader(
-                    this, FilmesContentProvider.ENDERECO_FS, BdTable_Filmes_series.TODAS_COLUNAS, null, null, BdTable_Filmes_series.CAMPO_NOME
-            );
-        }
+        androidx.loader.content.CursorLoader cursorLoader = new androidx.loader.content.CursorLoader(
+                this,
+                FilmesContentProvider.ENDERECO_PESSOAS,
+                BdTable_Pessoas.TODAS_COLUNAS,
+                null,
+                null,
+                BdTable_Pessoas.CAMPO_NOME
+        );
 
         return cursorLoader;
     }
@@ -164,7 +130,8 @@ public class GerirFSActivity extends AppCompatActivity implements LoaderManager.
      */
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        adaptadorFS.setCursor(data);
+
+        adaptadorP.setCursor(data);
     }
 
     /**
@@ -178,6 +145,30 @@ public class GerirFSActivity extends AppCompatActivity implements LoaderManager.
      */
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        adaptadorFS.setCursor(null);
+
+        adaptadorP.setCursor(null);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_link_p_to_fs, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        if (id == R.id.action_link_p_to_fs_save) {
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

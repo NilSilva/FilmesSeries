@@ -98,5 +98,6 @@
     <string name="Filme">Movie</string>
     <string name="Serie">TV show</string>
     <string name="fields_mandatory">All fields are mandatory.</string>
+    <string name="title_activity_link_pto_fs">LinkPtoFSActivity</string>
 
 </resources>

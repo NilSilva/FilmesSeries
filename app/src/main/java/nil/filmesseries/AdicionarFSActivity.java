@@ -1,6 +1,8 @@
 package nil.filmesseries;
 
+import android.content.ContentUris;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -230,7 +232,10 @@ public class AdicionarFSActivity extends AppCompatActivity {
         //-------------------------------------------Se não existitem erros fechar a activity-------------------------------------------
         if (!Erros) {
 
-            inserirBD(FS);
+            Uri uri = getContentResolver().insert(FilmesContentProvider.ENDERECO_FS, FS.getContentValues());
+            long id = ContentUris.parseId(uri);
+            Log.d(TAG, "id ao inserir: " + id);
+            //inserirBD(FS);
             Toast.makeText(this, "Data successfully saved", Toast.LENGTH_SHORT).show();
             finish();
         }

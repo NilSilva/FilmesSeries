@@ -3,6 +3,7 @@ package nil.filmesseries;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -154,6 +155,8 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesS
 
             Intent intent = new Intent(context, EditarFSActivity.class);
             intent.putExtra("FS", fs);
+
+            Log.d(TAG, "id do fs - " + fs.getID());
 
             context.startActivity(intent);
         }

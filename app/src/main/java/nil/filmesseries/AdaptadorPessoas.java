@@ -3,12 +3,13 @@ package nil.filmesseries;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,9 +20,16 @@ public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.View
 
     private Cursor cursor;
     private Context context;
+    private filmesSeries fs;
 
     public AdaptadorPessoas(Context context) {
 
+        this.context = context;
+    }
+
+    public AdaptadorPessoas(Context context, filmesSeries fs) {
+
+        this.fs = fs;
         this.context = context;
     }
 
@@ -58,7 +66,15 @@ public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.View
     @Override
     public ViewHolderP onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View itemP = LayoutInflater.from(context).inflate(R.layout.item_pessoa, parent, false);
+        View itemP;
+
+        if (context instanceof EditarFSActivity) {
+
+            itemP = LayoutInflater.from(context).inflate(R.layout.item_p_fs, parent, false);
+        } else {
+
+            itemP = LayoutInflater.from(context).inflate(R.layout.item_pessoa, parent, false);
+        }
 
         return new ViewHolderP(itemP);
     }
@@ -108,7 +124,7 @@ public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.View
         return cursor.getCount();
     }
 
-    //private static ViewHolderP viewHolderFSSelecionado = null;
+    private static ViewHolderP viewHolderPSelecionado = null;
 
     public class ViewHolderP extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -143,10 +159,39 @@ public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.View
         @Override
         public void onClick(View v) {
 
-            Intent intent = new Intent(context, EditPeopleActivity.class);
-            intent.putExtra("P", p);
+            if(context instanceof LinkPtoFSActivity){
 
-            context.startActivity(intent);
+                //TODO: adicionar varios atores de uma so vez
+
+                BdFsOpenHelper openHelper = new BdFsOpenHelper(context);
+                SQLiteDatabase db = openHelper.getWritableDatabase();
+
+                BdTable_FS_Pessoas tabela = new BdTable_FS_Pessoas(db);
+
+                FS_Pessoas fs_p = new FS_Pessoas();
+
+                fs_p.setID_P(p.getID());
+                fs_p.setID_FS(fs.getID());
+
+                tabela.insert(fs_p.getContentValues());
+
+                Log.d(TAG, "filmes id: " + fs.getID());
+
+                ((LinkPtoFSActivity) context).finish();
+            }else {
+                Intent intent = new Intent(context, EditPeopleActivity.class);
+                intent.putExtra("P", p);
+
+                context.startActivity(intent);
+            }
+        }
+
+        private void seleciona() {
+            itemView.setBackgroundResource(R.color.colorItemSelecionado);
+        }
+
+        private void desseleciona() {
+            itemView.setBackgroundResource(android.R.color.white);
         }
     }
 }
