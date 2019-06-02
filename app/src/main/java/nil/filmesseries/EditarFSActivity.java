@@ -49,12 +49,12 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
     private Spinner spins;
     private filmesSeries fs;
 
-    private boolean flag = false;
-
     private static final int ID_CURSOR_LOADER_PESSOAS = 0;
 
     private RecyclerView recyclerViewP;
     private AdaptadorPessoas adaptadorP;
+
+    private boolean flag = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -200,7 +200,9 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
         finish();
     }
 
-    public void Save() {
+    public void Save(View view) {
+
+        //TODO: esconder opções de numero de episodios se for filme
 
         String textoCampo;
         boolean Erros = false;
@@ -275,6 +277,7 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
         //-------------------------------------------Se não existitem erros fechar a activity-------------------------------------------
         if (!Erros) {
 
+            //getContentResolver().update(FilmesContentProvider.ENDERECO_FS, fs.getContentValues(), BdTable_Filmes_series._ID, new String[]{String.valueOf(fs.getID())});
             EditarBD();
             finish();
             Toast.makeText(this, "Data successfully saved", Toast.LENGTH_SHORT).show();
@@ -378,10 +381,11 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
             fs_p = FS_Pessoas.fromCursor(cursor);
 
             if(fs_p.getID_FS() == fs.getID()){
+
                 ids.add(String.valueOf(fs_p.getID_P()));
+                Log.d(TAG, "ID filme:" + fs_p.getID_FS());
+                Log.d(TAG, "ID actor:" + fs_p.getID_P());
             }
-            Log.d(TAG, "ID filme:" + fs_p.getID_FS());
-            Log.d(TAG, "ID actor:" + fs_p.getID_P());
         }
 
         String[] idP = new String[ids.size()];
@@ -501,17 +505,9 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
         PopupMenu popup = new PopupMenu(this, view);
         popup.setOnMenuItemClickListener(this);
         popup.inflate(R.menu.menu_gerir_fs);
-
-        if (flag) {
-
-            popup.getMenu().getItem(0).setVisible(false);
-            popup.getMenu().getItem(1).setVisible(true);
-        } else {
-
-            popup.getMenu().getItem(0).setVisible(true);
-            popup.getMenu().getItem(1).setVisible(false);
+        if(flag){
+            popup.getMenu().findItem(R.id.action_editar_FS).setVisible(true);
         }
-
         popup.show();
     }
 
@@ -537,16 +533,21 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
                 spins.setEnabled(true);
                 RadioF.setEnabled(true);
                 RadioS.setEnabled(true);
-                flag = true;
-                showMenu(findViewById(R.id.menuFS));
-                return true;
-            case R.id.action_guardar_FS:
-
-                Save();
+                item.setVisible(false);
                 flag = false;
-                showMenu(findViewById(R.id.menuFS));
+                button.setVisibility(View.VISIBLE);
                 return true;
             case R.id.action_apagar_FS:
+
+                BdFsOpenHelper openHelper = new BdFsOpenHelper(this);
+                SQLiteDatabase db = openHelper.getWritableDatabase();
+                BdTable_Filmes_series tabelaFS = new BdTable_Filmes_series(db);
+                BdTable_FS_Pessoas tabelaFS_P = new BdTable_FS_Pessoas(db);
+
+                tabelaFS.delete(BdTable_Filmes_series._ID + "=?", new String[]{String.valueOf(fs.getID())});
+                tabelaFS_P.delete(BdTable_FS_Pessoas.CAMPO_ID_FS + "=?", new String[]{String.valueOf(fs.getID())});
+
+                finish();
 
                 Toast.makeText(this, "Delete", Toast.LENGTH_SHORT).show();
                 return true;

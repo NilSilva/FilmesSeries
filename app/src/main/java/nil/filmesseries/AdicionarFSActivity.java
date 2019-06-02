@@ -139,6 +139,8 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
     public void Save(View view) {
 
+        //TODO: esconder opções de numero de episodios se for filme
+
         //-------------------------------------------Declaração de variaveis-------------------------------------------
         String textoCampo;
         boolean Erros = false;
@@ -235,19 +237,10 @@ public class AdicionarFSActivity extends AppCompatActivity {
             Uri uri = getContentResolver().insert(FilmesContentProvider.ENDERECO_FS, FS.getContentValues());
             long id = ContentUris.parseId(uri);
             Log.d(TAG, "id ao inserir: " + id);
-            //inserirBD(FS);
+
             Toast.makeText(this, "Data successfully saved", Toast.LENGTH_SHORT).show();
             finish();
         }
-    }
-
-    private void inserirBD(filmesSeries fs) {
-
-        BdFsOpenHelper openHelper = new BdFsOpenHelper(this);
-        SQLiteDatabase db = openHelper.getWritableDatabase();
-
-        BdTable_Filmes_series tabelaFS = new BdTable_Filmes_series(db);
-        tabelaFS.insert(fs.getContentValues());
     }
 
     public void ClearError(View view) {
