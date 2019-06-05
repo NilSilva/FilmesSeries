@@ -1,9 +1,12 @@
 package nil.filmesseries;
 
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -35,6 +38,8 @@ public class GeneroActivity extends AppCompatActivity implements LoaderManager.L
 
     Spinner spinner1;
     Spinner spinner2;
+
+    Uri Endereco;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -184,7 +189,9 @@ public class GeneroActivity extends AppCompatActivity implements LoaderManager.L
             editTextCampo.clearFocus();
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-            getContentResolver().insert(FilmesContentProvider.ENDERECO_GENERO, g.getContentValues());
+            Uri uri = getContentResolver().insert(FilmesContentProvider.ENDERECO_GENERO, g.getContentValues());
+            long id = ContentUris.parseId(uri);
+            Log.d(TAG, "id inserir - " + id);
             onResume();
             Toast.makeText(this, "Genero adicionado", Toast.LENGTH_SHORT).show();
         }
@@ -199,30 +206,27 @@ public class GeneroActivity extends AppCompatActivity implements LoaderManager.L
         TextView errorText = (TextView) spin.getSelectedView();
 
         //-------------------------------------------Construção do AlertDialog-------------------------------------------
-        if (spin.getSelectedItemPosition() == 0) {
 
-            errorText.setError("");
-            errorText.setText(getString(R.string.Spin_erro_genero));
-        }else {
+        builder.setTitle(getString(R.string.Are_you_sure));
+        builder.setMessage("This will delete this person.");
+        builder.setPositiveButton(getString(R.string.Yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-            builder.setTitle(getString(R.string.Are_you_sure));
-            builder.setMessage("This will delete this person.");
-            builder.setPositiveButton(getString(R.string.Yes), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+                Endereco = Uri.withAppendedPath(FilmesContentProvider.ENDERECO_GENERO, String.valueOf(spinner1.getSelectedItemId()));
+                int i = getContentResolver().delete(Endereco, null, null);
+                Log.d(TAG, "numero de linhas - " + i);
+                Log.d(TAG, "id apagar - " + String.valueOf(spinner1.getSelectedItemId()));
+                onResume();
+            }
+        });
+        builder.setNegativeButton(getString(R.string.No), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-                    spin.setSelection(0);
-                    Toast.makeText(GeneroActivity.this, "Genero removido", Toast.LENGTH_SHORT).show();
-                }
-            });
-            builder.setNegativeButton(getString(R.string.No), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                }
-            });
-            builder.show();
-        }
+            }
+        });
+        builder.show();
     }
 
     public void Save(View view) {
@@ -231,19 +235,21 @@ public class GeneroActivity extends AppCompatActivity implements LoaderManager.L
         EditText editTextCampo = findViewById(R.id.editTextEditarG);
         String textoCampo = editTextCampo.getText().toString();
 
-        //ve se foi introduzido um nome
-        if (textoCampo.isEmpty()) {
+        editTextCampo.setText("");
+        editTextCampo.clearFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
-            editTextCampo.setError("Add a name");
-            editTextCampo.requestFocus();
-        } else {
+        Generos g = new Generos();
 
-            editTextCampo.setText("");
-            editTextCampo.setError(null);
-            editTextCampo.clearFocus();
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-            Toast.makeText(this, "Alteração guardada", Toast.LENGTH_SHORT).show();
-        }
+        g.setNome(textoCampo);
+
+        Endereco = Uri.withAppendedPath(FilmesContentProvider.ENDERECO_GENERO, String.valueOf(spinner2.getSelectedItemId()));
+        int i = getContentResolver().update(Endereco, g.getContentValues(), null, null);
+        Log.d(TAG, "numero de linhas - " + i);
+        Log.d(TAG, "id editar - " + spinner1.getSelectedItemId());
+        onResume();
+
+        Toast.makeText(this, "Alteração guardada", Toast.LENGTH_SHORT).show();
     }
 }
