@@ -10,6 +10,7 @@
     tools:showIn="@layout/activity_genero">
 
     <ScrollView
+        android:id="@+id/scrollViewG"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margem_padrao"
@@ -78,8 +79,7 @@
                     android:id="@+id/spinnerApagarG"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:entries="@array/Select_genero" />
+                    android:layout_weight="1" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -97,8 +97,7 @@
                 android:id="@+id/spinnerEditarG"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:entries="@array/Select_genero" />
+                android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -126,6 +125,16 @@
             </LinearLayout>
 
         </LinearLayout>
+
     </ScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewGenero"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollViewG" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

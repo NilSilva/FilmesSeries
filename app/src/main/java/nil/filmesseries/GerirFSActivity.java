@@ -30,7 +30,6 @@ public class GerirFSActivity extends AppCompatActivity implements LoaderManager.
     private RecyclerView recyclerViewFS;
     private AdaptadorFilmesSeries adaptadorFS;
 
-
     private Spinner spins;
 
     @Override

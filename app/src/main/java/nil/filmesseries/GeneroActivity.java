@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class GeneroActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -26,6 +29,12 @@ public class GeneroActivity extends AppCompatActivity implements LoaderManager.L
     private String TAG = "GeneroActivity";
 
     private static final int ID_CURSO_LOADER_GENEROS = 0;
+
+    private RecyclerView recyclerViewG;
+    private AdaptadorGeneros adaptadorG;
+
+    Spinner spinner1;
+    Spinner spinner2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +45,28 @@ public class GeneroActivity extends AppCompatActivity implements LoaderManager.L
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        spinner1 = findViewById(R.id.spinnerApagarG);
+        spinner2 = findViewById(R.id.spinnerEditarG);
+
+        //inicialização do loader
         getSupportLoaderManager().initLoader(ID_CURSO_LOADER_GENEROS, null, this);
+
+        recyclerViewG = findViewById(R.id.recyclerViewGenero);
+        adaptadorG = new AdaptadorGeneros(this);
+        recyclerViewG.setAdapter(adaptadorG);
+        recyclerViewG.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void atualizaSpinner(Cursor cursor) {
+
+        SimpleCursorAdapter Adaptador = new SimpleCursorAdapter(
+                this,
+                android.R.layout.simple_list_item_1, cursor,
+                new String[]{BdTable_Genero.CAMPO_NOME},
+                new int[]{android.R.id.text1}
+        );
+        spinner1.setAdapter(Adaptador);
+        spinner2.setAdapter(Adaptador);
     }
 
     @Override
@@ -58,7 +88,13 @@ public class GeneroActivity extends AppCompatActivity implements LoaderManager.L
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        CursorLoader cursorLoader = new CursorLoader(this, FilmesContentProvider.ENDERECO_GENERO, BdTable_Genero.TODAS_COLUNAS, null, null, BdTable_Genero.CAMPO_NOME
+        CursorLoader cursorLoader = new CursorLoader(
+                this,
+                FilmesContentProvider.ENDERECO_GENERO,
+                BdTable_Genero.TODAS_COLUNAS,
+                null,
+                null,
+                BdTable_Genero.CAMPO_NOME
         );
 
         return cursorLoader;
@@ -108,7 +144,8 @@ public class GeneroActivity extends AppCompatActivity implements LoaderManager.L
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
 
-        Toast.makeText(this, "Genero existentes: " + data.getCount(), Toast.LENGTH_LONG).show();
+        atualizaSpinner(data);
+        adaptadorG.setCursor(data);
     }
 
     /**
@@ -123,6 +160,8 @@ public class GeneroActivity extends AppCompatActivity implements LoaderManager.L
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
 
+        atualizaSpinner(null);
+        adaptadorG.setCursor(null);
     }
 
     public void Add(View view) {
@@ -130,19 +169,23 @@ public class GeneroActivity extends AppCompatActivity implements LoaderManager.L
         //-------------------------------------------Declaração de variaveis-------------------------------------------
         EditText editTextCampo = findViewById(R.id.editTextAdicionarG);
         String textoCampo = editTextCampo.getText().toString();
+        Generos g = new Generos();
 
         //ve se foi introduzido um nome
-        if (textoCampo.isEmpty()) {
+        if (textoCampo.trim().isEmpty()) {
 
             editTextCampo.setError("Add a name");
             editTextCampo.requestFocus();
         } else {
 
+            g.setNome(textoCampo.trim());
             editTextCampo.setText("");
             editTextCampo.setError(null);
             editTextCampo.clearFocus();
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            getContentResolver().insert(FilmesContentProvider.ENDERECO_GENERO, g.getContentValues());
+            onResume();
             Toast.makeText(this, "Genero adicionado", Toast.LENGTH_SHORT).show();
         }
     }
