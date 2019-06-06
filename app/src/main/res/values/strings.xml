@@ -7,7 +7,7 @@
     <string name="title_activity_add_people">Add a person</string>
     <string name="title_activity_pessoas">People</string>
     <string name="title_activity_delete_fs">Delete</string>
-    <string name="title_activity_editar_fs">Edit movie/tv Show</string>
+    <string name="title_activity_detalhes_fs">Detalhes</string>
     <string name="title_activity_adicionar_fs">Add movie/tv Show</string>
     <string name="title_activity_tudo">All</string>
 
@@ -26,6 +26,7 @@
     <string name="menuGuardarPFS">Save</string>
     <string name="menuApagar">Delete</string>
     <string name="menuAdicionarPFS">Add a person</string>
+    <string name="menuAdicionarGFS">Add a genre</string>
 
     <!--erros na validação-->
     <string name="date_format_error">Use the DD/MM/YYYY format.</string>
@@ -48,6 +49,7 @@
     <string name="HintJob">Job</string>
     <string name="HintBirth">Date of birth</string>
     <string name="HintChageTo">Change to</string>
+    <string name="HintGeneros">Genres:</string>
 
     <!--Butões-->
     <string name="butãoSave">Save</string>
@@ -99,5 +101,6 @@
     <string name="Serie">TV show</string>
     <string name="fields_mandatory">All fields are mandatory.</string>
     <string name="title_activity_link_pto_fs">LinkPtoFSActivity</string>
+    <string name="title_activity_link_gto_fs">LinkGtoFSActivity</string>
 
 </resources>

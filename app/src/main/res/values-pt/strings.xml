@@ -7,7 +7,7 @@
     <string name="title_activity_add_people">Adicionar uma pessoa</string>
     <string name="title_activity_pessoas">Pessoas</string>
     <string name="title_activity_delete_fs">Eliminar</string>
-    <string name="title_activity_editar_fs">Editar Filme/Série</string>
+    <string name="title_activity_detalhes_fs">Editar Filme/Série</string>
     <string name="title_activity_adicionar_fs">Adicionar Filme/Série</string>
     <string name="title_activity_tudo">Tudo</string>
 

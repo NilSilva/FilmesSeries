@@ -15,7 +15,6 @@ public class Pessoas implements Parcelable {
     //Para poder passar num intent------------------------------------------------------------------
 
     public Pessoas() {
-        this.ID = -1;
     }
 
     @Override

@@ -68,7 +68,7 @@ public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.View
 
         View itemP;
 
-        if (context instanceof EditarFSActivity) {
+        if (context instanceof FSDetalhesActivity) {
 
             itemP = LayoutInflater.from(context).inflate(R.layout.item_p_fs, parent, false);
         } else {

@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-<item
-    android:id="@+id/action_editar_FS"
-    android:title="@string/menuEditar"
-    android:visible="false" />
+    <item
+        android:id="@+id/action_editar_FS"
+        android:title="@string/menuEditar"
+        android:visible="false" />
 
-<item
-    android:id="@+id/action_apagar_FS"
-    android:title="@string/menuApagar" />
+    <item
+        android:id="@+id/action_apagar_FS"
+        android:title="@string/menuApagar" />
 
-<item
-    android:id="@+id/action_Adicionar_P_FS"
-    android:title="@string/menuAdicionarPFS" />
+    <item
+        android:id="@+id/action_Adicionar_P_FS"
+        android:title="@string/menuAdicionarPFS" />
+
+    <item
+        android:id="@+id/action_Adicionar_G_FS"
+        android:title="@string/menuAdicionarGFS" />
 
 </menu>

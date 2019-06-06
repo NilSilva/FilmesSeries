@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".EditarFSActivity"
+    tools:context=".FSDetalhesActivity"
     tools:showIn="@layout/activity_editar_fs">
 
     <ScrollView
@@ -64,6 +64,19 @@
                     android:src="@drawable/ic_opcoes" />
 
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/HintGeneros"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_marginLeft="@dimen/margem_padrao"/>
+
+            <TextView
+                android:id="@+id/textViewDetalhesGeneros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margem_padrao"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayoutEditarNomeFS"

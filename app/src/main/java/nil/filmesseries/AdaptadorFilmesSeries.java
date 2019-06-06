@@ -153,7 +153,7 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesS
         @Override
         public void onClick(View v) {
 
-            Intent intent = new Intent(context, EditarFSActivity.class);
+            Intent intent = new Intent(context, FSDetalhesActivity.class);
             intent.putExtra("FS", fs);
 
             Log.d(TAG, "id do fs - " + fs.getID());

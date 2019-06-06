@@ -19,39 +19,42 @@ import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class LinkPtoFSActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+import android.view.View;
+
+public class LinkGtoFSActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     //Declaração de objetos e variaveis
-    private String TAG = "LinkPtoFSActivity";
+    private String TAG = "LinkGtoFSActivity";
 
-    private static final int ID_CURSOR_LOADER_PESSOAS = 0;
+    private static final int ID_CURSOR_LOADER_GENEROS = 0;
 
-    private RecyclerView recyclerViewP;
-    private AdaptadorPessoas adaptadorP;
+    private RecyclerView recyclerViewG;
+    private AdaptadorGeneros adaptadorG;
 
     private filmesSeries fs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_link_p_to_fs);
+        setContentView(R.layout.activity_link_g_to_fs);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
         fs = intent.getParcelableExtra("FS");
 
-        getSupportLoaderManager().initLoader(ID_CURSOR_LOADER_PESSOAS, null, this);
-        recyclerViewP = (RecyclerView) findViewById(R.id.recyclerViewAdicionarPaFS);
-        adaptadorP = new AdaptadorPessoas(this, fs);
-        recyclerViewP.setAdapter(adaptadorP);
-        recyclerViewP.setLayoutManager(new LinearLayoutManager(this));
+        getSupportLoaderManager().initLoader(ID_CURSOR_LOADER_GENEROS, null, this);
+
+        recyclerViewG = findViewById(R.id.recyclerViewAdicionarGaFS);
+        adaptadorG = new AdaptadorGeneros(this, fs);
+        recyclerViewG.setAdapter(adaptadorG);
+        recyclerViewG.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
     protected void onResume() {
 
-        getSupportLoaderManager().restartLoader(ID_CURSOR_LOADER_PESSOAS, null, this);
+        getSupportLoaderManager().restartLoader(ID_CURSOR_LOADER_GENEROS, null, this);
 
         super.onResume();
     }
@@ -67,15 +70,15 @@ public class LinkPtoFSActivity extends AppCompatActivity implements LoaderManage
      */
     @NonNull
     @Override
-    public Loader onCreateLoader(int id, @Nullable Bundle args) {
+    public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
 
         androidx.loader.content.CursorLoader cursorLoader = new androidx.loader.content.CursorLoader(
                 this,
-                FilmesContentProvider.ENDERECO_PESSOAS,
-                BdTable_Pessoas.TODAS_COLUNAS,
+                FilmesContentProvider.ENDERECO_GENERO,
+                BdTable_Genero.TODAS_COLUNAS,
                 null,
                 null,
-                BdTable_Pessoas.CAMPO_NOME
+                BdTable_Genero.CAMPO_NOME
         );
 
         return cursorLoader;
@@ -125,7 +128,7 @@ public class LinkPtoFSActivity extends AppCompatActivity implements LoaderManage
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
 
-        adaptadorP.setCursor(data);
+        adaptadorG.setCursor(data);
     }
 
     /**
@@ -140,29 +143,6 @@ public class LinkPtoFSActivity extends AppCompatActivity implements LoaderManage
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
 
-        adaptadorP.setCursor(null);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_link_p_to_fs, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        if (id == R.id.action_link_p_to_fs_save) {
-
-        }
-
-        return super.onOptionsItemSelected(item);
+        adaptadorG.setCursor(null);
     }
 }

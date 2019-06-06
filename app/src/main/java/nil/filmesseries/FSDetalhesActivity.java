@@ -17,6 +17,7 @@ import android.widget.PopupMenu;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,10 +34,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class EditarFSActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, PopupMenu.OnMenuItemClickListener {
+public class FSDetalhesActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, PopupMenu.OnMenuItemClickListener {
 
     //Declaração de objetos e variaveis
-    private String TAG = "EditarFSActivity";
+    private String TAG = "FSDetalhesActivity";
 
     private EditText nome;
     private EditText num;
@@ -48,6 +49,7 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
     private RadioButton RadioS;
     private Spinner spins;
     private filmesSeries fs;
+    private TextView generos;
 
     private static final int ID_CURSOR_LOADER_PESSOAS = 0;
 
@@ -91,6 +93,8 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
         RadioS = findViewById(R.id.radioButtonEditarFSSerie);
         RadioS.setEnabled(false);
 
+        generos = findViewById(R.id.textViewDetalhesGeneros);
+
         //controlo do butão para guardar
         //alguma da verificação tambem é feita aqui, nomeadamente ver se os campos estão preenchidos
         nome.addTextChangedListener(Campos);
@@ -129,6 +133,69 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
         recyclerViewP.setLayoutManager(layoutManager);
         adaptadorP = new AdaptadorPessoas(this);
         recyclerViewP.setAdapter(adaptadorP);
+
+        atualizaGeneros();
+    }
+
+    private void atualizaGeneros() {
+
+        Cursor cursor = getContentResolver().query(FilmesContentProvider.ENDERECO_FS_GENERO, null, null, null, null);
+
+        ArrayList<String> ids = new ArrayList<>();
+
+        String stringG = "";
+        FS_Generos fs_g = new FS_Generos();
+
+        while (cursor.moveToNext()){
+
+            fs_g = FS_Generos.fromCursor(cursor);
+            if(fs_g.getID_FS() == fs.getID()){
+
+                ids.add(String.valueOf(fs_g.getID_G()));
+                Log.d(TAG, "ID Genero - " + fs_g.getID_G());
+            }
+        }
+
+        String[] idG = new String[ids.size()];
+        idG = ids.toArray(idG);
+
+        Log.d(TAG, "String[] = " + idG);
+
+        String selection = "";
+
+        Log.d(TAG, "idG.lenght = " + idG.length);
+
+        for(int i = 1;i <= idG.length;i++){
+
+            if(i == idG.length){
+
+                selection += (BdTable_Pessoas._ID + "=?");
+            }else{
+
+                selection += (BdTable_Pessoas._ID + "=? OR ");
+
+            }
+        }
+
+        if (idG.length != 0) {
+            cursor = getContentResolver().query(FilmesContentProvider.ENDERECO_GENERO, null, selection, idG, BdTable_Genero.CAMPO_NOME);
+
+            Generos g = new Generos();
+
+            while (cursor.moveToNext()){
+
+                g = Generos.fromCursor(cursor);
+                if(cursor.isLast()){
+
+                    stringG += String.valueOf(g.getNome());
+                }else{
+
+                    stringG += g.getNome() + ", ";
+                }
+            }
+        }
+
+        generos.setText(stringG);
     }
 
     //é ativado quando o item selecionado no spinner muda
@@ -323,7 +390,7 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                BdFsOpenHelper openHelper = new BdFsOpenHelper(EditarFSActivity.this);
+                BdFsOpenHelper openHelper = new BdFsOpenHelper(FSDetalhesActivity.this);
                 SQLiteDatabase db = openHelper.getWritableDatabase();
 
                 BdTable_Filmes_series tabelaFS = new BdTable_Filmes_series(db);
@@ -331,7 +398,7 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
                 tabelaFS.delete(BdTable_Filmes_series._ID + "=?", new String[]{String.valueOf(fs.getID())});
 
                 finish();
-                Toast.makeText(EditarFSActivity.this, "Entry deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FSDetalhesActivity.this, "Entry deleted", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -349,6 +416,7 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
     protected void onResume() {
 
         getSupportLoaderManager().restartLoader(ID_CURSOR_LOADER_PESSOAS, null, this);
+        atualizaGeneros();
 
         super.onResume();
     }
@@ -522,6 +590,8 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
     @Override
     public boolean onMenuItemClick(MenuItem item) {
 
+        Intent intent;
+
         switch (item.getItemId()) {
 
             case R.id.action_editar_FS:
@@ -553,7 +623,13 @@ public class EditarFSActivity extends AppCompatActivity implements LoaderManager
                 return true;
             case R.id.action_Adicionar_P_FS:
 
-                Intent intent = new Intent(this, LinkPtoFSActivity.class);
+                intent = new Intent(this, LinkPtoFSActivity.class);
+                intent.putExtra("FS", fs);
+                startActivity(intent);
+                return true;
+            case R.id.action_Adicionar_G_FS:
+
+                intent = new Intent(this, LinkGtoFSActivity.class);
                 intent.putExtra("FS", fs);
                 startActivity(intent);
                 return true;

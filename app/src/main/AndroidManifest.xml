@@ -11,13 +11,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".LinkGtoFSActivity"
+            android:label="@string/title_activity_link_gto_fs"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".LinkPtoFSActivity"
             android:label="@string/title_activity_link_pto_fs"
-            android:parentActivityName=".EditarFSActivity"
+            android:parentActivityName=".FSDetalhesActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="nil.filmesseries.EditarFSActivity" />
+                android:value="nil.filmesseries.FSDetalhesActivity" />
         </activity>
         <activity
             android:name=".GeneroActivity"
@@ -70,8 +74,8 @@
             android:parentActivityName=".GerirFSActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".EditarFSActivity"
-            android:label="@string/title_activity_editar_fs"
+            android:name=".FSDetalhesActivity"
+            android:label="@string/title_activity_detalhes_fs"
             android:parentActivityName=".GerirFSActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

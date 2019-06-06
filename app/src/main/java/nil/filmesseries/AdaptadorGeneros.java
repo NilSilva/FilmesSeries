@@ -3,6 +3,7 @@ package nil.filmesseries;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +21,16 @@ public class AdaptadorGeneros extends RecyclerView.Adapter<AdaptadorGeneros.View
 
     private Cursor cursor;
     private Context context;
+    private filmesSeries fs;
 
     public AdaptadorGeneros(Context context) {
 
+        this.context = context;
+    }
+
+    public AdaptadorGeneros(Context context, filmesSeries fs) {
+
+        this.fs = fs;
         this.context = context;
     }
 
@@ -139,7 +147,24 @@ public class AdaptadorGeneros extends RecyclerView.Adapter<AdaptadorGeneros.View
         @Override
         public void onClick(View v) {
 
+            if (context instanceof LinkGtoFSActivity) {
 
+                //TODO: adicionar varios atores de uma so vez
+
+                BdFsOpenHelper openHelper = new BdFsOpenHelper(context);
+                SQLiteDatabase db = openHelper.getWritableDatabase();
+
+                BdTable_FS_Genero tabela = new BdTable_FS_Genero(db);
+
+                FS_Generos fs_G = new FS_Generos();
+
+                fs_G.setID_G(g.getID());
+                fs_G.setID_FS(fs.getID());
+
+                tabela.insert(fs_G.getContentValues());
+
+                ((LinkGtoFSActivity) context).finish();
+            }
         }
     }
 }
