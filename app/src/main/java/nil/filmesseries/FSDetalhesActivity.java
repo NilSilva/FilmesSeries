@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -34,7 +35,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class FSDetalhesActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, PopupMenu.OnMenuItemClickListener {
+public class FSDetalhesActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     //Declaração de objetos e variaveis
     private String TAG = "FSDetalhesActivity";
@@ -56,7 +57,7 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
     private RecyclerView recyclerViewP;
     private AdaptadorPessoas adaptadorP;
 
-    private boolean flag = true;
+    private  Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,30 +70,14 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
 
         //inicialização dos objetos
         nome = findViewById(R.id.editTextEditarNomeFS);
-        nome.setEnabled(false);
-
         num = findViewById(R.id.editTextEditarNumFS);
-        num.setEnabled(false);
-
         epiVistos = findViewById(R.id.editTextEditarEpiVistosFS);
-        epiVistos.setEnabled(false);
-
         data = findViewById(R.id.editTextEditarDataFS);
-        data.setEnabled(false);
-
         button = findViewById(R.id.butãoEditarSaveFS);
-
         RadioG = findViewById(R.id.radioGroupEditarFS);
-
         spins = findViewById(R.id.spinnerEditarEstadoFS);
-        spins.setEnabled(false);
-
         RadioF = findViewById(R.id.radioButtonEditarFSFilme);
-        RadioF.setEnabled(false);
-
         RadioS = findViewById(R.id.radioButtonEditarFSSerie);
-        RadioS.setEnabled(false);
-
         generos = findViewById(R.id.textViewDetalhesGeneros);
 
         //controlo do butão para guardar
@@ -106,6 +91,27 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
 
         Intent intent = getIntent();
         fs = (filmesSeries) intent.getParcelableExtra("FS");
+
+        preencheCampos();
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewP = (RecyclerView) findViewById(R.id.recyclerViewFS_P);
+        recyclerViewP.setLayoutManager(layoutManager);
+        adaptadorP = new AdaptadorPessoas(this);
+        recyclerViewP.setAdapter(adaptadorP);
+
+        atualizaGeneros();
+    }
+
+    private void preencheCampos() {
+
+        nome.setEnabled(false);
+        num.setEnabled(false);
+        epiVistos.setEnabled(false);
+        data.setEnabled(false);
+        spins.setEnabled(false);
+        RadioF.setEnabled(false);
+        RadioS.setEnabled(false);
 
         if (fs.getFormato() == 0) {
 
@@ -127,14 +133,6 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
                 break;
             }
         }
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerViewP = (RecyclerView) findViewById(R.id.recyclerViewFS_P);
-        recyclerViewP.setLayoutManager(layoutManager);
-        adaptadorP = new AdaptadorPessoas(this);
-        recyclerViewP.setAdapter(adaptadorP);
-
-        atualizaGeneros();
     }
 
     private void atualizaGeneros() {
@@ -264,7 +262,14 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
 
     public void Cancel(View view) {
 
-        finish();
+        if(button.getVisibility() == View.VISIBLE){
+
+            menu.findItem(R.id.action_editar_FS).setVisible(true);
+            button.setVisibility(View.INVISIBLE);
+            preencheCampos();
+        }else {
+            finish();
+        }
     }
 
     public void Save(View view) {
@@ -434,11 +439,7 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
     @Override
     public Loader onCreateLoader(int id, @Nullable Bundle args) {
 
-        BdFsOpenHelper openHelper = new BdFsOpenHelper(this);
-        SQLiteDatabase db = openHelper.getWritableDatabase();
-        BdTable_FS_Pessoas tabelaFS_P = new BdTable_FS_Pessoas(db);
-
-        Cursor cursor = tabelaFS_P.query(BdTable_FS_Pessoas.TODAS_COLUNAS, null, null, null, null, null);
+        Cursor cursor = getContentResolver().query(FilmesContentProvider.ENDERECO_FS_PESSOAS, null, null, null, null);
 
         ArrayList<String> ids = new ArrayList<>();
 
@@ -568,31 +569,26 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
         adaptadorP.setCursor(null);
     }
 
-    public void showMenu(View view) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
-        PopupMenu popup = new PopupMenu(this, view);
-        popup.setOnMenuItemClickListener(this);
-        popup.inflate(R.menu.menu_gerir_fs);
-        if(flag){
-            popup.getMenu().findItem(R.id.action_editar_FS).setVisible(true);
-        }
-        popup.show();
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_gerir_fs, menu);
+        this.menu = menu;
+        return true;
     }
 
-    /**
-     * This method will be invoked when a menu item is clicked if the item
-     * itself did not already handle the event.
-     *
-     * @param item the menu item that was clicked
-     * @return {@code true} if the event was handled, {@code false}
-     * otherwise
-     */
     @Override
-    public boolean onMenuItemClick(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
 
         Intent intent;
 
-        switch (item.getItemId()) {
+        switch (id) {
 
             case R.id.action_editar_FS:
 
@@ -604,7 +600,6 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
                 RadioF.setEnabled(true);
                 RadioS.setEnabled(true);
                 item.setVisible(false);
-                flag = false;
                 button.setVisibility(View.VISIBLE);
                 return true;
             case R.id.action_apagar_FS:
@@ -633,9 +628,8 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
                 intent.putExtra("FS", fs);
                 startActivity(intent);
                 return true;
-            default:
-
-                return false;
         }
+
+        return super.onOptionsItemSelected(item);
     }
 }

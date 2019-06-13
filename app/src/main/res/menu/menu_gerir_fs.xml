@@ -3,8 +3,7 @@
 
     <item
         android:id="@+id/action_editar_FS"
-        android:title="@string/menuEditar"
-        android:visible="false" />
+        android:title="@string/menuEditar" />
 
     <item
         android:id="@+id/action_apagar_FS"

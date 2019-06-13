@@ -54,15 +54,6 @@
 
                 </RadioGroup>
 
-                <ImageView
-                    android:id="@+id/menuFS"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="@dimen/margem_padrao"
-                    android:contentDescription="@string/menuAdicionarPFS"
-                    android:onClick="showMenu"
-                    android:src="@drawable/ic_opcoes" />
-
             </LinearLayout>
 
             <TextView
