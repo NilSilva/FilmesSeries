@@ -3,7 +3,11 @@ package nil.filmesseries;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +29,11 @@ public class GerirPActivity extends AppCompatActivity implements LoaderManager.L
     private RecyclerView recyclerViewP;
     private AdaptadorPessoas adaptadorP;
 
+    private EditText nome;
+
+    private String selection = BdTable_Pessoas.CAMPO_NOME + " Like ?";
+    private String[] selectionArg = {"null"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -33,6 +42,25 @@ public class GerirPActivity extends AppCompatActivity implements LoaderManager.L
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        nome = findViewById(R.id.editTextGerirNomeP);
+        nome.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                selectionArg[0] = "%" + nome.getText().toString().trim() + "%";
+                onResume();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         //inicialização do loader
         getSupportLoaderManager().initLoader(ID_CURSOR_LOADER_PESSOAS, null, this);
@@ -62,8 +90,29 @@ public class GerirPActivity extends AppCompatActivity implements LoaderManager.L
     @NonNull
     @Override
     public Loader onCreateLoader(int id, @Nullable Bundle args) {
-        CursorLoader cursorLoader = new CursorLoader(this, FilmesContentProvider.ENDERECO_PESSOAS, BdTable_Pessoas.TODAS_COLUNAS, null, null, BdTable_Pessoas.CAMPO_NOME
-        );
+        CursorLoader cursorLoader;
+
+        Log.d(TAG, "sel - " + selection);
+
+        if (!selectionArg[0].equals("null")) {
+            cursorLoader = new CursorLoader(
+                    this,
+                    FilmesContentProvider.ENDERECO_PESSOAS,
+                    BdTable_Pessoas.TODAS_COLUNAS,
+                    selection,
+                    selectionArg,
+                    BdTable_Pessoas.CAMPO_NOME
+            );
+        }else{
+            cursorLoader = new CursorLoader(
+                    this,
+                    FilmesContentProvider.ENDERECO_PESSOAS,
+                    BdTable_Pessoas.TODAS_COLUNAS,
+                    null,
+                    null,
+                    BdTable_Pessoas.CAMPO_NOME
+            );
+        }
 
         return cursorLoader;
     }
