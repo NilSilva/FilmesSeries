@@ -1,17 +1,17 @@
 <resources>
     <!--Nome da app e das atividades-->
     <string name="app_name">Movies &amp; TV shows</string>
-    <string name="title_activity_genero">Genre</string>
-    <string name="title_activity_delete_people">Delete</string>
-    <string name="title_activity_edit_people">Edit</string>
+    <string name="title_activity_genero">Manage Genres</string>
+    <string name="title_activity_delete_people">Delete a person</string>
+    <string name="title_activity_edit_people">Details</string>
     <string name="title_activity_add_people">Add a person</string>
-    <string name="title_activity_pessoas">People</string>
+    <string name="title_activity_pessoas">Manage People</string>
     <string name="title_activity_delete_fs">Delete</string>
-    <string name="title_activity_detalhes_fs">Detalhes</string>
+    <string name="title_activity_detalhes_fs">Details</string>
     <string name="title_activity_adicionar_fs">Add movie/tv Show</string>
-    <string name="title_activity_tudo">All</string>
-    <string name="title_activity_link_pto_fs">LinkPtoFSActivity</string>
-    <string name="title_activity_link_gto_fs">LinkGtoFSActivity</string>
+    <string name="title_activity_tudo">Manage Movies/TV shows</string>
+    <string name="title_activity_link_pto_fs">Add person</string>
+    <string name="title_activity_link_gto_fs">Add genre</string>
 
     <!--Yes or no-->
     <string name="Yes">Yes</string>
@@ -105,7 +105,7 @@
     <string name="Filme">Movie</string>
     <string name="Serie">TV show</string>
     <string name="fields_mandatory">All fields are mandatory.</string>
-    <string name="title_activity_unlink_pfs">UnlinkPFSActivity</string>
-    <string name="title_activity_unlink_gfs">UnlinkGFSActivity</string>
+    <string name="title_activity_unlink_pfs">Remove a person</string>
+    <string name="title_activity_unlink_gfs">Remove a genre</string>
 
 </resources>

@@ -91,6 +91,20 @@
     <!--Outras coisas-->
     <string name="Filme">Filme</string>
     <string name="Serie">Série</string>
-    <string name="fields_mandatory">Todos os campos são obrigatorios.</string>
+    <string name="fields_mandatory">Todos os campos são obrigatórios.</string>
+    <string name="HintGeneros">Géneros:</string>
+    <string name="butãoVoltar">Voltar</string>
+    <string name="deletePessoa">Isto vai apagar esta pessoa</string>
+    <string name="menuAdicionarGFS">Adicionar um género</string>
+    <string name="menuAdicionarPFS">Adicionar uma pessoa</string>
+    <string name="menuApagar">Apagar</string>
+    <string name="menuEditar">Editar</string>
+    <string name="menuEleminarPFS">Remover uma pessoa</string>
+    <string name="menuGuardarPFS">Guardar</string>
+    <string name="menuRemoverGFS">Remover um género</string>
+    <string name="title_activity_link_gto_fs">Adicionar género</string>
+    <string name="title_activity_link_pto_fs">Adicionar uma pessoa</string>
+    <string name="title_activity_unlink_gfs">Remover um género</string>
+    <string name="title_activity_unlink_pfs">Remover uma pessoa</string>
 
 </resources>
