@@ -83,8 +83,7 @@ public class EditPeopleActivity extends AppCompatActivity {
             butaoCancelar.setText(R.string.butãoCancel);
             return true;
         } else if (id == R.id.action_apagar_P) {
-            Intent intent = new Intent(this, GerirPActivity.class);
-            startActivity(intent);
+            Delete();
         }
 
         return super.onOptionsItemSelected(item);
@@ -193,7 +192,7 @@ public class EditPeopleActivity extends AppCompatActivity {
         data.setEnabled(false);
     }
 
-    public void Delete(View view) {
+    public void Delete() {
 
         //-------------------------------------------Declaração de variaveis-------------------------------------------
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
