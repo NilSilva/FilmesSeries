@@ -58,7 +58,6 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
 
     private  Menu menu;
 
-
     private Button butaoCancelar;
 
     @Override

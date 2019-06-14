@@ -71,36 +71,25 @@
             app:met_mask="##/##/####" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/butãoEditar_Guardar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margem_padrao"
-        android:layout_marginLeft="@dimen/margem_padrao"
-        android:layout_marginEnd="@dimen/margem_padrao"
-        android:layout_marginRight="@dimen/margem_padrao"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="Save"
+        android:text="@string/butãoSave"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEditarDataP">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEditarDataP" />
 
-        <Button
-            android:id="@+id/butãoEditar_Guardar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="Save"
-            android:text="@string/butãoEditar" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="Delete"
-            android:text="@string/butãoDelete"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="Cancel"
-            android:text="@string/butãoCancel" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/butãoCancelP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:onClick="Cancel"
+        android:text="@string/butãoVoltar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEditarDataP" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
