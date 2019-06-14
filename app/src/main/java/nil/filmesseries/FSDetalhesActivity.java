@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.PopupMenu;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -59,6 +58,9 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
 
     private  Menu menu;
 
+
+    private Button butaoCancelar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -79,6 +81,7 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
         RadioF = findViewById(R.id.radioButtonEditarFSFilme);
         RadioS = findViewById(R.id.radioButtonEditarFSSerie);
         generos = findViewById(R.id.textViewDetalhesGeneros);
+        butaoCancelar = findViewById(R.id.butãoCancelFS);
 
         //controlo do butão para guardar
         //alguma da verificação tambem é feita aqui, nomeadamente ver se os campos estão preenchidos
@@ -266,6 +269,7 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
 
             menu.findItem(R.id.action_editar_FS).setVisible(true);
             button.setVisibility(View.INVISIBLE);
+            butaoCancelar.setText(R.string.butãoVoltar);
             preencheCampos();
         }else {
             finish();
@@ -517,7 +521,7 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
      * <p>This function is guaranteed to be called prior to the release of
      * the last data that was supplied for this Loader.  At this point
      * you should remove all use of the old data (since it will be released
-     * soon), but should not do your own release of the data since its Loader
+     * soon), butaoCancelar should not do your own release of the data since its Loader
      * owns it and will take care of that.  The Loader will take care of
      * management of its data so you don't have to.  In particular:
      *
@@ -601,6 +605,7 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
                 RadioS.setEnabled(true);
                 item.setVisible(false);
                 button.setVisibility(View.VISIBLE);
+                butaoCancelar.setText(R.string.butãoCancel);
                 return true;
             case R.id.action_apagar_FS:
 
@@ -622,9 +627,21 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
                 intent.putExtra("FS", fs);
                 startActivity(intent);
                 return true;
+            case R.id.action_eleminar_P_FS:
+
+                intent = new Intent(this, UnlinkPFSActivity.class);
+                intent.putExtra("FS", fs);
+                startActivity(intent);
+                return  true;
             case R.id.action_Adicionar_G_FS:
 
                 intent = new Intent(this, LinkGtoFSActivity.class);
+                intent.putExtra("FS", fs);
+                startActivity(intent);
+                return true;
+            case R.id.action_eliminar_G_FS:
+
+                intent = new Intent(this, UnlinkGFSActivity.class);
                 intent.putExtra("FS", fs);
                 startActivity(intent);
                 return true;

@@ -147,9 +147,27 @@ public class AdaptadorGeneros extends RecyclerView.Adapter<AdaptadorGeneros.View
         @Override
         public void onClick(View v) {
 
-            if (context instanceof LinkGtoFSActivity) {
+            if (context instanceof UnlinkGFSActivity) {
 
-                //TODO: adicionar varios atores de uma so vez
+                BdFsOpenHelper openHelper = new BdFsOpenHelper(context);
+                SQLiteDatabase db = openHelper.getWritableDatabase();
+
+                BdTable_FS_Genero tabela = new BdTable_FS_Genero(db);
+
+                FS_Generos fs_g = new FS_Generos();
+
+                fs_g.setID_G(g.getID());
+                fs_g.setID_FS(fs.getID());
+
+                tabela.delete(
+                        BdTable_FS_Genero.CAMPO_ID_FS + "=? AND " + BdTable_FS_Genero.CAMPO_ID_GENERO + "=?",
+                        new String[]{String.valueOf(fs.getID()), String.valueOf(g.getID())}
+                );
+
+                ((UnlinkGFSActivity) context).finish();
+            }else {
+
+                //TODO: adicionar varios generos de uma so vez
 
                 BdFsOpenHelper openHelper = new BdFsOpenHelper(context);
                 SQLiteDatabase db = openHelper.getWritableDatabase();

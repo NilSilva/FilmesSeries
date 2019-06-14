@@ -11,9 +11,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".UnlinkGFSActivity"
+            android:label="@string/title_activity_unlink_gfs"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".UnlinkPFSActivity"
+            android:label="@string/title_activity_unlink_pfs"
+            android:parentActivityName=".FSDetalhesActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nil.filmesseries.FSDetalhesActivity" />
+        </activity>
+        <activity
             android:name=".LinkGtoFSActivity"
             android:label="@string/title_activity_link_gto_fs"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LinkPtoFSActivity"
             android:label="@string/title_activity_link_pto_fs"

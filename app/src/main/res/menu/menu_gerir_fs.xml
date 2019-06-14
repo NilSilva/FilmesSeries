@@ -14,7 +14,15 @@
         android:title="@string/menuAdicionarPFS" />
 
     <item
+        android:id="@+id/action_eleminar_P_FS"
+        android:title="@string/menuEleminarPFS" />
+
+    <item
         android:id="@+id/action_Adicionar_G_FS"
         android:title="@string/menuAdicionarGFS" />
+
+    <item
+        android:id="@+id/action_eliminar_G_FS"
+        android:title="@string/menuRemoverGFS" />
 
 </menu>

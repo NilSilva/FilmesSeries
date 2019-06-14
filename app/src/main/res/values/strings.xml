@@ -10,6 +10,8 @@
     <string name="title_activity_detalhes_fs">Detalhes</string>
     <string name="title_activity_adicionar_fs">Add movie/tv Show</string>
     <string name="title_activity_tudo">All</string>
+    <string name="title_activity_link_pto_fs">LinkPtoFSActivity</string>
+    <string name="title_activity_link_gto_fs">LinkGtoFSActivity</string>
 
     <!--Yes or no-->
     <string name="Yes">Yes</string>
@@ -26,7 +28,9 @@
     <string name="menuGuardarPFS">Save</string>
     <string name="menuApagar">Delete</string>
     <string name="menuAdicionarPFS">Add a person</string>
+    <string name="menuEleminarPFS">Remove a person</string>
     <string name="menuAdicionarGFS">Add a genre</string>
+    <string name="menuRemoverGFS">Remove a genre</string>
 
     <!--erros na validação-->
     <string name="date_format_error">Use the DD/MM/YYYY format.</string>
@@ -58,6 +62,7 @@
     <string name="butãoDelete">Delete</string>
     <string name="butãoAdd">Add</string>
     <string name="butãoSearch">Search</string>
+    <string name="butãoVoltar">Back</string>
 
     <!--Mensagens de confirmação-->
     <string name="Are_you_sure">Are you sure?</string>
@@ -100,7 +105,7 @@
     <string name="Filme">Movie</string>
     <string name="Serie">TV show</string>
     <string name="fields_mandatory">All fields are mandatory.</string>
-    <string name="title_activity_link_pto_fs">LinkPtoFSActivity</string>
-    <string name="title_activity_link_gto_fs">LinkGtoFSActivity</string>
+    <string name="title_activity_unlink_pfs">UnlinkPFSActivity</string>
+    <string name="title_activity_unlink_gfs">UnlinkGFSActivity</string>
 
 </resources>

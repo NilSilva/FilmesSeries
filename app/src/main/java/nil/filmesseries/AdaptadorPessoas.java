@@ -178,7 +178,25 @@ public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.View
                 Log.d(TAG, "filmes id: " + fs.getID());
 
                 ((LinkPtoFSActivity) context).finish();
-            }else {
+            }else if(context instanceof  UnlinkPFSActivity) {
+
+                BdFsOpenHelper openHelper = new BdFsOpenHelper(context);
+                SQLiteDatabase db = openHelper.getWritableDatabase();
+
+                BdTable_FS_Pessoas tabela = new BdTable_FS_Pessoas(db);
+
+                FS_Pessoas fs_p = new FS_Pessoas();
+
+                fs_p.setID_P(p.getID());
+                fs_p.setID_FS(fs.getID());
+
+                tabela.delete(
+                        BdTable_FS_Pessoas.CAMPO_ID_FS + "=? AND " + BdTable_FS_Pessoas.CAMPO_ID_PESSOAS + "=?",
+                        new String[]{String.valueOf(fs.getID()), String.valueOf(p.getID())}
+                );
+
+                ((UnlinkPFSActivity) context).finish();
+            }else{
                 Intent intent = new Intent(context, EditPeopleActivity.class);
                 intent.putExtra("P", p);
 
