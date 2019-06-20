@@ -106,5 +106,7 @@
     <string name="title_activity_link_pto_fs">Adicionar uma pessoa</string>
     <string name="title_activity_unlink_gfs">Remover um género</string>
     <string name="title_activity_unlink_pfs">Remover uma pessoa</string>
+    <string name="proximosFS">Próximas estreias:</string>
+    <string name="proximos">Não temos filmes ou series na base de dados a estrear no próximo mes…</string>
 
 </resources>

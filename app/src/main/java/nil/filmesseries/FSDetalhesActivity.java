@@ -92,12 +92,12 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
         spins.setOnItemSelectedListener(CampoSpinner);
 
         Intent intent = getIntent();
-        fs = (filmesSeries) intent.getParcelableExtra("FS");
+        fs = intent.getParcelableExtra("FS");
 
         preencheCampos();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerViewP = (RecyclerView) findViewById(R.id.recyclerViewFS_P);
+        recyclerViewP = findViewById(R.id.recyclerViewFS_P);
         recyclerViewP.setLayoutManager(layoutManager);
         adaptadorP = new AdaptadorPessoas(this);
         recyclerViewP.setAdapter(adaptadorP);
@@ -462,8 +462,6 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
 
         String[] idP = new String[ids.size()];
         idP = ids.toArray(idP);
-
-        Log.d(TAG, "String[] = " + idP);
 
         String selection = "";
 

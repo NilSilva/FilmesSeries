@@ -81,6 +81,8 @@
     <string name="edit_">Edit:</string>
     <string name="dataNasc_">Date of birth:</string>
     <string name="job_">Job:</string>
+    <string name="proximosFS">Coming soon:</string>
+    <string name="proximos">No Movies or Tv shows in the next month…</string>
 
     <!--String arrays-->
     <string-array name="OpcoesFS">

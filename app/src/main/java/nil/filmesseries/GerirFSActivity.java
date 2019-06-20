@@ -60,14 +60,10 @@ public class GerirFSActivity extends AppCompatActivity implements LoaderManager.
         //inicialização do loader
         getSupportLoaderManager().initLoader(ID_CURSOR_LOADER_FS, null, this);
 
-        recyclerViewFS = (RecyclerView) findViewById(R.id.recyclerViewFS);
+        recyclerViewFS = findViewById(R.id.recyclerViewFS);
         adaptadorFS = new AdaptadorFilmesSeries(this);
         recyclerViewFS.setAdapter(adaptadorFS);
         recyclerViewFS.setLayoutManager(new LinearLayoutManager(this));
-    }
-
-    private void restartLoader() {
-        getSupportLoaderManager().restartLoader(ID_CURSOR_LOADER_FS, null, this);
     }
 
     @Override
