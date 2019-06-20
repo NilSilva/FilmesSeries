@@ -462,6 +462,7 @@ public class BdFilmesSeriesTeste {
         P.setNome(nome);
         P.setFuncao(funcao);
         P.setDataNascimento(data);
+        P.setImagem(new byte[]{});
 
         long id = tabelaP.insert(P.getContentValues());
         assertNotEquals(-1, id);

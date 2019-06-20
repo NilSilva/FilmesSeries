@@ -5,11 +5,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +36,9 @@ public class EditPeopleActivity extends AppCompatActivity {
 
     private Menu menu;
 
+    private ImageView imageView;
+    private byte[] imagem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -49,9 +55,11 @@ public class EditPeopleActivity extends AppCompatActivity {
         data = findViewById(R.id.editTextEditarDataP);
         button = findViewById(R.id.butãoEditar_Guardar);
         butaoCancelar = findViewById(R.id.butãoCancelP);
+        imageView = findViewById(R.id.imageViewP);
 
         Intent intent = getIntent();
         P = intent.getParcelableExtra("P");
+        imagem = intent.getByteArrayExtra("byte");
 
         preencheCampos();
     }
@@ -186,6 +194,8 @@ public class EditPeopleActivity extends AppCompatActivity {
         nome.setText(P.getNome());
         funcao.setText(P.getFuncao());
         data.setText(P.getDataNascimento());
+        Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
+        imageView.setImageBitmap(bitmap);
 
         nome.setEnabled(false);
         funcao.setEnabled(false);

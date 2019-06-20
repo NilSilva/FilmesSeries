@@ -2,8 +2,12 @@ package nil.filmesseries;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 
 public class Pessoas implements Parcelable {
 
@@ -11,6 +15,7 @@ public class Pessoas implements Parcelable {
     private String nome;
     private String funcao;
     private String dataNascimento;
+    private byte[] imagem;
 
     //Para poder passar num intent------------------------------------------------------------------
 
@@ -29,6 +34,7 @@ public class Pessoas implements Parcelable {
         out.writeString(nome);
         out.writeString(funcao);
         out.writeString(dataNascimento);
+        //out.writeByteArray(imagem);
     }
 
     // this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
@@ -49,6 +55,7 @@ public class Pessoas implements Parcelable {
         nome = in.readString();
         funcao = in.readString();
         dataNascimento = in.readString();
+        //in.readByteArray(imagem);
     }
 
     //----------------------------------------------------------------------------------------------
@@ -63,6 +70,14 @@ public class Pessoas implements Parcelable {
 
     public String getNome() {
         return nome;
+    }
+
+    public byte[] getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
     }
 
     public void setNome(String nome) {
@@ -91,6 +106,7 @@ public class Pessoas implements Parcelable {
         valores.put(BdTable_Pessoas.CAMPO_NOME, nome);
         valores.put(BdTable_Pessoas.CAMPO_FUNCAO, funcao);
         valores.put(BdTable_Pessoas.CAMPO_DATA_NASC, dataNascimento);
+        valores.put(BdTable_Pessoas.CAMPO_IMAGEM, imagem);
 
         return valores;
     }
@@ -113,12 +129,17 @@ public class Pessoas implements Parcelable {
                 cursor.getColumnIndex(BdTable_Pessoas.CAMPO_DATA_NASC)
         );
 
+        byte[] imagem = cursor.getBlob(
+                cursor.getColumnIndex(BdTable_Pessoas.CAMPO_IMAGEM)
+        );
+
         Pessoas p = new Pessoas();
 
         p.setID(id);
         p.setNome(nome);
         p.setFuncao(funcao);
         p.setDataNascimento(data);
+        p.setImagem(imagem);
 
         return p;
     }

@@ -1,14 +1,23 @@
 package nil.filmesseries;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Calendar;
 
 public class AddPeopleActivity extends AppCompatActivity {
@@ -19,6 +28,11 @@ public class AddPeopleActivity extends AppCompatActivity {
     private EditText nome;
     private EditText funcao;
     private EditText data;
+
+    private static final int RESULT_IMAGE = 1;
+
+    private ImageView imageView;
+    private byte imageInByte[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +47,8 @@ public class AddPeopleActivity extends AppCompatActivity {
         nome = findViewById(R.id.editTextAdicionarNomeP);
         funcao = findViewById(R.id.editTextAdicionarFunçãoP);
         data = findViewById(R.id.editTextAdicionarDataP);
+
+        imageView = findViewById(R.id.imageViewFSposter);
     }
 
     public void Save(View view) {
@@ -99,6 +115,7 @@ public class AddPeopleActivity extends AppCompatActivity {
         //-------------------------------------------Se não existitem erros fechar a activity-------------------------------------------
         if (!Erros) {
 
+            p.setImagem(imageInByte);
             inserirBD(p);
             Toast.makeText(this, "Data successfully saved", Toast.LENGTH_SHORT).show();
             finish();
@@ -117,5 +134,33 @@ public class AddPeopleActivity extends AppCompatActivity {
     public void Cancel(View view) {
 
         finish();
+    }
+
+    public void getImage(View view) {
+
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, RESULT_IMAGE);
+    }
+
+    /**
+     * Dispatch incoming result to the correct fragment.
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == RESULT_IMAGE && resultCode == RESULT_OK && data != null){
+
+            Uri selectedImage = data.getData();
+            imageView.setImageURI(selectedImage);
+            Bitmap image = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            imageInByte = stream.toByteArray();
+        }
     }
 }

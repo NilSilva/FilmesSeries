@@ -13,7 +13,8 @@ public class BdTable_Pessoas implements BaseColumns {
     public static final String CAMPO_NOME = "Nome";
     public static final String CAMPO_DATA_NASC = "Data_nasc";
     public static final String CAMPO_FUNCAO = "Funcao";
-    public static final String[] TODAS_COLUNAS = new String[]{NOME_TABELA + "." + _ID, CAMPO_NOME, CAMPO_FUNCAO, CAMPO_DATA_NASC};
+    public static final String CAMPO_IMAGEM = "Foto";
+    public static final String[] TODAS_COLUNAS = new String[]{NOME_TABELA + "." + _ID, CAMPO_NOME, CAMPO_FUNCAO, CAMPO_DATA_NASC, CAMPO_IMAGEM};
     private final SQLiteDatabase db;
 
     public BdTable_Pessoas(SQLiteDatabase db) {
@@ -28,7 +29,8 @@ public class BdTable_Pessoas implements BaseColumns {
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         CAMPO_NOME + " TEXT NOT NULL," +
                         CAMPO_FUNCAO + " TEXT NOT NULL," +
-                        CAMPO_DATA_NASC + " TEXT NOT NULL" +
+                        CAMPO_DATA_NASC + " TEXT NOT NULL," +
+                        CAMPO_IMAGEM + " BLOB NOT NULL" +
                         ")"
         );
     }
