@@ -4,14 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.ViewHolderP> {
@@ -130,6 +134,7 @@ public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.View
 
         private TextView textViewNome;
         private TextView textViewFuncao;
+        private ImageView imageViewP;
 
         private Pessoas p;
 
@@ -139,6 +144,7 @@ public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.View
 
             textViewNome = itemView.findViewById(R.id.textViewItem_pessoa_nome);
             textViewFuncao = itemView.findViewById(R.id.textViewItem_pessoa_funcao);
+            imageViewP = itemView.findViewById(R.id.imageViewItemP);
 
             itemView.setOnClickListener(this);
         }
@@ -147,8 +153,13 @@ public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.View
 
             this.p = p;
 
-            textViewNome.setText(p.getNome());
-            textViewFuncao.setText(p.getFuncao());
+            Bitmap bitmap = BitmapFactory.decodeByteArray(p.getImagem(), 0, p.getImagem().length);
+
+            if (!(context instanceof FSDetalhesActivity)) {
+                textViewFuncao.setText(p.getFuncao());
+                textViewNome.setText(p.getNome());
+            }
+            imageViewP.setImageBitmap(bitmap);
         }
 
         /**

@@ -7,7 +7,10 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,9 +19,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 
 public class EditPeopleActivity extends AppCompatActivity {
@@ -38,6 +43,9 @@ public class EditPeopleActivity extends AppCompatActivity {
 
     private ImageView imageView;
     private byte[] imagem;
+
+    private static final int RESULT_IMAGE = 1;
+    private static boolean imagemMudada = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,8 +137,6 @@ public class EditPeopleActivity extends AppCompatActivity {
             Erros = true;
         }
 
-        P.setDataNascimento(textoCampo);
-
         //-------------------------------------------Verificação da função-------------------------------------------
         textoCampo = funcao.getText().toString();
 
@@ -141,8 +147,6 @@ public class EditPeopleActivity extends AppCompatActivity {
             Erros = true;
         }
 
-        P.setFuncao(textoCampo);
-
         //-------------------------------------------Verificação do nome-------------------------------------------
         textoCampo = nome.getText().toString();
 
@@ -152,8 +156,6 @@ public class EditPeopleActivity extends AppCompatActivity {
             nome.requestFocus();
             Erros = true;
         }
-
-        P.setNome(textoCampo);
 
         //-------------------------------------------Se não existitem erros fechar a activity-------------------------------------------
         if (!Erros) {
@@ -173,6 +175,7 @@ public class EditPeopleActivity extends AppCompatActivity {
         P.setNome(nome.getText().toString());
         P.setFuncao(funcao.getText().toString());
         P.setDataNascimento(data.getText().toString());
+        P.setImagem(imagem);
 
         tabelaP.update(P.getContentValues(), BdTable_Pessoas._ID + "=?", new String[]{String.valueOf(P.getID())});
     }
@@ -236,5 +239,36 @@ public class EditPeopleActivity extends AppCompatActivity {
         });
 
         builder.show();
+    }
+
+    public void getImage(View view) {
+
+        if (button.getVisibility() == View.VISIBLE) {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent, RESULT_IMAGE);
+            imagemMudada = true;
+        }
+    }
+
+    /**
+     * Dispatch incoming result to the correct fragment.
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == RESULT_IMAGE && resultCode == RESULT_OK && data != null){
+
+            Uri selectedImage = data.getData();
+            imageView.setImageURI(selectedImage);
+            Bitmap image = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            imagem = stream.toByteArray();
+        }
     }
 }

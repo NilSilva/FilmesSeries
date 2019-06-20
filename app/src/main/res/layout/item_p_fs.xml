@@ -3,22 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="wrap_content"
-    android:layout_height="70dp"
+    android:layout_height="90dp"
     android:gravity="center"
-    android:padding="@dimen/margem_padrao">
+    android:padding="3dp"
+    android:layout_margin="@dimen/margem_padrao"
+    android:background="#22534F4F">
 
-    <TextView
-        android:id="@+id/textViewItem_pessoa_nome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Ryan Reynolds"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-    <TextView
-        android:id="@+id/textViewItem_pessoa_funcao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Ator"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+    <ImageView
+        android:id="@+id/imageViewItemP"
+        android:layout_width="70dp"
+        android:layout_height="110dp"
+        android:layout_margin="1dp" />
 
 </LinearLayout>
