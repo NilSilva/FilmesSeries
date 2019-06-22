@@ -14,6 +14,7 @@ public class filmesSeries implements Parcelable {
     private int nEpiVistos;
     private String data;
     private String status;
+    private byte[] imagem;
 
     //Para poder passar num intent------------------------------------------------------------------
 
@@ -119,6 +120,14 @@ public class filmesSeries implements Parcelable {
         this.status = status;
     }
 
+    public byte[] getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
+    }
+
     public ContentValues getContentValues() {
 
         ContentValues valores = new ContentValues();
@@ -129,6 +138,7 @@ public class filmesSeries implements Parcelable {
         valores.put(BdTable_Filmes_series.CAMPO_EPI_VISTOS, nEpiVistos);
         valores.put(BdTable_Filmes_series.CAMPO_DATA_LANC, data);
         valores.put(BdTable_Filmes_series.CAMPO_ESTADO, status);
+        valores.put(BdTable_Filmes_series.CAMPO_IMAGEM, imagem);
 
         return valores;
     }
@@ -163,6 +173,10 @@ public class filmesSeries implements Parcelable {
                 cursor.getColumnIndex(BdTable_Filmes_series.CAMPO_ESTADO)
         );
 
+        byte[] imagem = cursor.getBlob(
+                cursor.getColumnIndex(BdTable_Filmes_series.CAMPO_IMAGEM)
+        );
+
         filmesSeries fs = new filmesSeries();
 
         fs.setID(id);
@@ -172,6 +186,7 @@ public class filmesSeries implements Parcelable {
         fs.setnEpiVistos(epiVistos);
         fs.setData(data);
         fs.setStatus(estado);
+        fs.setImagem(imagem);
 
         return fs;
     }

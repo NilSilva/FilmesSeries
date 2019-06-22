@@ -3,10 +3,13 @@ package nil.filmesseries;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -114,6 +117,7 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesS
         private TextView textViewNome;
         private TextView textViewFormato;
         private TextView textViewEpisodios;
+        private ImageView imageView;
 
         private filmesSeries fs;
 
@@ -124,6 +128,7 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesS
             textViewNome = itemView.findViewById(R.id.textViewItem_fs_nome);
             textViewFormato = itemView.findViewById(R.id.textViewItem_fs_formato);
             textViewEpisodios = itemView.findViewById(R.id.textViewItem_fs_episodios);
+            imageView = itemView.findViewById(R.id.imageViewItemFS);
 
             itemView.setOnClickListener(this);
         }
@@ -141,6 +146,9 @@ public class AdaptadorFilmesSeries extends RecyclerView.Adapter<AdaptadorFilmesS
 
                 textViewFormato.setText(R.string.Filme);
             }
+
+            Bitmap bitmap = BitmapFactory.decodeByteArray(fs.getImagem(), 0, fs.getImagem().length);
+            imageView.setImageBitmap(bitmap);
 
             textViewEpisodios.setText(ep);
         }

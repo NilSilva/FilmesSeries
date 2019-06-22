@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,6 +12,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class EditPeopleActivity extends AppCompatActivity {
@@ -45,7 +48,9 @@ public class EditPeopleActivity extends AppCompatActivity {
     private byte[] imagem;
 
     private static final int RESULT_IMAGE = 1;
-    private static boolean imagemMudada = false;
+
+    private Bitmap btm;
+    private boolean imagemMuda = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +72,6 @@ public class EditPeopleActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         P = intent.getParcelableExtra("P");
-        imagem = intent.getByteArrayExtra("byte");
 
         preencheCampos();
     }
@@ -181,24 +185,49 @@ public class EditPeopleActivity extends AppCompatActivity {
     }
 
     public void Cancel(View view) {
-        if(button.getVisibility() == View.VISIBLE){
+        if (button.getVisibility() == View.VISIBLE) {
 
             menu.findItem(R.id.action_editar_P).setVisible(true);
             button.setVisibility(View.INVISIBLE);
             butaoCancelar.setText(R.string.butãoVoltar);
             preencheCampos();
-        }else {
+        } else {
             finish();
         }
     }
 
     private void preencheCampos() {
 
+        Cursor cursor = getContentResolver().query(
+                FilmesContentProvider.ENDERECO_PESSOAS,
+                BdTable_Pessoas.TODAS_COLUNAS,
+                BdTable_Pessoas._ID + "=?",
+                new String[]{String.valueOf(P.getID())},
+                null
+        );
+
+        Pessoas p;
+
+        while (cursor.moveToNext()) {
+
+            p = Pessoas.fromCursor(cursor);
+
+            imagem = p.getImagem();
+        }
+
         nome.setText(P.getNome());
         funcao.setText(P.getFuncao());
         data.setText(P.getDataNascimento());
         Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
-        imageView.setImageBitmap(bitmap);
+
+        if (!imagemMuda) {
+
+            imageView.setImageBitmap(bitmap);
+            btm = bitmap;
+        } else {
+
+            imageView.setImageBitmap(btm);
+        }
 
         nome.setEnabled(false);
         funcao.setEnabled(false);
@@ -246,7 +275,7 @@ public class EditPeopleActivity extends AppCompatActivity {
         if (button.getVisibility() == View.VISIBLE) {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(intent, RESULT_IMAGE);
-            imagemMudada = true;
+            imagemMuda = true;
         }
     }
 
@@ -261,11 +290,11 @@ public class EditPeopleActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == RESULT_IMAGE && resultCode == RESULT_OK && data != null){
+        if (requestCode == RESULT_IMAGE && resultCode == RESULT_OK && data != null) {
 
             Uri selectedImage = data.getData();
             imageView.setImageURI(selectedImage);
-            Bitmap image = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+            Bitmap image = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             image.compress(Bitmap.CompressFormat.JPEG, 100, stream);
             imagem = stream.toByteArray();

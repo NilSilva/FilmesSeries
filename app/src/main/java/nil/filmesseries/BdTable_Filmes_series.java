@@ -16,7 +16,17 @@ public class BdTable_Filmes_series implements BaseColumns {
     public static final String CAMPO_EPI_VISTOS = "EpiVistos";
     public static final String CAMPO_DATA_LANC = "Data";
     public static final String CAMPO_ESTADO = "Estado";
-    public static final String[] TODAS_COLUNAS= new String[]{NOME_TABELA + "." + _ID, CAMPO_NOME, CAMPO_FORMATO, CAMPO_NUM, CAMPO_EPI_VISTOS, CAMPO_DATA_LANC, CAMPO_ESTADO};
+    public static final String CAMPO_IMAGEM = "Poster";
+    public static final String[] TODAS_COLUNAS= new String[]{
+            NOME_TABELA + "." + _ID,
+            CAMPO_NOME,
+            CAMPO_FORMATO,
+            CAMPO_NUM,
+            CAMPO_EPI_VISTOS,
+            CAMPO_DATA_LANC,
+            CAMPO_ESTADO,
+            CAMPO_IMAGEM
+    };
     private final SQLiteDatabase db;
 
     public BdTable_Filmes_series(SQLiteDatabase db) {
@@ -34,7 +44,8 @@ public class BdTable_Filmes_series implements BaseColumns {
                         CAMPO_NUM + " INTEGER NOT NULL," +
                         CAMPO_EPI_VISTOS + " INTEGER NOT NULL," +
                         CAMPO_DATA_LANC + " TEXT NOT NULL," +
-                        CAMPO_ESTADO + " TEXT NOT NULL" +
+                        CAMPO_ESTADO + " TEXT NOT NULL," +
+                        CAMPO_IMAGEM + " BLOB NOT NULL" +
                         ")"
         );
     }

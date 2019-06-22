@@ -4,7 +4,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -14,6 +19,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -31,6 +37,7 @@ import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -60,6 +67,14 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
 
     private Button butaoCancelar;
 
+    private ImageView imageView;
+    private byte[] imagem;
+
+    private static final int RESULT_IMAGE = 1;
+
+    private Bitmap btm;
+    private boolean imagemMuda = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -81,6 +96,7 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
         RadioS = findViewById(R.id.radioButtonEditarFSSerie);
         generos = findViewById(R.id.textViewDetalhesGeneros);
         butaoCancelar = findViewById(R.id.butãoCancelFS);
+        imageView = findViewById(R.id.imageViewDetalhesPoster);
 
         //controlo do butão para guardar
         //alguma da verificação tambem é feita aqui, nomeadamente ver se os campos estão preenchidos
@@ -107,6 +123,23 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
 
     private void preencheCampos() {
 
+        Cursor cursor = getContentResolver().query(
+                FilmesContentProvider.ENDERECO_FS,
+                BdTable_Filmes_series.TODAS_COLUNAS,
+                BdTable_Filmes_series._ID + "=?",
+                new String[]{String.valueOf(fs.getID())},
+                null
+        );
+
+        filmesSeries FS;
+
+        while (cursor.moveToNext()) {
+
+            FS = filmesSeries.fromCursor(cursor);
+
+            imagem = FS.getImagem();
+        }
+
         nome.setEnabled(false);
         num.setEnabled(false);
         epiVistos.setEnabled(false);
@@ -127,6 +160,16 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
         num.setText(String.valueOf(fs.getnEpisodios()));
         epiVistos.setText(String.valueOf(fs.getnEpiVistos()));
         data.setText(fs.getData());
+        Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
+
+        if (!imagemMuda) {
+
+            imageView.setImageBitmap(bitmap);
+            btm = bitmap;
+        } else {
+
+            imageView.setImageBitmap(btm);
+        }
 
         for (int i = 1; i < spins.getCount(); i++) {
 
@@ -379,6 +422,7 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
         fs.setnEpiVistos(Integer.parseInt(epiVistos.getText().toString()));
         fs.setData(data.getText().toString());
         fs.setStatus(spins.getSelectedItem().toString());
+        fs.setImagem(imagem);
 
         tabelaFS.update(fs.getContentValues(), BdTable_Filmes_series._ID + "=?", new String[]{String.valueOf(fs.getID())});
     }
@@ -645,5 +689,36 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void getImage(View view) {
+
+        if (button.getVisibility() == View.VISIBLE) {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent, RESULT_IMAGE);
+            imagemMuda = true;
+        }
+    }
+
+    /**
+     * Dispatch incoming result to the correct fragment.
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RESULT_IMAGE && resultCode == RESULT_OK && data != null) {
+
+            Uri selectedImage = data.getData();
+            imageView.setImageURI(selectedImage);
+            Bitmap image = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            imagem = stream.toByteArray();
+        }
     }
 }

@@ -210,7 +210,6 @@ public class AdaptadorPessoas extends RecyclerView.Adapter<AdaptadorPessoas.View
             }else{
                 Intent intent = new Intent(context, EditPeopleActivity.class);
                 intent.putExtra("P", p);
-                intent.putExtra("byte", p.getImagem());
 
                 context.startActivity(intent);
             }

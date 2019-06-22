@@ -499,6 +499,7 @@ public class BdFilmesSeriesTeste {
         FS.setnEpiVistos(epiVistos);
         FS.setData(data);
         FS.setStatus(estado);
+        FS.setImagem(new byte[]{});
 
         long id = tabelaFS.insert(FS.getContentValues());
         assertNotEquals(-1, id);
