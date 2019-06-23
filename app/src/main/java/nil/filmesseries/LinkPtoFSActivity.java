@@ -5,9 +5,13 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CursorAdapter;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,12 +35,36 @@ public class LinkPtoFSActivity extends AppCompatActivity implements LoaderManage
 
     private filmesSeries fs;
 
+    private EditText editTextNome;
+
+    private String selection = BdTable_Pessoas.CAMPO_NOME + " Like ?";
+    private String[] selectionArg = {"null"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_link_p_to_fs);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        editTextNome = findViewById(R.id.textInputLinkPtoFS);
+        editTextNome.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                selectionArg[0] = "%" + editTextNome.getText().toString().trim() + "%";
+                onResume();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         Intent intent = getIntent();
         fs = intent.getParcelableExtra("FS");
@@ -69,14 +97,29 @@ public class LinkPtoFSActivity extends AppCompatActivity implements LoaderManage
     @Override
     public Loader onCreateLoader(int id, @Nullable Bundle args) {
 
-        androidx.loader.content.CursorLoader cursorLoader = new androidx.loader.content.CursorLoader(
-                this,
-                FilmesContentProvider.ENDERECO_PESSOAS,
-                BdTable_Pessoas.TODAS_COLUNAS,
-                null,
-                null,
-                BdTable_Pessoas.CAMPO_NOME
-        );
+        androidx.loader.content.CursorLoader cursorLoader;
+
+        Log.d(TAG, "sel - " + selection);
+
+        if (!selectionArg[0].equals("null")) {
+            cursorLoader = new androidx.loader.content.CursorLoader(
+                    this,
+                    FilmesContentProvider.ENDERECO_PESSOAS,
+                    BdTable_Pessoas.TODAS_COLUNAS,
+                    selection,
+                    selectionArg,
+                    BdTable_Pessoas.CAMPO_NOME
+            );
+        }else{
+            cursorLoader = new androidx.loader.content.CursorLoader(
+                    this,
+                    FilmesContentProvider.ENDERECO_PESSOAS,
+                    BdTable_Pessoas.TODAS_COLUNAS,
+                    null,
+                    null,
+                    BdTable_Pessoas.CAMPO_NOME
+            );
+        }
 
         return cursorLoader;
     }

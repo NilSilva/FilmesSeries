@@ -21,7 +21,8 @@
     <string name="menuMostrarTudo">Movies/TV shows</string>
     <string name="menuMinhaLista">My list</string>
     <string name="menuOpcoes">Settings</string>
-    <string name="menuSobre">About</string>
+    <string name="menuBackup">Backup data base</string>
+    <string name="menuRestore">Restore data base</string>
     <string name="menuPeople">People</string>
     <string name="menuGenre">Genre</string>
     <string name="menuEditar">Edit</string>

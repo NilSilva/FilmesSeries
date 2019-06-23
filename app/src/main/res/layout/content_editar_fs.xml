@@ -37,38 +37,41 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinnerEditarEstadoFS"
         android:text="@string/HintGeneros"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerEditarEstadoFS" />
 
     <TextView
         android:id="@+id/textViewDetalhesGeneros"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerEditarEstadoFS"
-        app:layout_constraintStart_toEndOf="@+id/textView1"
+        android:layout_marginLeft="@dimen/margem_padrao"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView1"
-        android:layout_marginLeft="@dimen/margem_padrao"/>
+        app:layout_constraintStart_toEndOf="@+id/textView1"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerEditarEstadoFS" />
 
     <ImageView
         android:id="@+id/imageViewDetalhesPoster"
         android:layout_width="200dp"
         android:layout_height="300dp"
         android:layout_margin="@dimen/margem_padrao"
-        android:padding="1dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDetalhesGeneros"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="128dp"
+        android:background="#416B6B6B"
+        android:onClick="getImage"
         android:src="@mipmap/no_image_fs"
-        android:background="#6B6B6B"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDetalhesGeneros" />
 
     <RadioGroup
         android:id="@+id/radioGroupEditarFS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDetalhesGeneros"
+        android:orientation="vertical"
         app:layout_constraintStart_toEndOf="@+id/imageViewDetalhesPoster"
-        android:orientation="vertical">
+        app:layout_constraintTop_toBottomOf="@+id/textViewDetalhesGeneros">
 
         <RadioButton
             android:id="@+id/radioButtonEditarFSFilme"
@@ -90,9 +93,10 @@
         android:id="@+id/textInputLayoutEditarNumFS"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupEditarFS"
+        android:layout_margin="@dimen/margem_padrao"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewDetalhesPoster"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupEditarFS">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextEditarNumFS"
@@ -106,9 +110,10 @@
         android:id="@+id/textInputLayoutEditarEpiVistosFS"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEditarNumFS"
+        android:layout_margin="@dimen/margem_padrao"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewDetalhesPoster"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEditarNumFS">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextEditarEpiVistosFS"
@@ -123,9 +128,10 @@
         android:id="@+id/textInputLayoutEditarDataFS"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEditarEpiVistosFS"
+        android:layout_margin="@dimen/margem_padrao"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewDetalhesPoster"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEditarEpiVistosFS">
 
         <com.santalu.maskedittext.MaskEditText
             android:id="@+id/editTextEditarDataFS"
@@ -136,12 +142,24 @@
             app:met_mask="##/##/####" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewFS_P"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewFS_P"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewDetalhesPoster"/>
+        android:layout_margin="@dimen/margem_padrao"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewDetalhesPoster">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewFS_P"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margem_padrao"
+            android:orientation="horizontal"
+            android:padding="3dp" />
+
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/butãoEditarSaveFS"
@@ -151,7 +169,7 @@
         android:text="@string/butãoSave"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewFS_P" />
+        app:layout_constraintTop_toBottomOf="@+id/cardViewFS_P" />
 
     <Button
         android:id="@+id/butãoCancelFS"
@@ -161,6 +179,6 @@
         android:onClick="Cancel"
         android:text="@string/butãoVoltar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewFS_P" />
+        app:layout_constraintTop_toBottomOf="@+id/cardViewFS_P" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

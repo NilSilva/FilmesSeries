@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -17,14 +18,20 @@ import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -74,21 +81,80 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         if (id == R.id.action_mostraTudo) {
             Intent intent = new Intent(this, GerirFSActivity.class);
             startActivity(intent);
-        }else if(id == R.id.action_mostraPessoas){
+        } else if (id == R.id.action_mostraPessoas) {
             Intent intent = new Intent(this, GerirPActivity.class);
             startActivity(intent);
-        }else if(id == R.id.action_genero){
+        } else if (id == R.id.action_genero) {
             Intent intent = new Intent(this, GeneroActivity.class);
             startActivity(intent);
-        }else if(id == R.id.action_aMinhaLista){
-            Toast.makeText(this, "A minha lista", Toast.LENGTH_LONG).show();
-        }else if(id == R.id.action_opcoes){
-            Toast.makeText(this, "Opções", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(this, "Sobre", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.action_aMinhaLista) {
+
+        } else if (id == R.id.action_Backup) {
+            BackUpDB();
+        } else {
+            RestoreDB();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void BackUpDB() {
+        try {
+            File sd = Environment.getExternalStorageDirectory();
+            File data = Environment.getDataDirectory();
+
+            Log.d(TAG, "canWrite - " + sd.canWrite());
+            if (sd.canWrite()) {
+                String currentDBPath = "//data//nil.filmesseries//databases//Fs.db";
+                String backupDBPath = "backupname.db";
+                File currentDB = new File(data, currentDBPath);
+                File backupDB = new File(sd, backupDBPath);
+
+                Log.d(TAG, "exists - " + currentDB.exists());
+                if (currentDB.exists()) {
+                    FileChannel src = new FileInputStream(currentDB).getChannel();
+                    FileChannel dst = new FileOutputStream(backupDB).getChannel();
+                    long i = dst.transferFrom(src, 0, src.size());
+                    Log.d(TAG, "tamanho - " + i);
+                    src.close();
+                    dst.close();
+                }
+            }
+        } catch (Exception e) {
+
+            Log.d(TAG, e + "");
+            Log.d(TAG, "error a fazer backup");
+        }
+    }
+
+    public void RestoreDB() {
+
+        try {
+            File sd = Environment.getExternalStorageDirectory();
+            File data = Environment.getDataDirectory();
+
+            Log.d(TAG, "canWrite - " + data.canWrite());
+            if (data.canWrite()) {
+                String currentDBPath = "//data//nil.filmesseries//databases//Fs.db";
+                String backupDBPath = "backupname.db";
+                File currentDB = new File(data, currentDBPath);
+                File backupDB = new File(sd, backupDBPath);
+
+                Log.d(TAG, "exists - " + currentDB.exists());
+                if (currentDB.exists()) {
+                    FileChannel src = new FileOutputStream(currentDB).getChannel();
+                    FileChannel dst = new FileInputStream(backupDB).getChannel();
+                    long i = dst.transferFrom(src, 0, src.size());
+                    Log.d(TAG, "tamanho - " + i);
+                    src.close();
+                    dst.close();
+                }
+            }
+        } catch (Exception e) {
+
+            Log.d(TAG, e + "");
+            Log.d(TAG, "error a fazer backup");
+        }
     }
 
     @Override
@@ -121,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         Log.d(TAG, "cursor size " + cursor.getCount());
 
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             fs = filmesSeries.fromCursor(cursor);
             data = fs.getData();
 
@@ -142,10 +208,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             Log.d(TAG, calMesSeguinte.getTime() + "");
             Log.d(TAG, cal.compareTo(calMesSeguinte) + "");
 
-            if(cal.before(calMesSeguinte) && cal.after(Calendar.getInstance())){
+            if (cal.before(calMesSeguinte) && cal.after(Calendar.getInstance())) {
 
                 ids.add(String.valueOf(fs.getID()));
-                Log.d(TAG, "data " + fs.getNome() +  " - " + cal.getTime().toString());
+                Log.d(TAG, "data " + fs.getNome() + " - " + cal.getTime().toString());
             }
         }
 
@@ -154,12 +220,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         String selection = "";
 
-        for(int i = 1;i <= idP.length;i++){
+        for (int i = 1; i <= idP.length; i++) {
 
-            if(i == idP.length){
+            if (i == idP.length) {
 
                 selection += (BdTable_Pessoas._ID + "=?");
-            }else{
+            } else {
 
                 selection += (BdTable_Pessoas._ID + "=? OR ");
 
@@ -172,7 +238,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         TextView textView = findViewById(R.id.textViewProximas);
 
-        if(idP.length != 0){
+        if (idP.length != 0) {
 
             textView.setText(R.string.proximosFS);
             textView.setTextColor(Color.BLACK);
@@ -185,7 +251,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                     idP,
                     BdTable_Filmes_series.CAMPO_NOME
             );
-        }else{
+        } else {
 
             textView.setText(R.string.proximos);
             textView.setTextColor(Color.RED);
@@ -200,7 +266,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             );
         }
 
-        return  cursorLoader;
+        return cursorLoader;
     }
 
     /**

@@ -245,6 +245,7 @@ public class AdicionarFSActivity extends AppCompatActivity {
         //-------------------------------------------Se não existitem erros fechar a activity-------------------------------------------
         if (!Erros) {
 
+            convertToByte();
             FS.setImagem(imageInByte);
             Uri uri = getContentResolver().insert(FilmesContentProvider.ENDERECO_FS, FS.getContentValues());
             long id = ContentUris.parseId(uri);
@@ -276,10 +277,14 @@ public class AdicionarFSActivity extends AppCompatActivity {
 
             Uri selectedImage = data.getData();
             imageView.setImageURI(selectedImage);
-            Bitmap image = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            image.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-            imageInByte = stream.toByteArray();
+            convertToByte();
         }
+    }
+
+    private void convertToByte() {
+        Bitmap image = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        imageInByte = stream.toByteArray();
     }
 }

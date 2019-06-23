@@ -7,7 +7,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.Calendar;
 
 public class AddPeopleActivity extends AppCompatActivity {
@@ -49,7 +47,7 @@ public class AddPeopleActivity extends AppCompatActivity {
         funcao = findViewById(R.id.editTextAdicionarFunçãoP);
         data = findViewById(R.id.editTextAdicionarDataP);
 
-        imageView = findViewById(R.id.imageViewFSposter);
+        imageView = findViewById(R.id.imageViewPfoto);
     }
 
     public void Save(View view) {
@@ -116,6 +114,7 @@ public class AddPeopleActivity extends AppCompatActivity {
         //-------------------------------------------Se não existitem erros fechar a activity-------------------------------------------
         if (!Erros) {
 
+            convertToByte();
             p.setImagem(imageInByte);
             inserirBD(p);
             Toast.makeText(this, "Data successfully saved", Toast.LENGTH_SHORT).show();
@@ -158,10 +157,14 @@ public class AddPeopleActivity extends AppCompatActivity {
 
             Uri selectedImage = data.getData();
             imageView.setImageURI(selectedImage);
-            Bitmap image = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            image.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-            imageInByte = stream.toByteArray();
+            convertToByte();
         }
+    }
+
+    private void convertToByte() {
+        Bitmap image = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        imageInByte = stream.toByteArray();
     }
 }

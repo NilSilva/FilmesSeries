@@ -10,14 +10,15 @@
 
     <ImageView
         android:id="@+id/imageViewP"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
+        android:layout_width="200dp"
+        android:layout_height="300dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:onClick="getImage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutEditarNomeP"
@@ -29,8 +30,8 @@
         android:layout_marginEnd="@dimen/margem_padrao"
         android:layout_marginRight="@dimen/margem_padrao"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewP"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageViewP">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextEditarNomeP"
@@ -50,7 +51,7 @@
         android:layout_marginEnd="@dimen/margem_padrao"
         android:layout_marginRight="@dimen/margem_padrao"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewP"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEditarNomeP">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -70,7 +71,7 @@
         android:layout_marginEnd="@dimen/margem_padrao"
         android:layout_marginRight="@dimen/margem_padrao"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewP"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEditarFunçãoP">
 
         <com.santalu.maskedittext.MaskEditText

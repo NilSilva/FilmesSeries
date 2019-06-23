@@ -24,12 +24,13 @@
         android:title="@string/menuMinhaLista"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_opcoes"
-        android:icon="@drawable/ic_settings"
-        android:title="@string/menuOpcoes"
+        android:id="@+id/action_Backup"
+        android:icon="@drawable/ic_backup"
+        android:title="@string/menuBackup"
         app:showAsAction="ifRoom" />
     <item
-        android:icon="@drawable/ic_sobre"
-        android:title="@string/menuSobre"
+        android:id="@+id/action_Restore"
+        android:icon="@drawable/ic_restore"
+        android:title="@string/menuRestore"
         app:showAsAction="ifRoom" />
 </menu>
