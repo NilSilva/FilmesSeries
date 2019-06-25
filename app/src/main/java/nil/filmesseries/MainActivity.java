@@ -88,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             Intent intent = new Intent(this, GeneroActivity.class);
             startActivity(intent);
         } else if (id == R.id.action_aMinhaLista) {
-
         } else if (id == R.id.action_Backup) {
             BackUpDB();
         } else {
@@ -106,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             Log.d(TAG, "canWrite - " + sd.canWrite());
             if (sd.canWrite()) {
                 String currentDBPath = "//data//nil.filmesseries//databases//Fs.db";
-                String backupDBPath = "backupname.db";
+                String backupDBPath = "//FSBackup//FSbackupDB.db";
                 File currentDB = new File(data, currentDBPath);
                 File backupDB = new File(sd, backupDBPath);
 
@@ -129,21 +128,22 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     public void RestoreDB() {
 
+        String currentDBPath = "//data//nil.filmesseries//databases//Fs.db";
+
         try {
             File sd = Environment.getExternalStorageDirectory();
             File data = Environment.getDataDirectory();
+            File currentDB = new File(data, currentDBPath);
 
-            Log.d(TAG, "canWrite - " + data.canWrite());
-            if (data.canWrite()) {
-                String currentDBPath = "//data//nil.filmesseries//databases//Fs.db";
-                String backupDBPath = "backupname.db";
-                File currentDB = new File(data, currentDBPath);
+            Log.d(TAG, "canWrite - " + currentDB.canWrite());
+            if (currentDB.canWrite()) {
+                String backupDBPath = "//FSBackup//FSbackupDB.db";
                 File backupDB = new File(sd, backupDBPath);
 
                 Log.d(TAG, "exists - " + currentDB.exists());
                 if (currentDB.exists()) {
-                    FileChannel src = new FileOutputStream(currentDB).getChannel();
-                    FileChannel dst = new FileInputStream(backupDB).getChannel();
+                    FileChannel dst = new FileOutputStream(currentDB).getChannel();
+                    FileChannel src = new FileInputStream(backupDB).getChannel();
                     long i = dst.transferFrom(src, 0, src.size());
                     Log.d(TAG, "tamanho - " + i);
                     src.close();
