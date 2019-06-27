@@ -19,7 +19,6 @@
     <string name="menuMostrarTudo">Filmes/Series</string>
     <string name="menuMinhaLista">A minha lista</string>
     <string name="menuOpcoes">Opções</string>
-    <string name="menuBackup">Criar backup da base de dados</string>
     <string name="menuPeople">Pessoas</string>
     <string name="menuGenre">Género</string>
 
@@ -108,6 +107,12 @@
     <string name="title_activity_unlink_pfs">Remover uma pessoa</string>
     <string name="proximosFS">Próximas estreias:</string>
     <string name="proximos">Não temos filmes ou series na base de dados a estrear no próximo mes…</string>
-    <string name="menuRestore">Restaurar base de dados</string>
+    <string name="SucessoExportarDB">Base de dados exportada com sucesso</string>
+    <string name="SucessoImportarDB">Base de dados importada com sucesso</string>
+    <string name="butãoBackup">Fazer backup da base de dados</string>
+    <string name="butãoRestore">Restaurar base de dados</string>
+    <string name="exportingDB">Erro a exportar base de dados</string>
+    <string name="importingDB">Erro a importar a base de dados</string>
+    <string name="title_activity_settings">Opções</string>
 
 </resources>

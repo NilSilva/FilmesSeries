@@ -18,19 +18,14 @@
         android:icon="@drawable/ic_genero"
         android:title="@string/menuGenre"
         app:showAsAction="ifRoom" />
-    <item
+    <!--<item
         android:id="@+id/action_aMinhaLista"
         android:icon="@drawable/ic_lista"
         android:title="@string/menuMinhaLista"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom" />-->
     <item
-        android:id="@+id/action_Backup"
-        android:icon="@drawable/ic_backup"
-        android:title="@string/menuBackup"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_Restore"
-        android:icon="@drawable/ic_restore"
-        android:title="@string/menuRestore"
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/menuOpcoes"
         app:showAsAction="ifRoom" />
 </menu>

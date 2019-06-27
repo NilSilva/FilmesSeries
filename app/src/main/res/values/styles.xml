@@ -8,6 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.darkTheme" parent="Theme.AppCompat.DayNight">
+        <item name="colorPrimary">#5A5858</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">#fff</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -16,5 +22,33 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="SucessoBD">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">?attr/colorPrimary</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#fff</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stStrokeWidth">3dp</item>
+        <item name="stStrokeColor">?attr/colorPrimaryDark</item>
+        <item name="stIconStart">@drawable/ic_import_export</item>
+        <item name="stLength">LONG</item>
+        <item name="stGravity">top</item>
+        <item name="stRadius">50dp</item>
+    </style>
+
+    <style name="ErroBD">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#FF0000</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#fff</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stStrokeWidth">3dp</item>
+        <item name="stStrokeColor">#FF0000</item>
+        <item name="stIconStart">@drawable/ic_import_export</item>
+        <item name="stLength">LONG</item>
+        <item name="stGravity">top</item>
+        <item name="stRadius">50dp</item>
+    </style>
 
 </resources>

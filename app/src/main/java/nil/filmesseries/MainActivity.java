@@ -87,74 +87,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         } else if (id == R.id.action_genero) {
             Intent intent = new Intent(this, GeneroActivity.class);
             startActivity(intent);
-        } else if (id == R.id.action_aMinhaLista) {
-        } else if (id == R.id.action_Backup) {
-            BackUpDB();
         } else {
-            RestoreDB();
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void BackUpDB() {
-        try {
-            File sd = Environment.getExternalStorageDirectory();
-            File data = Environment.getDataDirectory();
-
-            Log.d(TAG, "canWrite - " + sd.canWrite());
-            if (sd.canWrite()) {
-                String currentDBPath = "//data//nil.filmesseries//databases//Fs.db";
-                String backupDBPath = "//FSBackup//FSbackupDB.db";
-                File currentDB = new File(data, currentDBPath);
-                File backupDB = new File(sd, backupDBPath);
-
-                Log.d(TAG, "exists - " + currentDB.exists());
-                if (currentDB.exists()) {
-                    FileChannel src = new FileInputStream(currentDB).getChannel();
-                    FileChannel dst = new FileOutputStream(backupDB).getChannel();
-                    long i = dst.transferFrom(src, 0, src.size());
-                    Log.d(TAG, "tamanho - " + i);
-                    src.close();
-                    dst.close();
-                }
-            }
-        } catch (Exception e) {
-
-            Log.d(TAG, e + "");
-            Log.d(TAG, "error a fazer backup");
-        }
-    }
-
-    public void RestoreDB() {
-
-        String currentDBPath = "//data//nil.filmesseries//databases//Fs.db";
-
-        try {
-            File sd = Environment.getExternalStorageDirectory();
-            File data = Environment.getDataDirectory();
-            File currentDB = new File(data, currentDBPath);
-
-            Log.d(TAG, "canWrite - " + currentDB.canWrite());
-            if (currentDB.canWrite()) {
-                String backupDBPath = "//FSBackup//FSbackupDB.db";
-                File backupDB = new File(sd, backupDBPath);
-
-                Log.d(TAG, "exists - " + currentDB.exists());
-                if (currentDB.exists()) {
-                    FileChannel dst = new FileOutputStream(currentDB).getChannel();
-                    FileChannel src = new FileInputStream(backupDB).getChannel();
-                    long i = dst.transferFrom(src, 0, src.size());
-                    Log.d(TAG, "tamanho - " + i);
-                    src.close();
-                    dst.close();
-                }
-            }
-        } catch (Exception e) {
-
-            Log.d(TAG, e + "");
-            Log.d(TAG, "error a fazer backup");
-        }
     }
 
     @Override

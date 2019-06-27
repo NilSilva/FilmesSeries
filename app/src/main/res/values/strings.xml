@@ -12,6 +12,9 @@
     <string name="title_activity_tudo">Manage Movies/TV shows</string>
     <string name="title_activity_link_pto_fs">Add person</string>
     <string name="title_activity_link_gto_fs">Add genre</string>
+    <string name="title_activity_unlink_pfs">Remove a person</string>
+    <string name="title_activity_unlink_gfs">Remove a genre</string>
+    <string name="title_activity_settings">Settings</string>
 
     <!--Yes or no-->
     <string name="Yes">Yes</string>
@@ -21,8 +24,6 @@
     <string name="menuMostrarTudo">Movies/TV shows</string>
     <string name="menuMinhaLista">My list</string>
     <string name="menuOpcoes">Settings</string>
-    <string name="menuBackup">Backup data base</string>
-    <string name="menuRestore">Restore data base</string>
     <string name="menuPeople">People</string>
     <string name="menuGenre">Genre</string>
     <string name="menuEditar">Edit</string>
@@ -33,7 +34,7 @@
     <string name="menuAdicionarGFS">Add a genre</string>
     <string name="menuRemoverGFS">Remove a genre</string>
 
-    <!--erros na validação-->
+    <!--erros-->
     <string name="date_format_error">Use the DD/MM/YYYY format.</string>
     <string name="birth_date_error">Add a birth date.</string>
     <string name="data_invalida">Input a valid date</string>
@@ -45,6 +46,8 @@
     <string name="num_epi_epiVistos">Number of episodes seen > number of episodes.</string>
     <string name="AddNameFSErr">Add a name</string>
     <string name="Spin_erro_genero">Select a genre</string>
+    <string name="exportingDB">Error exporting database</string>
+    <string name="importingDB">Error importing database</string>
 
     <!--Hints-->
     <string name="HintNome">Name</string>
@@ -64,6 +67,8 @@
     <string name="butãoAdd">Add</string>
     <string name="butãoSearch">Search</string>
     <string name="butãoVoltar">Back</string>
+    <string name="butãoBackup">Backup data base</string>
+    <string name="butãoRestore">Restore data base</string>
 
     <!--Mensagens de confirmação-->
     <string name="Are_you_sure">Are you sure?</string>
@@ -108,7 +113,7 @@
     <string name="Filme">Movie</string>
     <string name="Serie">TV show</string>
     <string name="fields_mandatory">All fields are mandatory.</string>
-    <string name="title_activity_unlink_pfs">Remove a person</string>
-    <string name="title_activity_unlink_gfs">Remove a genre</string>
+    <string name="SucessoExportarDB">Database exported successfully</string>
+    <string name="SucessoImportarDB">Database imported successfully</string>
 
 </resources>
