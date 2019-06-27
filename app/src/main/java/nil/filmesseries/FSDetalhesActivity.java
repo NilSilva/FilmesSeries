@@ -313,6 +313,7 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
             button.setVisibility(View.INVISIBLE);
             butaoCancelar.setText(R.string.butãoVoltar);
             preencheCampos();
+            changeMenuVisibility();
         }else {
             finish();
         }
@@ -471,6 +472,20 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
         atualizaGeneros();
 
         super.onResume();
+    }
+
+    private void changeMenuVisibility(){
+        if(button.getVisibility() == View.VISIBLE){
+            menu.getItem(2).setVisible(true);
+            menu.getItem(3).setVisible(true);
+            menu.getItem(4).setVisible(true);
+            menu.getItem(5).setVisible(true);
+        }else{
+            menu.getItem(2).setVisible(false);
+            menu.getItem(3).setVisible(false);
+            menu.getItem(4).setVisible(false);
+            menu.getItem(5).setVisible(false);
+        }
     }
 
     /**
@@ -647,6 +662,7 @@ public class FSDetalhesActivity extends AppCompatActivity implements LoaderManag
                 item.setVisible(false);
                 button.setVisibility(View.VISIBLE);
                 butaoCancelar.setText(R.string.butãoCancel);
+                changeMenuVisibility();
                 return true;
             case R.id.action_apagar_FS:
 

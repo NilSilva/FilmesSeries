@@ -11,18 +11,22 @@
 
     <item
         android:id="@+id/action_Adicionar_P_FS"
-        android:title="@string/menuAdicionarPFS" />
+        android:title="@string/menuAdicionarPFS"
+        android:visible="false"/>
 
     <item
         android:id="@+id/action_eleminar_P_FS"
-        android:title="@string/menuEleminarPFS" />
+        android:title="@string/menuEleminarPFS"
+        android:visible="false"/>
 
     <item
         android:id="@+id/action_Adicionar_G_FS"
-        android:title="@string/menuAdicionarGFS" />
+        android:title="@string/menuAdicionarGFS"
+        android:visible="false"/>
 
     <item
         android:id="@+id/action_eliminar_G_FS"
-        android:title="@string/menuRemoverGFS" />
+        android:title="@string/menuRemoverGFS"
+        android:visible="false" />
 
 </menu>
